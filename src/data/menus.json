@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "menu_name": "Home",
+    "path": "/",
+    "parent_id": 0,
+    "order_no": 1,
+    "has_child": 0
+  },
+  {
+    "id": 2,
+    "menu_name": "About Us",
+    "path": "/about-us",
+    "parent_id": 0,
+    "order_no": 2,
+    "has_child": 0
+  },
+  {
+        "id": 3,
+        "menu_name": "Services",
+        "path": "/services",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+    
+},
+  {
+    "id": 4,
+    "menu_name": "Portfolio",
+    "path": "/portfolio",
+    "parent_id": 0,
+    "order_no": 4,
+    "has_child": 0
+  },
+  {
+    "id": 5,
+    "menu_name": "Blog",
+    "path": "/blog",
+    "parent_id": 0,
+    "order_no": 5,
+    "has_child": 0
+  },
+  {
+    "id": 6,
+    "menu_name": "Contact",
+    "path": "/contact",
+    "parent_id": 0,
+    "order_no": 6,
+    "has_child": 0
+  }
+]
