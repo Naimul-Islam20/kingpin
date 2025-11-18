@@ -1,7 +1,12 @@
 // components/Footer.jsx
 import React from "react";
 import Link from "next/link";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -73,7 +78,7 @@ const Footer = () => {
               <Link href="#"><FaFacebookF className="hover:text-blue-400" /></Link>
               <Link href="#"><FaTwitter className="hover:text-blue-400" /></Link>
               <Link href="#"><FaInstagram className="hover:text-blue-400" /></Link>
-              <Link href="#"><FaInstagram className="hover:text-blue-400" /></Link>
+              <Link href="#"><FaWhatsapp className="hover:text-blue-400" /></Link>
             </div>
             <div className="flex gap-6 flex-wrap mt-2 md:mt-0">
               <Link href="/privacy" className="hover:text-blue-400">Privacy Policy</Link>

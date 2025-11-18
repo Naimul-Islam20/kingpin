@@ -1,9 +1,10 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 
 const HeroSection = () => {
   const dateInputRef = useRef(null);
+  const [selectedDate, setSelectedDate] = useState("");
 
   const handleOpenDate = () => {
     if (dateInputRef.current) {
@@ -11,8 +12,12 @@ const HeroSection = () => {
     }
   };
 
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
+
   return (
-    <section className="relative w-full -mt-20 h-screen">
+    <section className="relative w-full -mt-22 h-[90vh]">
       {/* Background Video */}
       <video
         autoPlay
@@ -25,55 +30,41 @@ const HeroSection = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
-
-      {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-          Welcome to Our Website
-        </h1>
-        <p className="text-lg md:text-2xl text-white mb-6">
-          Experience the best online services with us.
-        </p>
-        <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
-          Get Started
-        </button>
-      </div>
-
       {/* Floating Bottom Card */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 w-[90%] md:w-[500px] bg-white/40 backdrop-blur-md flex items-center justify-center gap-4 px-8 py-8 ">
-        {/* Left: Input */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 w-[90%] md:w-[450px] bg-white/40 backdrop-blur-md flex items-center justify-center gap-5 px-4 py-4 rounded-t-md">
+        {/* Input with label and icon */}
         <div
-          className="flex flex-col max-w-[180px] relative cursor-pointer select-none"
+          className="flex flex-col w-[130px] cursor-pointer select-none"
           onClick={handleOpenDate}
         >
-          <label
-            htmlFor="checkin"
-            className="block text-sm font-medium text-white  mb-1"
-          >
-            Select In Date
-          </label>
-          <input
-            ref={dateInputRef}
-            type="date"
-            id="checkin"
-            className="w-full bg-transparent border-none outline-none  text-white px-3 py-2 pr-8 cursor-pointer
-                       [&::-webkit-calendar-picker-indicator]:opacity-0
-                       [&::-webkit-calendar-picker-indicator]:absolute
-                       [&::-webkit-calendar-picker-indicator]:right-0
-                       [&::-webkit-calendar-picker-indicator]:w-full
-                       [&::-webkit-calendar-picker-indicator]:cursor-pointer"
-          />
-         
+          {/* Label */}
+          <label className="text-white text-xs mb-1">When</label>
+
+          {/* Input wrapper */}
+          <div className="relative w-full">
+            {/* Overlay text */}
+            <span className="absolute  top-1/2 -translate-y-1/2 text-white text-sm pointer-events-none">
+              {selectedDate || "Select In Date"}
+            </span>
+
+            <input
+              ref={dateInputRef}
+              type="date"
+              onChange={handleDateChange}
+              className="w-full bg-white/10 text-white text-sm rounded-md px-3 py-2  cursor-pointer opacity-0"
+            />
+
+            <FaCalendarAlt className="absolute right-5 top-1/2 -translate-y-1/2 text-white w-4 h-4 pointer-events-none" />
+          </div>
         </div>
 
         {/* Divider */}
-        <div className="h-10 w-[1px] bg-gray-300"></div>
+        <div className="h-12 w-[1px] bg-gray-300"></div>
 
-        {/* Right: Button */}
-        <button className="px-7 py-3 cursor-pointer bg-white text-red-500 font-semibold rounded-lg hover:bg-red-00 transition">
+        {/* Book Button */}
+        <button className="flex items-center gap-2 px-8 py-2 mt-3 ms-4 cursor-pointer bg-white text-red-500 font-semibold rounded-lg hover:bg-red-100 transition text-sm">
           Book Now
+          <FaCalendarAlt className="w-4 h-4" /> {/* Icon added */}
         </button>
       </div>
     </section>
