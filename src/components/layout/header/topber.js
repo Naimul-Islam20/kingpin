@@ -13,8 +13,8 @@ const Topbar = () => {
         <div className="flex items-center gap-3 sm:gap-4">
           {/* Facebook */}
           <a
-            href="https://www.facebook.com/yourpage"
-            target="_blank"
+            href="#"
+            
             rel="noopener noreferrer"
             className="bg-white/20 hover:bg-white/40 transition p-2 rounded-full"
           >
@@ -23,8 +23,8 @@ const Topbar = () => {
 
           {/* Twitter */}
           <a
-            href="https://twitter.com/yourhandle"
-            target="_blank"
+            href="#"
+            
             rel="noopener noreferrer"
             className="bg-white/20 hover:bg-white/40 transition p-2 rounded-full"
           >
@@ -33,8 +33,8 @@ const Topbar = () => {
 
           {/* Instagram */}
           <a
-            href="https://www.instagram.com/yourhandle"
-            target="_blank"
+            href="#"
+         
             rel="noopener noreferrer"
             className="bg-white/20 hover:bg-white/40 transition p-2 rounded-full"
           >
@@ -43,8 +43,8 @@ const Topbar = () => {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/8801832753874"
-            target="_blank"
+            href="#"
+            
             rel="noopener noreferrer"
             className="bg-white/20 hover:bg-white/40 transition p-2 rounded-full"
           >
