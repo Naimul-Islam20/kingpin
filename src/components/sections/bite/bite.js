@@ -56,7 +56,7 @@ export default function GalleryPage() {
       {/* New Cover Photo Section */}
       <div className="relative w-full h-72 bg-amber-200 rounded-md overflow-hidden">
         <Image
-          src="/home/card3.jpg"
+          src="/home/card.jpg"
           alt="Cover Photo"
           fill
           className="object-cover"

@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "menu_name": "Home",
+    "menu_name": "things to do ",
     "path": "/",
     "parent_id": 0,
     "order_no": 1,
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "menu_name": "About Us",
+    "menu_name": "locations",
     "path": "/about-us",
     "parent_id": 0,
     "order_no": 2,
@@ -17,7 +17,7 @@
   },
   {
         "id": 3,
-        "menu_name": "Services",
+        "menu_name": "packeges",
         "path": "/services",
         "parent_id": 0,
         "order_no": 3,
@@ -26,7 +26,7 @@
 },
   {
     "id": 4,
-    "menu_name": "Portfolio",
+    "menu_name": "menu",
     "path": "/portfolio",
     "parent_id": 0,
     "order_no": 4,
@@ -34,7 +34,7 @@
   },
   {
     "id": 5,
-    "menu_name": "Blog",
+    "menu_name": "deals",
     "path": "/blog",
     "parent_id": 0,
     "order_no": 5,
@@ -42,7 +42,7 @@
   },
   {
     "id": 6,
-    "menu_name": "Contact",
+    "menu_name": "member",
     "path": "/contact",
     "parent_id": 0,
     "order_no": 6,
