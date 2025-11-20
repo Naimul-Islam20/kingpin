@@ -31,11 +31,11 @@ const HeroSection = () => {
       </video>
 
       {/* Optional Overlay or Content */}
-      <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+      {/* <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
         <h1 className="text-white text-2xl sm:text-4xl md:text-5xl font-bold">
           Welcome to Our Website
         </h1>
-      </div>
+      </div> */}
     </section>
   );
 };
