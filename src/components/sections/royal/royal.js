@@ -26,7 +26,7 @@ export default function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <div className="max-w-[1250px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-2  md:py-10 grid grid-cols-1 gap-2 md:gap-9 ">
+      <div className="max-w-[1250px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pb-4 pt-2 md:pt-4  md:pb-6 grid grid-cols-1 gap-2 md:gap-4 ">
         {/* Page Title */}
         <DynamicTitle
           blackText="deals and spacials"
@@ -38,10 +38,7 @@ export default function GalleryPage() {
         <section>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-6">
             {images.map((img) => (
-              <article
-                key={img.id}
-                className="relative overflow-hidden rounded-md"
-              >
+              <article key={img.id} className="relative overflow-hidden ">
                 <img
                   src={img.src}
                   alt={img.title}
@@ -49,7 +46,7 @@ export default function GalleryPage() {
                 />
                 <div className="absolute inset-0 bg-black/20 hover:bg-opacity-40 transition-opacity duration-200 flex items-center justify-start p-3 sm:p-4">
                   <div className="text-start text-white">
-                    <h3 className="text-xl  mt-30 md:text-xl font-black">
+                    <h3 className="text-xl  mt-30 md:text-2xl font-extrabold">
                       {img.title}
                     </h3>
                     <p className=" text-base md:text-md font-bold">
@@ -71,10 +68,7 @@ export default function GalleryPage() {
         <section>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-6">
             {images.map((img) => (
-              <article
-                key={img.id}
-                className="relative overflow-hidden rounded-md"
-              >
+              <article key={img.id} className="relative overflow-hidden ">
                 <img
                   src={img.src}
                   alt={img.title}
@@ -82,10 +76,10 @@ export default function GalleryPage() {
                 />
                 <div className="absolute inset-0 bg-black/20 hover:bg-opacity-40 transition-opacity duration-200 flex items-center justify-start p-3 sm:p-4">
                   <div className="text-start text-white">
-                    <h3 className="text-base sm:text-lg md:text-xl font-black">
+                    <h3 className="text-xl  mt-30 md:text-2xl font-extrabold">
                       {img.title}
                     </h3>
-                    <p className="text-xs sm:text-sm md:text-base font-bold">
+                    <p className=" text-base md:text-md font-bold">
                       {img.desc}
                     </p>
                   </div>

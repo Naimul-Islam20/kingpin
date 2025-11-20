@@ -100,7 +100,7 @@ const BookPage = () => {
           </div>
 
           {/* Book Now Button */}
-          <AnnimatedButton className="mt-3 sm:mt-0 px-4 py-1 sm:px-6 sm:py-2 text-sm sm:text-base">
+          <AnnimatedButton className="mt-3 md:mt-6 sm:mt-0 px-4 py-1  sm:px-6 sm:py-2 text-sm sm:text-base">
             Book Now
           </AnnimatedButton>
         </div>
@@ -175,7 +175,7 @@ const BookPage = () => {
           <FaBuffer className="text-white text-[75px]  md:text-[50px]" />
 
           {/* Sign Up button untouched */}
-          <button className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-1 uppercase rounded-full transition">
+          <button className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-[#302f2f] hover:bg-[#181818] text-white font-semibold px-6 py-1 uppercase rounded-full transition">
             freeSign Up
           </button>
         </div>

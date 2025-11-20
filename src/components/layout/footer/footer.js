@@ -6,6 +6,7 @@ import {
   FaTwitter,
   FaInstagram,
   FaWhatsapp,
+  FaYoutube
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -26,22 +27,22 @@ const Footer = () => {
           </div>
           <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
             <li>
-              <Link href="/about" className="hover:text-blue-400">
+              <Link href="/about" className="hover:text-yellow-600">
                 About
               </Link>
             </li>
             <li>
-              <Link href="/work" className="hover:text-blue-400">
+              <Link href="/work" className="hover:text-yellow-600">
                 Work
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-blue-400">
+              <Link href="/contact" className="hover:text-yellow-600">
                 Contact
               </Link>
             </li>
             <li>
-              <Link href="/service" className="hover:text-blue-400">
+              <Link href="/service" className="hover:text-yellow-600">
                 Service
               </Link>
             </li>
@@ -53,22 +54,22 @@ const Footer = () => {
           <h3 className="font-bold text-lg">Help</h3>
           <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
             <li>
-              <Link href="/customer-support" className="hover:text-blue-400">
+              <Link href="/customer-support" className="hover:text-yellow-600">
                 Customer Support
               </Link>
             </li>
             <li>
-              <Link href="/delivery-details" className="hover:text-blue-400">
+              <Link href="/delivery-details" className="hover:text-yellow-600">
                 Delivery Details
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="hover:text-blue-400">
+              <Link href="/terms" className="hover:text-yellow-600">
                 Terms & Conditions
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-blue-400">
+              <Link href="/privacy" className="hover:text-yellow-600">
                 Privacy Policy
               </Link>
             </li>
@@ -80,25 +81,25 @@ const Footer = () => {
           <h3 className="font-bold text-lg">Resources</h3>
           <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
             <li>
-              <Link href="/free-ebooks" className="hover:text-blue-400">
+              <Link href="/free-ebooks" className="hover:text-yellow-600">
                 Free eBooks
               </Link>
             </li>
             <li>
               <Link
                 href="/development-tutorial"
-                className="hover:text-blue-400"
+                className="hover:text-yellow-600"
               >
                 Development Tutorial
               </Link>
             </li>
             <li>
-              <Link href="/how-to-blog" className="hover:text-blue-400">
+              <Link href="/how-to-blog" className="hover:text-yellow-600">
                 How To Blog
               </Link>
             </li>
             <li>
-              <Link href="/youtube-playlist" className="hover:text-blue-400">
+              <Link href="/youtube-playlist" className="hover:text-yellow-600">
                 Youtube Playlist
               </Link>
             </li>
@@ -110,22 +111,22 @@ const Footer = () => {
           <h3 className="font-bold text-lg">Extra Links</h3>
           <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
             <li>
-              <Link href="/blog" className="hover:text-blue-400">
+              <Link href="/blog" className="hover:text-yellow-600">
                 Blog
               </Link>
             </li>
             <li>
-              <Link href="/delivery-details" className="hover:text-blue-400">
+              <Link href="/delivery-details" className="hover:text-yellow-600">
                 Delivery Details
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="hover:text-blue-400">
+              <Link href="/terms" className="hover:text-yellow-600">
                 Terms & Conditions
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="hover:text-blue-400">
+              <Link href="/privacy" className="hover:text-yellow-600">
                 Privacy Policy
               </Link>
             </li>
@@ -140,26 +141,26 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
             <div className="flex gap-3 md:gap-4 text-white justify-center">
               <Link href="#">
-                <FaFacebookF className="hover:text-blue-400" />
+                <FaFacebookF className="hover:text-yellow-600" />
               </Link>
               <Link href="#">
-                <FaTwitter className="hover:text-blue-400" />
+                <FaTwitter className="hover:text-yellow-600" />
               </Link>
               <Link href="#">
-                <FaInstagram className="hover:text-blue-400" />
+                <FaInstagram className="hover:text-yellow-600" />
               </Link>
               <Link href="#">
-                <FaWhatsapp className="hover:text-blue-400" />
+                <FaYoutube className="hover:text-yellow-600" />
               </Link>
             </div>
             <div className="flex gap-2 md:gap-6 flex-wrap justify-center mt-1 md:mt-0">
-              <Link href="/privacy" className="hover:text-blue-400">
+              <Link href="/privacy" className="hover:text-yellow-600">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-blue-400">
+              <Link href="/terms" className="hover:text-yellow-600">
                 Terms
               </Link>
-              <Link href="/work" className="hover:text-blue-400">
+              <Link href="/work" className="hover:text-yellow-600">
                 Work
               </Link>
             </div>
