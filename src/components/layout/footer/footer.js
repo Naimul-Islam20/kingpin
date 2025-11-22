@@ -11,9 +11,9 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1d1d1d] text-white">
+    <footer className="bg-[#1d1d1d] uppercase text-white">
       {/* Main Footer */}
-      <div className="max-w-[1250px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 px-4 md:px-12 lg:px-16 py-8 md:py-14 text-center md:text-left">
+      <div className="max-w-[1250px] mx-auto  grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 px-4 md:px-12 lg:px-16 py-8 md:py-14 text-center md:text-left">
         {/* Column 1 */}
         <div className="flex flex-col space-y-4 md:space-y-6 items-center md:items-start">
           <div className="text-2xl font-bold">
