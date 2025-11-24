@@ -66,8 +66,8 @@ const renderGrid = () => (
         </div>
 
         {/* Hover Overlay with Description */}
-        <div className="absolute inset-0 flex flex-col justify-end items-center text-start bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10">
-          <div className="absolute inset-0 flex flex-col items-start p-4 text-start bg-black/70 transition-transform duration-500 z-10 group-hover:translate-y-0">
+        <div className="absolute inset-0 flex flex-col justify-end items-center text-start bg-black/50 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10">
+          <div className="absolute inset-0 flex flex-col items-start p-4 text-start bg-black/50 transition-transform duration-500 z-10 group-hover:translate-y-0">
             <p className="text-gray-200 border-gray-200 border-t font-bold mb-2 mt-25 pt-3">
               {img.desc.split(" ").length > 20
                 ? img.desc.split(" ").slice(0, 26).join(" ") + "..."
@@ -78,7 +78,7 @@ const renderGrid = () => (
             <DynamicButton
               text={img.buttonText}
               link={img.buttonLink}
-              className="mt-4"
+              className="fixed bottom-4 left-4"
             />
           </div>
         </div>

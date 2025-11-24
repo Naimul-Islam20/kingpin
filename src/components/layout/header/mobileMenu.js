@@ -138,7 +138,7 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
         <div className="p-4 border-t border-gray-300 flex gap-3">
           <Link
             href="/login"
-            className="w-1/2 text-center py-2 bg-black text-white rounded font-semibold"
+            className="w-1/2 text-center uppercase py-2 bg-black text-white rounded font-semibold"
             onClick={onClose}
           >
             Login
@@ -146,10 +146,10 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
 
           <Link
             href="/register"
-            className="w-1/2 text-center py-2 bg-yellow-500 text-black rounded font-semibold"
+            className="w-1/2 text-center uppercase py-2 bg-yellow-500 text-black rounded font-semibold"
             onClick={onClose}
           >
-            Register
+            book now
           </Link>
         </div>
       </div>

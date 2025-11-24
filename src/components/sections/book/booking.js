@@ -70,6 +70,7 @@ const BookPage = () => {
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
                 onClick={() => setLocationOpen(true)}
+                readOnly
               />
               <FaCaretDown
                 className={`absolute right-2 sm:right-3 text-[#C27D2A] transition-transform duration-300 ${
@@ -86,8 +87,8 @@ const BookPage = () => {
                   {["A", "B", "C", "D", "K"].map((letter) => (
                     <button
                       key={letter}
-                      className={`px-2 py-0.5 rounded text-black hover:bg-yellow-100 ${
-                        activeLetter === letter ? "bg-yellow-200 " : ""
+                      className={`px-2 py-0.5 rounded text-gray-400 hover:bg-yellow-200 ${
+                        activeLetter === letter ? "text-gray-900 bg-amber-300" : ""
                       }`}
                       onClick={() => setActiveLetter(letter)}
                     >
@@ -103,7 +104,7 @@ const BookPage = () => {
                     .map((loc) => (
                       <div
                         key={loc.name}
-                        className="px-2 sm:px-3 py-2 hover:bg-yellow-100 text-black font-bold cursor-pointer text-medium"
+                        className="px-2 sm:px-3 py-2 hover:text-yellow-600 text-black font-bold cursor-pointer text-medium"
                         onClick={() => {
                           setSelectedLocation(loc.name);
                           setLocationOpen(false);
