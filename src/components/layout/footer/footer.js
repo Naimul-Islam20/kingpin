@@ -12,7 +12,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="w-full uppercase bg-[#000] text-white">
+    <footer className="w-full uppercase bg-[#000000] text-white">
       {/* TOP */}
       <div className="w-full">
         <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-10">

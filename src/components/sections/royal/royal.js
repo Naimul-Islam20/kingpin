@@ -34,7 +34,7 @@ export default function GalleryPage() {
   ];
 
   const renderDesktopGrid = () => (
-    <div className="hidden md:grid grid-cols-3 gap-4 md:gap-6">
+    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       {images.map((img) => (
         <article key={img.id} className="relative overflow-hidden group">
           <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72">
@@ -45,14 +45,22 @@ export default function GalleryPage() {
             />
             <div className="absolute inset-0 bg-black/30"></div>
           </div>
+
+          {/* title + subtitle (TAB এ ছোট) */}
           <div className="absolute inset-0 flex flex-col ps-4 items-start justify-center pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-20">
-            <h3 className="text-xl md:text-4xl font-extrabold text-white">
+            <h3 className="text-xl md:text-2xl lg:text-4xl font-extrabold text-white">
               {img.title}
             </h3>
-            <h2 className="text-lg md:text-2xl font-semibold text-white mt-2">
+            <h2 className="text-lg md:text-lg lg:text-2xl font-semibold text-white mt-2">
               {img.subtitle}
             </h2>
+
+            {/* TAB ONLY button */}
+            <button className="md:block lg:hidden bg-white text-black font-bold uppercase px-3 py-1 rounded-full mt-3 pointer-events-auto">
+              Learn More
+            </button>
           </div>
+
           <div className="absolute inset-0 flex flex-col justify-end items-center text-start bg-black/70 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10">
             <div className="absolute inset-0 flex flex-col items-start p-4 text-start bg-black/70 transition-transform duration-500 z-10 group-hover:translate-y-0">
               <p className="text-gray-200 border-gray-200 border-t font-bold mb-2 mt-25 pt-3">
@@ -60,6 +68,8 @@ export default function GalleryPage() {
                   ? img.desc.split(" ").slice(0, 26).join(" ") + "..."
                   : img.desc}
               </p>
+
+              {/* desktop button — untouched */}
               <button className="fixed bottom-4 left-4 bg-white text-black font-bold uppercase px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">
                 Learn More
               </button>

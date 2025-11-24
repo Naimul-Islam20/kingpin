@@ -6,7 +6,6 @@ import { GoChevronUp, GoChevronDown } from "react-icons/go";
 import * as BiIcons from "react-icons/bi";
 import * as FaIcons from "react-icons/fa";
 
-// Dynamic Icon Resolver
 function getIcon(iconName) {
   if (!iconName) return BiIcons.BiCircle;
   if (BiIcons[iconName]) return BiIcons[iconName];
@@ -18,7 +17,6 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const menuRef = useRef();
 
-  // Close sidebar on outside click
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -37,7 +35,6 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
 
   return (
     <>
-      {/* Overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-40"
@@ -46,7 +43,6 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
         />
       )}
 
-      {/* Sidebar */}
       <div
         ref={menuRef}
         className={`fixed top-0 right-0 h-full w-4/5 max-w-xs bg-white shadow-lg z-50 transform transition-transform duration-300 ${
@@ -74,7 +70,7 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
               >
                 {hasChildren ? (
                   <>
-                    {/* Parent menu */}
+                    {/* Parent Menu */}
                     <div
                       className="flex justify-between items-center uppercase cursor-pointer py-2"
                       onClick={() => toggleMenu(menu.id)}
@@ -125,7 +121,6 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
                     )}
                   </>
                 ) : (
-                  // If no child menu → simple link
                   <Link
                     href={`/${menu.menu_uid}`}
                     className="block text-sm text-gray-800 py-2"
@@ -138,6 +133,25 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
             );
           })}
         </ul>
+
+        {/* ====== Bottom Buttons (Side-by-Side) ====== */}
+        <div className="p-4 border-t border-gray-300 flex gap-3">
+          <Link
+            href="/login"
+            className="w-1/2 text-center py-2 bg-black text-white rounded font-semibold"
+            onClick={onClose}
+          >
+            Login
+          </Link>
+
+          <Link
+            href="/register"
+            className="w-1/2 text-center py-2 bg-yellow-500 text-black rounded font-semibold"
+            onClick={onClose}
+          >
+            Register
+          </Link>
+        </div>
       </div>
     </>
   );

@@ -43,7 +43,7 @@ const BookPage = () => {
   }, []);
 
   return (
-    <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pt-5 md:pt-6 grid grid-cols-1 gap-5 sm:gap-8">
+    <div className="max-w-[1330px] mx-auto  md:px-12 lg:px-16 pt-5 md:pt-6 grid grid-cols-1 gap-5 sm:gap-8">
       {/* Upper Section */}
       <div className="bg-white p-0">
         <div className="bg-[#C27D2A] w-full py-2 text-center font-bold">
@@ -52,7 +52,7 @@ const BookPage = () => {
           </h1>
         </div>
 
-        <div className="flex flex-col sm:flex-row flex-wrap bg-[#272727] items-center justify-center gap-1 sm:gap-4 p-3 sm:p-4">
+        <div className="flex flex-col sm:flex-row flex-wrap bg-black items-center justify-center gap-1 sm:gap-4 p-3 sm:p-4">
           {/* Location Input */}
           <div
             className="relative flex flex-col w-full sm:w-[300px] mb-2 sm:mb-0"
@@ -86,8 +86,8 @@ const BookPage = () => {
                   {["A", "B", "C", "D", "K"].map((letter) => (
                     <button
                       key={letter}
-                      className={`px-2 py-0.5 rounded hover:bg-yellow-100 ${
-                        activeLetter === letter ? "bg-yellow-200" : ""
+                      className={`px-2 py-0.5 rounded text-black hover:bg-yellow-100 ${
+                        activeLetter === letter ? "bg-yellow-200 " : ""
                       }`}
                       onClick={() => setActiveLetter(letter)}
                     >
@@ -144,7 +144,7 @@ const BookPage = () => {
       </div>
 
       {/* Lower Section (unchanged) */}
-      <div className="bg-[#E4937F] flex flex-col items-center gap-6 relative">
+      <div className="bg-[#E4937F] mx-4 md:mx-0 flex flex-col items-center gap-6 relative">
         <div className="flex  justify-center items-center mt-3 uppercase pb-0 md-pb-3 gap-2 sm:gap-4 md:gap-10 lg:gap-12 relative w-full">
           <FaBuffer className="text-white  text-[75px] md:text-[50px]" />
 

@@ -106,7 +106,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileOpen(true)}
-            className="lg:hidden flex items-center gap-2 px-4 py-2 bg-[#C27D2A] text-white rounded hover:bg-[#b66e16] transition"
+            className="lg:hidden flex items-center gap-2 px-2 py-2 bg-[#C27D2A] text-white rounded hover:bg-[#b66e16] transition"
           >
             <FaBars />
           </button>
