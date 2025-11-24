@@ -3,8 +3,8 @@ export default function DynamicTitle({ blackText, redText, Icon, className }) {
     <h2
       className={`
         col-span-full 
-        text-2xl sm:text-2xl md:text-3xl 
-        font-semibold 
+        text-2xl sm:text-2xl md:text-4xl 
+        font-bold md:font-extrabold
         text-center 
        
         flex items-center justify-center 

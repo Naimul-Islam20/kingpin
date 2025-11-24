@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <>
       <header className="bg-[#181818] shadow-md sticky top-0 z-50">
-        <div className="max-w-[1250px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16 py-2 md:py-5">
+        <div className="max-w-[1330px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16 py-2 md:py-5">
           {/* Left: Logo */}
           <div className="select-none">
             <Link href="/">

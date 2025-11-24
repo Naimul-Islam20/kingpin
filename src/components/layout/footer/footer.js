@@ -1,186 +1,215 @@
-// components/Footer.jsx
-import React from "react";
+"use client";
+
+import AnimatedButton from "@/components/ui/annimation_button";
 import Link from "next/link";
 import {
   FaFacebookF,
-  FaTwitter,
   FaInstagram,
-  FaWhatsapp,
-  FaYoutube
+  FaTiktok,
+  FaYoutube,
+  
 } from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-[#1d1d1d] uppercase text-white">
-      {/* Main Footer */}
-      <div className="max-w-[1250px] mx-auto  grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 px-4 md:px-12 lg:px-16 py-8 md:py-14 text-center md:text-left">
-        {/* Column 1 */}
-        <div className="flex flex-col space-y-4 md:space-y-6 items-center md:items-start">
-          <div className="text-2xl font-bold">
-            <Link href="/">
-              <img
-                src="/logo.png"
-                alt="Logo"
-                className="h-10 w-auto cursor-pointer mx-auto md:mx-0"
-              />
-            </Link>
+    <footer className="w-full uppercase bg-[#000] text-white">
+      {/* TOP */}
+      <div className="w-full">
+        <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-10">
+          <div className="flex flex-col lg:flex-row justify-between gap-10">
+            {/* LEFT SECTION (Logo + Follow + Contact + Brands) */}
+            <div className="flex flex-col gap-5 w-full lg:w-1/2 items-center md:items-start">
+              {/* LOGO */}
+              <div className="text-white text-4xl font-bold tracking-wide">
+                KINGPIN
+              </div>
+
+              {/* FOLLOW + CONTACT */}
+              <div className="flex flex-col items-center gap-5 md:flex-row md:gap-12 md:items-start w-full">
+                {/* FOLLOW */}
+                <div className="flex flex-col items-center md:items-start">
+                  <small className="uppercase tracking-wider text-amber-500 text-sm">
+                    follow
+                  </small>
+                  <div className="flex mt-3 text-2xl gap-4">
+                    <Link
+                      href="https://www.facebook.com/Kingpin"
+                      target="_blank"
+                    >
+                      <FaFacebookF />
+                    </Link>
+                    <Link
+                      href="https://www.instagram.com/kingpin_play/"
+                      target="_blank"
+                    >
+                      <FaInstagram />
+                    </Link>
+                    <Link
+                      href="https://www.tiktok.com/@kingpin_play"
+                      target="_blank"
+                    >
+                      <FaTiktok />
+                    </Link>
+                    <Link
+                      href="https://www.youtube.com/user/KingpinBowlingAus"
+                      target="_blank"
+                    >
+                      <FaYoutube />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* CONTACT */}
+                <div className="flex flex-col items-center md:items-start">
+                  <small className="uppercase tracking-wider text-amber-500 text-sm">
+                    contact
+                  </small>
+                  <a
+                    href="tel:1300814214"
+                    className="text-[#f9f9f9] font-black text-[28px] transition-all hover:underline"
+                  >
+                    1300 814 214
+                  </a>
+                </div>
+              </div>
+
+              {/* OTHER BRANDS */}
+              <div className="flex flex-col items-center md:items-start">
+                <small className="uppercase tracking-wider text-amber-500 text-sm">
+                  our other brands
+                </small>
+                <div className="flex flex-col items-center mt-3 gap-2 md:flex-row md:gap-12">
+                  <Link
+                    href="https://www.zonebowling.com/en-au/"
+                    
+                  >
+                    <span className="text-lg font-black">ZONE BOWLING</span>
+                  </Link>
+                  <Link href="https://timezonegames.com/en-au/" >
+                    <span className="text-lg tracking-wide font-black">
+                      TIMEZONE
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            {/* RIGHT SECTION (NAVIGATION MENU) */}
+            <div className="w-full lg:w-1/2 border-t border-gray-500 pt-5 md:pt-0 md:border-none">
+              <div className="grid text-medium md:text-lg text-white grid-cols-2 md:grid-cols-4 gap-7 md:gap-10 pl-11 md:pl-0">
+                <ul className="space-y-3 md:w-[80px]">
+                  <li className="hover:underline">
+                    <Link href="/contact">Contact</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/activities">Activities</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/venues">Locations</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/wine-and-dine">Wine &amp; Dine</Link>
+                  </li>
+                </ul>
+
+                <ul className="space-y-3">
+                  <li className="hover:underline">
+                    <Link href="/parties-and-events/birthday-parties">
+                      Birthdays
+                    </Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/parties-and-events/corporate-parties">
+                      Corporate
+                    </Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/parties-and-events/group-events">Social</Link>
+                  </li>
+                </ul>
+
+                <ul className="space-y-3">
+                  <li className="hover:underline">
+                    <Link href="/gift-cards">Gift Cards</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/deals">Deals</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/blog">Blog</Link>
+                  </li>
+                </ul>
+
+                <ul className="space-y-3 w-[80px]">
+                  <li className="hover:underline">
+                    <Link href="/about-kingpin">About us</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/safety">Safety</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/faqs">FAQs</Link>
+                  </li>
+                  <li className="hover:underline">
+                    <Link href="/careers">Careers</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
-            <li>
-              <Link href="/about" className="hover:text-yellow-600">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/work" className="hover:text-yellow-600">
-                Work
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-yellow-600">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link href="/service" className="hover:text-yellow-600">
-                Service
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Column 2 */}
-        <div className="flex flex-col space-y-4 md:space-y-6 items-center md:items-start">
-          <h3 className="font-bold text-lg">Help</h3>
-          <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
-            <li>
-              <Link href="/customer-support" className="hover:text-yellow-600">
-                Customer Support
-              </Link>
-            </li>
-            <li>
-              <Link href="/delivery-details" className="hover:text-yellow-600">
-                Delivery Details
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-yellow-600">
-                Terms & Conditions
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy" className="hover:text-yellow-600">
-                Privacy Policy
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Column 3 */}
-        <div className="flex flex-col space-y-4 md:space-y-6 items-center md:items-start">
-          <h3 className="font-bold text-lg">Resources</h3>
-          <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
-            <li>
-              <Link href="/free-ebooks" className="hover:text-yellow-600">
-                Free eBooks
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/development-tutorial"
-                className="hover:text-yellow-600"
-              >
-                Development Tutorial
-              </Link>
-            </li>
-            <li>
-              <Link href="/how-to-blog" className="hover:text-yellow-600">
-                How To Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/youtube-playlist" className="hover:text-yellow-600">
-                Youtube Playlist
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Column 4 */}
-        <div className="flex flex-col space-y-4 md:space-y-6 items-center md:items-start">
-          <h3 className="font-bold text-lg">Extra Links</h3>
-          <ul className="space-y-2 md:space-y-4 text-sm md:text-base">
-            <li>
-              <Link href="/blog" className="hover:text-yellow-600">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link href="/delivery-details" className="hover:text-yellow-600">
-                Delivery Details
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-yellow-600">
-                Terms & Conditions
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy" className="hover:text-yellow-600">
-                Privacy Policy
-              </Link>
-            </li>
-          </ul>
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t border-gray-700 py-2 md:py-4">
-        <div className="max-w-[1250px] mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center gap-2 md:gap-4 px-4 md:px-12 lg:px-16 text-sm md:text-base">
-          {/* Left Side */}
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
-            <div className="flex gap-3 md:gap-4 text-white justify-center">
-              <Link href="#">
-                <FaFacebookF className="hover:text-yellow-600" />
-              </Link>
-              <Link href="#">
-                <FaTwitter className="hover:text-yellow-600" />
-              </Link>
-              <Link href="#">
-                <FaInstagram className="hover:text-yellow-600" />
-              </Link>
-              <Link href="#">
-                <FaYoutube className="hover:text-yellow-600" />
-              </Link>
-            </div>
-            <div className="flex gap-2 md:gap-6 flex-wrap justify-center mt-1 md:mt-0">
-              <Link href="/privacy" className="hover:text-yellow-600">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:text-yellow-600">
-                Terms
-              </Link>
-              <Link href="/work" className="hover:text-yellow-600">
-                Work
-              </Link>
-            </div>
-          </div>
+      {/* BOTTOM */}
+      {/* BOTTOM */}
+      <div>
+        <div className="max-w-[1330px] text-white mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-5 flex flex-col md:flex-row justify-between items-center gap-3">
+          {/* MEMBERS PORTAL BUTTON (মোবাইলে উপরে) */}
+          <Link
+            href="https://portal.kingpinplay.com/"
+           
+            className="order-1 mb-4 md:order-2 md:mb-0"
+          >
+            <AnimatedButton path={"#"}>Members Portal</AnimatedButton>
+          </Link>
 
-          {/* Right Side */}
-          <div className="text-center md:text-right mt-1 md:mt-0">
-            &copy; {new Date().getFullYear()}{" "}
+          {/* LINKS */}
+          <div className="flex flex-col md:flex-row font-medium flex-wrap gap-5 md:gap-2  text-[#f9f9f9 ] opacity-80 items-center md:items-start order-2 md:order-1">
+            {/* মোবাইলে সঠিক অর্ডার */}
             <Link
-              href={"https://muktodharaltd.com/"}
-              className="text-[#C27D2A]"
+              className="hover:underline order-2 md:order-5"
+              href="/terms-conditions"
             >
-              Muktodhara Technology Limited.
-            </Link>{" "}
-            All rights reserved.
+              Terms and Conditions
+            </Link>
+            <Link
+              className="hover:underline order-3 md:order-4"
+              href="/disclaimer"
+            >
+              Disclaimer
+            </Link>
+            <Link
+              className="hover:underline order-4 md:order-3"
+              href="/privacy"
+            >
+              Privacy
+            </Link>
+            <Link className="hover:underline order-5 md:order-2" href="/">
+              Home
+            </Link>
+            <span className="order-6 md:order-1 mt-2 md:mt-0">
+              © 2025{" "}
+              <a
+                href="https://muktodharaltd.com/"
+                className="hover:underline text-yellow-500"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                MTL
+              </a>
+            </span>
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

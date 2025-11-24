@@ -3,16 +3,35 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaCaretDown, FaCalendarAlt, FaBuffer } from "react-icons/fa";
 import AnnimatedButton from "@/components/ui/annimation_button";
 
+const locations = [
+  { name: "Kingoin Canverra", letter: "K" },
+  { name: "Bogra", letter: "B" },
+  { name: "Kingoin Canverra", letter: "A" },
+  { name: "Kingoin Canverra", letter: "A" },
+  { name: "Kingoin Canverra", letter: "A" },
+  { name: "Barishal", letter: "B" },
+  { name: "Bhola", letter: "B" },
+  { name: "Patuakhali", letter: "B" },
+  { name: "Chittagong", letter: "C" },
+  { name: "Cox's Bazar", letter: "C" },
+  { name: "Feni", letter: "C" },
+  { name: "Dhaka", letter: "D" },
+  { name: "Gazipur", letter: "D" },
+  { name: "Narsingdi", letter: "D" },
+  { name: "Khulna", letter: "K" },
+  { name: "Jessore", letter: "K" },
+  { name: "Satkhira", letter: "K" },
+];
+
 const BookPage = () => {
   const [locationOpen, setLocationOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [activeLetter, setActiveLetter] = useState("A");
   const dateInputRef = useRef(null);
   const locationRef = useRef(null);
   const inputRef = useRef(null);
 
-  const locations = ["Dhaka", "Chittagong", "Khulna", "Sylhet"];
-
-  // Click outside dropdown to close
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (locationRef.current && !locationRef.current.contains(event.target)) {
@@ -24,17 +43,15 @@ const BookPage = () => {
   }, []);
 
   return (
-    <div className="max-w-[1250px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pt-5 md:pt-6 grid grid-cols-1 gap-5 sm:gap-8">
+    <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pt-5 md:pt-6 grid grid-cols-1 gap-5 sm:gap-8">
       {/* Upper Section */}
       <div className="bg-white p-0">
-        {/* Title */}
-        <div className="bg-[#C27D2A] w-full py-2 text-center font-bold ">
+        <div className="bg-[#C27D2A] w-full py-2 text-center font-bold">
           <h1 className="text-2xl sm:text-4xl text-white uppercase">
             Book Now!
           </h1>
         </div>
 
-        {/* Form Row */}
         <div className="flex flex-col sm:flex-row flex-wrap bg-[#272727] items-center justify-center gap-1 sm:gap-4 p-3 sm:p-4">
           {/* Location Input */}
           <div
@@ -61,24 +78,44 @@ const BookPage = () => {
                 onClick={() => setLocationOpen(!locationOpen)}
               />
             </div>
+
             {locationOpen && (
-              <div className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md mt-1 shadow-lg z-10 text-sm">
-                {locations.map((loc) => (
-                  <div
-                    key={loc}
-                    className="px-2 sm:px-3 py-1 hover:bg-yellow-100 text-black cursor-pointer text-sm"
-                    onClick={() => {
-                      setSelectedLocation(loc);
-                      setLocationOpen(false);
-                    }}
-                  >
-                    {loc}
-                  </div>
-                ))}
+              <div className="absolute top-full left-0 w-full bg-white border border-gray-300 mt-1 shadow-lg z-50 text-sm">
+                {/* Alphabet Navbar */}
+                <div className="flex justify-start gap-2 px-2 py-3 border-b border-gray-400">
+                  {["A", "B", "C", "D", "K"].map((letter) => (
+                    <button
+                      key={letter}
+                      className={`px-2 py-0.5 rounded hover:bg-yellow-100 ${
+                        activeLetter === letter ? "bg-yellow-200" : ""
+                      }`}
+                      onClick={() => setActiveLetter(letter)}
+                    >
+                      {letter}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Locations Filtered by Letter */}
+                <div className="max-h-80 overflow-y-auto">
+                  {locations
+                    .filter((loc) => loc.letter === activeLetter)
+                    .map((loc) => (
+                      <div
+                        key={loc.name}
+                        className="px-2 sm:px-3 py-2 hover:bg-yellow-100 text-black font-bold cursor-pointer text-medium"
+                        onClick={() => {
+                          setSelectedLocation(loc.name);
+                          setLocationOpen(false);
+                        }}
+                      >
+                        {loc.name}
+                      </div>
+                    ))}
+                </div>
               </div>
             )}
           </div>
-
           {/* Date Input */}
           <div className="relative flex flex-col w-full sm:w-[300px] mb-2 sm:mb-0">
             <label className="mb-1 text-white font-semibold uppercase text-xs sm:text-sm">
@@ -100,14 +137,13 @@ const BookPage = () => {
           </div>
 
           {/* Book Now Button */}
-          <AnnimatedButton className="mt-3 md:mt-6 sm:mt-0 px-4 py-1  sm:px-6 sm:py-2 text-sm sm:text-base">
+          <AnnimatedButton className="mt-3 md:mt-6 sm:mt-0 px-4 py-1 sm:px-6 sm:py-2 text-sm sm:text-base">
             Book Now
           </AnnimatedButton>
         </div>
       </div>
 
-      {/* Lower Section */}
-
+      {/* Lower Section (unchanged) */}
       <div className="bg-[#E4937F] flex flex-col items-center gap-6 relative">
         <div className="flex  justify-center items-center mt-3 uppercase pb-0 md-pb-3 gap-2 sm:gap-4 md:gap-10 lg:gap-12 relative w-full">
           <FaBuffer className="text-white  text-[75px] md:text-[50px]" />
