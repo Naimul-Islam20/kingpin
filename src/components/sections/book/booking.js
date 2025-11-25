@@ -6,9 +6,9 @@ import AnnimatedButton from "@/components/ui/annimation_button";
 const locations = [
   { name: "Kingoin Canverra", letter: "NZ" },
   { name: "Bogra", letter: "NZ" },
-  { name: "Kingoin Canverra", letter: "ANZ" },
-  { name: "Kingoin Canverra", letter: "ANZ" },
-  { name: "Kingoin Canverra", letter: "ANZ" },
+  { name: "Kingoin Canverra", letter: "AZ" },
+  { name: "Kingoin Canverra", letter: "AZ" },
+  { name: "Kingoin Canverra", letter: "AZ" },
   { name: "Barishal", letter: "NZ" },
   { name: "Bhola", letter: "NZ" },
   { name: "Patuakhali", letter: "NZ" },
@@ -23,7 +23,7 @@ const locations = [
   { name: "Satkhira", letter: "KLL" },
 ];
 
-const letters = ["NZ", "ANZ", "CY", "DT", "KLL"];
+const letters = ["NZ", "AZ", "CY", "DT", "KLL"];
 
 const BookPage = () => {
   const [locationOpen, setLocationOpen] = useState(false);
