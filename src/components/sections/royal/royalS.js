@@ -34,11 +34,11 @@ export default function RoyalS() {
     },
   ];
 const renderGrid = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 py-2 md:py-3 lg:grid-cols-3 gap-4 md:gap-6">
     {images.map((img) => (
       <article key={img.id} className="relative overflow-hidden group">
         {/* Image */}
-        <div className="relative w-full h-40 sm:h-48 md:h-64 lg:h-72">
+        <div className="relative w-full h-40 sm:h-48 md:h-60 lg:h-72">
           <img
             src={img.src}
             alt={img.title}
@@ -49,17 +49,17 @@ const renderGrid = () => (
 
         {/* Title & Subtitle */}
         <div className="absolute inset-0 flex flex-col ps-4 items-start justify-center pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-20">
-          <h3 className="text-xl md:text-4xl font-extrabold text-white">
+          <h3 className="text-xl md:text-2xl lg:text-4xl font-extrabold text-white">
             {img.title}
           </h3>
-          <h2 className="text-lg md:text-2xl font-semibold text-white mt-2">
+          <h2 className="text-lg md:text-base lg:text-2xl font-semibold text-white mt-2">
             {img.subtitle}
           </h2>
 
-          {/* Only mobile button */}
+          {/* Mobile + Tablet button */}
           <a
             href={img.buttonLink}
-            className="md:hidden bg-white uppercase text-black font-bold px-4 py-2 rounded-full mt-4 hover:bg-yellow-700 transition-colors z-30 pointer-events-auto inline-block"
+            className="inline-block md:inline-block lg:hidden bg-white uppercase text-black font-bold px-4 py-2 rounded-full mt-4 hover:bg-yellow-700 transition-colors z-30 pointer-events-auto"
           >
             {img.buttonText}
           </a>

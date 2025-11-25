@@ -7,6 +7,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import RoyalS from "./royalS";
+import CustomTwoPage from "../custom/customTwo";
 
 export default function GalleryPage() {
   const images = [
@@ -80,6 +81,48 @@ export default function GalleryPage() {
     </div>
   );
 
+  const renderTabletGrid = () => (
+    <div className="hidden md:grid lg:hidden grid-cols-2 gap-4 md:gap-6">
+      {images.map((img) => (
+        <article key={img.id} className="relative overflow-hidden group">
+          <div className="relative w-full h-48 sm:h-56 md:h-60">
+            <img
+              src={img.src}
+              alt={img.title}
+              className="w-full h-full object-cover block"
+            />
+            <div className="absolute inset-0 bg-black/30"></div>
+          </div>
+
+          {/* title + subtitle */}
+          <div className="absolute inset-0 flex flex-col ps-4 items-start justify-center pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-16">
+            <h3 className="text-lg md:text-xl font-extrabold text-white">
+              {img.title}
+            </h3>
+            <h2 className="text-sm md:text-lg font-semibold text-white mt-1">
+              {img.subtitle}
+            </h2>
+
+            {/* Tablet ONLY button */}
+            <button className="md:block bg-white text-black font-bold uppercase px-3 py-1 rounded-full mt-3 pointer-events-auto">
+              Learn More
+            </button>
+          </div>
+
+          <div className="absolute inset-0 flex flex-col justify-end items-center text-start bg-black/50 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10">
+            <div className="absolute inset-0 flex flex-col items-start p-4 text-start bg-black/50 transition-transform duration-500 z-10 group-hover:translate-y-0">
+              <p className="text-gray-200 border-gray-200 border-t font-bold mb-2 pt-3">
+                {img.desc.split(" ").length > 20
+                  ? img.desc.split(" ").slice(0, 26).join(" ") + "..."
+                  : img.desc}
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+  
 const renderMobileSlider = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const swiperRef = React.useRef(null);
@@ -158,6 +201,7 @@ const renderMobileSlider = () => {
         {/* Mobile */}
         {renderMobileSlider()}
       </div>
+      <CustomTwoPage/>
       <RoyalS />
     </main>
   );
