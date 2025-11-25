@@ -13,7 +13,10 @@ export default function CustomPage() {
   return (
     <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pb-1 sm:pb-4 md:pb-5 pt-4 sm:pt-7 md:pt-9  grid grid-cols-1 gap-2 sm:gap-6">
       {/* Title */}
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 uppercase text-center">
+      <h1
+        className="text-2xl sm:text-2xl md:text-4xl 
+        font-bold md:font-extrabold text-gray-900 uppercase text-center"
+      >
         EAT LIKE A KING!
       </h1>
 

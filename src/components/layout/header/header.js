@@ -1,29 +1,49 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaChevronDown, FaBars, FaChevronRight } from "react-icons/fa";
 import menus from "@/data/menus.json";
 import AnimatedButton from "@/components/ui/annimation_button";
-import Topbar from "./topber";
 import MobileMenu from "./mobileMenu";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <header className="bg-[#181818] shadow-md sticky top-0 z-50">
-        <div className="max-w-[1330px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16 py-2 md:py-5">
+      <header
+        className={`bg-[#181818] shadow-md sticky top-0 z-50 transition-all duration-300 ${
+          scrolled ? "py-2" : "py-5 md:py-5"
+        }`}
+      >
+        <div className="max-w-[1330px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16">
           {/* Left: Logo */}
-          <div className="select-none">
+          <div className="select-none transition-all duration-300">
             <Link href="/">
               <img
                 src="/logo.png"
                 alt="MyLogo"
-                className="h-5 md:h-10 w-auto"
+                className={`w-auto transition-all duration-300 ${
+                  scrolled ? "h-8" : "h-10 md:h-10"
+                }`}
               />
             </Link>
           </div>

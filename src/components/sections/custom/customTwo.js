@@ -13,18 +13,20 @@ export default function CustomTwoPage() {
   return (
     <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pb-2 sm-pb-2 md:pb-3 pt-1 sm:pt-3  md:pt-4  grid grid-cols-1 gap-2 sm:gap-6">
       {/* Centered Title & Description */}
-       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 uppercase text-center">
-        EAT LIKE A KING!
+      <h1
+        className="text-2xl sm:text-2xl md:text-4xl 
+        font-bold md:font-extrabold text-gray-900 uppercase text-center"
+      >
+        Celebrate like royal!
       </h1>
 
       {/* Full width Description */}
       <p className="text-sm sm:text-base md:text-lg text-center text-gray-700 w-full">
-        At Kingpin, great food and drinks are just as important as the fun. Our
-        menu is packed with delicious options that’ll fuel you up after an
-        intense game or keep the party going. From chef-crafted dishes to
-        signature cocktails, we've got something for everyone. So sit back, grab
-        a drink, and enjoy – because great times are always better with great
-        food.
+        Looking for the perfect place to host your next celebration or event?
+        Kingpin has you covered! From birthdays and parties to corporate events
+        and team-building, we offer custom packages, great food, and
+        state-of-the-art entertainment. Let us handle the details so you can
+        focus on the fun.
       </p>
 
       {/* Clickable Full width & fully visible image */}
