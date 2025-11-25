@@ -48,11 +48,11 @@ const renderGrid = () => (
         </div>
 
         {/* Title & Subtitle */}
-        <div className="absolute inset-0 flex flex-col ps-4 items-start justify-center pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-20">
-          <h3 className="text-xl md:text-2xl lg:text-4xl font-extrabold text-white">
+       <div className="absolute inset-0 flex flex-col ps-4 items-start justify-end mb-6 pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-40">
+          <h3 className="text-xl md:text-2xl uppercase lg:text-3xl font-extrabold text-white">
             {img.title}
           </h3>
-          <h2 className="text-lg md:text-base lg:text-2xl font-semibold text-white mt-2">
+          <h2 className="text-lg md:text-base uppercase lg:text-2xl font-semibold text-white mt-2">
             {img.subtitle}
           </h2>
 

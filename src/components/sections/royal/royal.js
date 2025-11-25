@@ -48,11 +48,11 @@ export default function GalleryPage() {
           </div>
 
           {/* title + subtitle (TAB এ ছোট) */}
-          <div className="absolute inset-0 flex flex-col ps-4 items-start justify-center pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-20">
-            <h3 className="text-xl md:text-2xl lg:text-4xl font-extrabold text-white">
+          <div className="absolute inset-0 flex flex-col ps-4 items-start justify-end mb-6 pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-40">
+            <h3 className="text-xl md:text-2xl  uppercase lg:text-3xl font-extrabold text-white">
               {img.title}
             </h3>
-            <h2 className="text-lg md:text-lg lg:text-2xl font-semibold text-white mt-2">
+            <h2 className="text-lg md:text-lg uppercase lg:text-2xl font-semibold text-white mt-1">
               {img.subtitle}
             </h2>
 
@@ -96,10 +96,10 @@ export default function GalleryPage() {
 
           {/* title + subtitle */}
           <div className="absolute inset-0 flex flex-col ps-4 items-start justify-center pointer-events-none z-20 transition-all duration-500 group-hover:-translate-y-16">
-            <h3 className="text-lg md:text-xl font-extrabold text-white">
+            <h3 className="text-lg md:text-xl uppercase font-bold text-white">
               {img.title}
             </h3>
-            <h2 className="text-sm md:text-lg font-semibold text-white mt-1">
+            <h2 className="text-sm md:text-lg uppercase font-semibold text-white mt-1">
               {img.subtitle}
             </h2>
 
@@ -111,7 +111,7 @@ export default function GalleryPage() {
 
           <div className="absolute inset-0 flex flex-col justify-end items-center text-start bg-black/50 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-10">
             <div className="absolute inset-0 flex flex-col items-start p-4 text-start bg-black/50 transition-transform duration-500 z-10 group-hover:translate-y-0">
-              <p className="text-gray-200 border-gray-200 border-t font-bold mb-2 pt-3">
+              <p className="text-gray-200  border-gray-200 border-t font-bold mb-2 pt-3">
                 {img.desc.split(" ").length > 20
                   ? img.desc.split(" ").slice(0, 26).join(" ") + "..."
                   : img.desc}
@@ -134,7 +134,6 @@ const renderMobileSlider = () => {
         slidesPerView={1}
         spaceBetween={12}
         loop={true}
-        
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
       >
@@ -150,10 +149,10 @@ const renderMobileSlider = () => {
               <div className="absolute inset-0 bg-black/30"></div>
 
               <div className="absolute inset-0 flex flex-col items-start justify-center p-4 z-20">
-                <h3 className="text-3xl uppercase font-extrabold text-white">
+                <h3 className="text-3xl uppercase font-bold text-white">
                   {img.title}
                 </h3>
-                <h2 className="text-lg font-extrabold text-white mt-1">
+                <h2 className="text-lg uppercase font-semibold text-white mt-1">
                   {img.subtitle}
                 </h2>
 
