@@ -21,7 +21,7 @@ export default function CustomTwoPage() {
       </h1>
 
       {/* Full width Description */}
-      <p className="text-sm sm:text-base md:text-lg text-center text-gray-700 w-full">
+      <p className="text-sm sm:text-base md:text-lg md:text-center text-justify text-gray-700 w-full">
         Looking for the perfect place to host your next celebration or event?
         Kingpin has you covered! From birthdays and parties to corporate events
         and team-building, we offer custom packages, great food, and

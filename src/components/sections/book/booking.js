@@ -4,29 +4,31 @@ import { FaCaretDown, FaCalendarAlt, FaBuffer } from "react-icons/fa";
 import AnnimatedButton from "@/components/ui/annimation_button";
 
 const locations = [
-  { name: "Kingoin Canverra", letter: "K" },
-  { name: "Bogra", letter: "B" },
-  { name: "Kingoin Canverra", letter: "A" },
-  { name: "Kingoin Canverra", letter: "A" },
-  { name: "Kingoin Canverra", letter: "A" },
-  { name: "Barishal", letter: "B" },
-  { name: "Bhola", letter: "B" },
-  { name: "Patuakhali", letter: "B" },
-  { name: "Chittagong", letter: "C" },
-  { name: "Cox's Bazar", letter: "C" },
-  { name: "Feni", letter: "C" },
-  { name: "Dhaka", letter: "D" },
-  { name: "Gazipur", letter: "D" },
-  { name: "Narsingdi", letter: "D" },
-  { name: "Khulna", letter: "K" },
-  { name: "Jessore", letter: "K" },
-  { name: "Satkhira", letter: "K" },
+  { name: "Kingoin Canverra", letter: "NZ" },
+  { name: "Bogra", letter: "NZ" },
+  { name: "Kingoin Canverra", letter: "ANZ" },
+  { name: "Kingoin Canverra", letter: "ANZ" },
+  { name: "Kingoin Canverra", letter: "ANZ" },
+  { name: "Barishal", letter: "NZ" },
+  { name: "Bhola", letter: "NZ" },
+  { name: "Patuakhali", letter: "NZ" },
+  { name: "Chittagong", letter: "CY" },
+  { name: "Cox's Bazar", letter: "CY" },
+  { name: "Feni", letter: "CY" },
+  { name: "Dhaka", letter: "DT" },
+  { name: "Gazipur", letter: "DT" },
+  { name: "Narsingdi", letter: "DT" },
+  { name: "Khulna", letter: "KLL" },
+  { name: "Jessore", letter: "KLL" },
+  { name: "Satkhira", letter: "KLL" },
 ];
+
+const letters = ["NZ", "ANZ", "CY", "DT", "KLL"];
 
 const BookPage = () => {
   const [locationOpen, setLocationOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("");
-  const [activeLetter, setActiveLetter] = useState("A");
+  const [activeLetter, setActiveLetter] = useState(letters[0]); // default first letter
   const dateInputRef = useRef(null);
   const locationRef = useRef(null);
   const inputRef = useRef(null);
@@ -42,8 +44,15 @@ const BookPage = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Set default first letter when location box opens
+  useEffect(() => {
+    if (locationOpen) {
+      setActiveLetter(letters[0]);
+    }
+  }, [locationOpen]);
+
   return (
-    <div className="max-w-[1330px] mx-auto  md:px-12 lg:px-16 pt-5 md:pt-6 grid grid-cols-1 gap-5 sm:gap-8">
+    <div className="max-w-[1330px] mx-auto md:px-12 lg:px-16 pt-5 md:pt-6 grid grid-cols-1 gap-5 sm:gap-8">
       {/* Upper Section */}
       <div className="bg-white p-0">
         <div className="bg-[#C27D2A] w-full py-2 text-center font-bold">
@@ -52,10 +61,10 @@ const BookPage = () => {
           </h1>
         </div>
 
-        <div className="flex flex-col sm:flex-row flex-wrap bg-black items-center justify-center gap-1 sm:gap-4 p-3 sm:p-4">
+        <div className="flex flex-col sm:flex-row flex-wrap bg-black items-center justify-center gap-3 sm:gap-4 p-4  sm:p-4">
           {/* Location Input */}
           <div
-            className="relative flex flex-col w-full sm:w-[300px] mb-2 sm:mb-0"
+            className="relative flex flex-col w-full sm:w-[300px] gap-2 mb-2 sm:mb-0"
             ref={locationRef}
           >
             <label className="mb-1 text-white uppercase font-semibold text-xs sm:text-sm">
@@ -84,10 +93,10 @@ const BookPage = () => {
               <div className="absolute top-full left-0 w-full bg-white border border-gray-300 mt-1 shadow-lg z-50 text-sm">
                 {/* Alphabet Navbar */}
                 <div className="flex justify-start gap-2 px-2 py-3 border-b border-gray-400">
-                  {["A", "B", "C", "D", "K"].map((letter) => (
+                  {letters.map((letter) => (
                     <button
                       key={letter}
-                      className={`px-2 py-0.5 rounded text-gray-400 hover:bg-yellow-200 ${
+                      className={`px-2 py-0.5 rounded text-gray-400 ${
                         activeLetter === letter
                           ? "text-gray-900 bg-amber-300"
                           : ""
@@ -119,8 +128,9 @@ const BookPage = () => {
               </div>
             )}
           </div>
+
           {/* Date Input */}
-          <div className="relative flex flex-col w-full sm:w-[300px] mb-2 sm:mb-0">
+          <div className="relative gap-2 flex flex-col w-full sm:w-[300px] mb-2 sm:mb-0">
             <label className="mb-1 text-white font-semibold uppercase text-xs sm:text-sm">
               Date
             </label>
@@ -140,7 +150,7 @@ const BookPage = () => {
           </div>
 
           {/* Book Now Button */}
-          <AnnimatedButton className="mt-3 md:mt-6 sm:mt-0 px-4 py-1 sm:px-6 sm:py-2 text-sm sm:text-base">
+          <AnnimatedButton className="mt-3 md:mt-8 sm:mt-0 px-4 py-1 sm:px-6 sm:py-2 text-sm sm:text-base">
             Book Now
           </AnnimatedButton>
         </div>

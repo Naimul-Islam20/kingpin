@@ -21,7 +21,7 @@ export default function CustomPage() {
       </h1>
 
       {/* Full width Description */}
-      <p className="text-sm sm:text-base md:text-lg text-center text-gray-700 w-full">
+      <p className="text-sm sm:text-base md:text-lg md:text-center text-justify text-gray-700 w-full">
         At Kingpin, great food and drinks are just as important as the fun. Our
         menu is packed with delicious options that’ll fuel you up after an
         intense game or keep the party going. From chef-crafted dishes to
@@ -44,3 +44,6 @@ export default function CustomPage() {
     </div>
   );
 }
+
+
+

@@ -31,7 +31,7 @@ export default function Header() {
     <>
       <header
         className={`bg-[#181818] shadow-md sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? "py-2" : "py-5 md:py-5"
+          scrolled ? "py-2" : "py-3 md:py-5"
         }`}
       >
         <div className="max-w-[1330px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16">
@@ -42,7 +42,7 @@ export default function Header() {
                 src="/logo.png"
                 alt="MyLogo"
                 className={`w-auto transition-all duration-300 ${
-                  scrolled ? "h-8" : "h-10 md:h-10"
+                  scrolled ? " h-8 md:h-9" : "h-9 md:h-11"
                 }`}
               />
             </Link>
