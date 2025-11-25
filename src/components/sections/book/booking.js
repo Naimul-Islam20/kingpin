@@ -88,7 +88,9 @@ const BookPage = () => {
                     <button
                       key={letter}
                       className={`px-2 py-0.5 rounded text-gray-400 hover:bg-yellow-200 ${
-                        activeLetter === letter ? "text-gray-900 bg-amber-300" : ""
+                        activeLetter === letter
+                          ? "text-gray-900 bg-amber-300"
+                          : ""
                       }`}
                       onClick={() => setActiveLetter(letter)}
                     >
@@ -212,8 +214,8 @@ const BookPage = () => {
           <FaBuffer className="text-white text-[75px]  md:text-[50px]" />
 
           {/* Sign Up button untouched */}
-          <button className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-[#302f2f] hover:bg-[#181818] text-white font-semibold px-6 py-1 uppercase rounded-full transition">
-            freeSign Up
+          <button className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-black hover:bg-[#181818] text-white font-semibold px-6 py-1 uppercase rounded-full transition">
+            free Sign Up
           </button>
         </div>
 

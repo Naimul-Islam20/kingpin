@@ -58,99 +58,101 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
         </div>
 
         {/* Menu Items */}
-        <ul className="p-4 space-y-2 overflow-y-auto flex-1">
-          {menus.map((menu) => {
-            const hasChildren =
-              Array.isArray(menu.children) && menu.children.length > 0;
+        <div className="p-4 space-y-2 overflow-y-auto">
+          <ul>
+            {menus.map((menu) => {
+              const hasChildren =
+                Array.isArray(menu.children) && menu.children.length > 0;
 
-            return (
-              <li
-                key={menu.id}
-                className="border-b uppercase border-gray-300 pb-2"
-              >
-                {hasChildren ? (
-                  <>
-                    {/* Parent Menu */}
-                    <div
-                      className="flex justify-between items-center uppercase cursor-pointer py-2"
-                      onClick={() => toggleMenu(menu.id)}
-                    >
-                      <span className="text-sm font-medium uppercase text-black">
-                        {menu.menu_name}
-                      </span>
+              return (
+                <li
+                  key={menu.id}
+                  className="border-b uppercase border-gray-300 py-2"
+                >
+                  {hasChildren ? (
+                    <>
+                      {/* Parent Menu */}
+                      <div
+                        className="flex justify-between items-center uppercase cursor-pointer py-2"
+                        onClick={() => toggleMenu(menu.id)}
+                      >
+                        <span className="text-sm font-medium uppercase text-black">
+                          {menu.menu_name}
+                        </span>
 
-                      {activeMenu === menu.id ? (
-                        <GoChevronUp />
-                      ) : (
-                        <GoChevronDown />
+                        {activeMenu === menu.id ? (
+                          <GoChevronUp />
+                        ) : (
+                          <GoChevronDown />
+                        )}
+                      </div>
+
+                      {/* Child Dropdown */}
+                      {activeMenu === menu.id && (
+                        <ul className="pl-4 mt-2 space-y-2">
+                          {menu.children.map((child) => {
+                            const ChildIcon = getIcon(child.menu_icon);
+
+                            return (
+                              <li key={child.id}>
+                                <Link
+                                  href={`/${child.menu_uid}`}
+                                  onClick={onClose}
+                                  className="flex items-start space-x-3 py-2 hover:bg-gray-100 rounded"
+                                >
+                                  <ChildIcon
+                                    style={{
+                                      color: child.icon_color || "#6B7280",
+                                    }}
+                                    className="w-5 h-5 mt-1"
+                                  />
+                                  <div>
+                                    <span className="block text-sm font-medium text-black">
+                                      {child.menu_name}
+                                    </span>
+                                    <span className="block text-xs text-gray-500">
+                                      {child.description}
+                                    </span>
+                                  </div>
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       )}
-                    </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={`/${menu.menu_uid}`}
+                      className="block text-sm text-gray-800 py-2"
+                      onClick={onClose}
+                    >
+                      {menu.menu_name}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
 
-                    {/* Child Dropdown */}
-                    {activeMenu === menu.id && (
-                      <ul className="pl-4 mt-2 space-y-2">
-                        {menu.children.map((child) => {
-                          const ChildIcon = getIcon(child.menu_icon);
+          {/* ====== Bottom Buttons (Side-by-Side) ====== */}
+          <div className="mt-8 flex gap-3">
+            <Link
+              href="/login"
+              className="w-1/2 text-center uppercase py-2 bg-black text-white rounded font-semibold"
+              onClick={onClose}
+            >
+              Login
+            </Link>
 
-                          return (
-                            <li key={child.id}>
-                              <Link
-                                href={`/${child.menu_uid}`}
-                                onClick={onClose}
-                                className="flex items-start space-x-3 py-2 hover:bg-gray-100 rounded"
-                              >
-                                <ChildIcon
-                                  style={{
-                                    color: child.icon_color || "#6B7280",
-                                  }}
-                                  className="w-5 h-5 mt-1"
-                                />
-                                <div>
-                                  <span className="block text-sm font-medium text-black">
-                                    {child.menu_name}
-                                  </span>
-                                  <span className="block text-xs text-gray-500">
-                                    {child.description}
-                                  </span>
-                                </div>
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={`/${menu.menu_uid}`}
-                    className="block text-sm text-gray-800 py-2"
-                    onClick={onClose}
-                  >
-                    {menu.menu_name}
-                  </Link>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* ====== Bottom Buttons (Side-by-Side) ====== */}
-        <div className="p-4 border-t border-gray-300 flex gap-3">
-          <Link
-            href="/login"
-            className="w-1/2 text-center uppercase py-2 bg-black text-white rounded font-semibold"
-            onClick={onClose}
-          >
-            Login
-          </Link>
-
-          <Link
-            href="/register"
-            className="w-1/2 text-center uppercase py-2 bg-yellow-500 text-black rounded font-semibold"
-            onClick={onClose}
-          >
-            book now
-          </Link>
+            <Link
+              href="/register"
+              className="w-1/2 text-center uppercase py-2 bg-yellow-500 text-black rounded font-semibold"
+              onClick={onClose}
+            >
+              book now
+            </Link>
+          </div>
         </div>
       </div>
     </>
