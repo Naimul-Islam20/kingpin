@@ -382,42 +382,46 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Enhanced Chat Box with Glassmorphism */}
+      {/* Enhanced Chat Box with Glassmorphism - Mobile Responsive */}
       <div
         ref={chatRef}
-        className={`fixed bottom-20 right-5 md:right-10 w-[320px] md:w-[380px] backdrop-blur-md bg-white/95 border border-white/20 shadow-2xl rounded-2xl flex flex-col transition-all duration-500 z-50 ${
+        className={`fixed bottom-16 md:bottom-20 right-4 md:right-10 w-[calc(100vw-2rem)] sm:w-[380px] md:w-[400px] max-w-[400px] backdrop-blur-md bg-white/95 border border-white/20 shadow-2xl rounded-2xl flex flex-col transition-all duration-500 z-50 ${
           isOpen
             ? "translate-y-0 opacity-100 scale-100"
             : "translate-y-[200%] opacity-0 scale-95"
         }`}
-        style={{ height: "720px" }}
+        style={{ height: "calc(100vh - 5rem)" }}
       >
-        {/* Enhanced Header */}
-        <div className="bg-gradient-to-r from-[#C27D2A] to-[#B8731A] text-white p-4 rounded-t-2xl flex justify-between items-center relative overflow-hidden">
+        {/* Enhanced Header - Mobile Responsive */}
+        <div className="bg-gradient-to-r from-[#C27D2A] to-[#B8731A] text-white p-3 md:p-4 rounded-t-2xl flex justify-between items-center relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
-          <div className="relative z-10 flex items-center space-x-2">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          <div className="relative z-10 flex items-center space-x-1.5 md:space-x-2">
+            <div className="w-2 h-2 md:w-3 md:h-3 bg-green-400 rounded-full animate-pulse"></div>
             <div>
-              <h3 className="font-semibold text-sm">Kingpin Assistant</h3>
-              <p className="text-xs opacity-90">Online • Reply in ~2 min</p>
+              <h3 className="font-semibold text-xs md:text-sm">
+                Kingpin Assistant
+              </h3>
+              <p className="text-[10px] md:text-xs opacity-90">
+                Online • ~2 min
+              </p>
             </div>
           </div>
-          <div className="relative z-10 flex items-center space-x-2">
+          <div className="relative z-10 flex items-center space-x-1 md:space-x-2">
             <button
               onClick={() => setSoundEnabled(!soundEnabled)}
-              className="p-1 hover:bg-white/20 rounded transition-colors"
+              className="p-0.5 md:p-1 hover:bg-white/20 rounded transition-colors"
             >
               {soundEnabled ? (
-                <FaVolumeUp size={14} />
+                <FaVolumeUp size={12} className="md:w-3.5 md:h-3.5" />
               ) : (
-                <FaVolumeMute size={14} />
+                <FaVolumeMute size={12} className="md:w-3.5 md:h-3.5" />
               )}
             </button>
             <button
               onClick={toggleChat}
-              className="p-1 hover:bg-white/20 rounded transition-colors"
+              className="p-0.5 md:p-1 hover:bg-white/20 rounded transition-colors"
             >
-              <FaTimes size={14} />
+              <FaTimes size={12} className="md:w-3.5 md:h-3.5" />
             </button>
           </div>
         </div>
@@ -571,15 +575,15 @@ export default function ChatWidget() {
         </div>
       </div>
 
-      {/* Enhanced Floating Chat Icon */}
+      {/* Enhanced Floating Chat Icon - Mobile Optimized */}
       {!isOpen && (
         <button
           onClick={toggleChat}
-          className="fixed bottom-5 right-5 md:right-10 bg-gradient-to-r from-[#C27D2A] to-[#B8731A] hover:from-[#B8731A] hover:to-[#A66716] text-white p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:shadow-[#C27D2A]/50 hover:scale-110 animate-bounce-slow group"
+          className="fixed bottom-4 right-4 md:bottom-5 md:right-10 bg-gradient-to-r from-[#C27D2A] to-[#B8731A] hover:from-[#B8731A] hover:to-[#A66716] text-white p-3 md:p-4 rounded-full shadow-2xl z-50 transition-all duration-300 hover:shadow-[#C27D2A]/50 hover:scale-110 animate-bounce-slow group"
         >
           <div className="relative">
-            <FaCommentAlt size={22} />
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse border-2 border-white"></div>
+            <FaCommentAlt size={18} className="md:w-6 md:h-6" />
+            <div className="absolute -top-1 -right-1 w-2 h-2 md:w-3 md:h-3 bg-green-400 rounded-full animate-pulse border-2 border-white"></div>
           </div>
           <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
