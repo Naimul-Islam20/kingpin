@@ -69,7 +69,7 @@ export default function Header() {
 
                 {/* Child Menu */}
                 {menu.children && openMenu === menu.id && (
-                  <div className="absolute left-0 top-full mt-4 w-52 bg-white border border-gray-200 rounded shadow-md">
+                  <div className="absolute left-0 top-full w-52 bg-white border border-gray-200 rounded shadow-md animate-fade-in">
                     <ul className="py-2">
                       {menu.children.map((child) => (
                         <li
@@ -92,7 +92,7 @@ export default function Header() {
 
                           {/* Second Level */}
                           {child.children && openSubMenu === child.id && (
-                            <ul className="absolute left-full top-0 border border-gray-300 w-48 bg-white rounded shadow-md">
+                            <ul className="absolute left-full top-0 border border-gray-300 w-48 bg-white rounded shadow-md animate-fade-in">
                               {child.children.map((sub) => (
                                 <li key={sub.id}>
                                   <Link
