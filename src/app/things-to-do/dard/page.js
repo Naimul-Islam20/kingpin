@@ -1,9 +1,9 @@
-import BookNowSection from "@/components/common/booking/booking";
+
 
 export default function Page() {
   return (
     <>
-      <BookNowSection title="book now" />
+     <h1>dard page</h1>
     </>
   );
 }
