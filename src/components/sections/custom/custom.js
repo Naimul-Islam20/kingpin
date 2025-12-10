@@ -37,6 +37,7 @@ export default function CustomPage() {
       >
         <img
           src="/home/kp-cocktail-menu-promotional-assets-website-image-block-01.jpg"
+          
           alt="Description Image"
           className="w-full h-auto object-contain"
         />

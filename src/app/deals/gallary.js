@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
-import DynamicTitle from "@/components/ui/TitleText";
 
-import CustomTwoPage from "../custom/customTwo";
 import ReusableGalleryPage from "@/components/common/gallary";
-import RoyalS from "./royalS";
 
 export default function GalleryPage() {
   const images = [
@@ -29,25 +26,19 @@ export default function GalleryPage() {
       subtitle: "Sip Royal",
       desc: "Try our latest drinks menu and refresh yourself!",
     },
+    {
+      id: 4,
+      src: "/home/deals3.jpg",
+      title: "New Drinks Menu",
+      subtitle: "Sip Royal",
+      desc: "Try our latest drinks menu and refresh yourself!",
+    },
   ];
 
   return (
-    <main className="bg-white max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 ">
-      {/* Page Title */}
-      <div className=" pb-3">
-        <DynamicTitle
-          blackText="deals and specials"
-          redText=""
-          className="uppercase"
-        />
-      </div>
-
+    <main className="bg-white py-14">
       {/* Reusable Gallery */}
       <ReusableGalleryPage images={images} />
-
-      {/* Extra Sections */}
-      <CustomTwoPage />
-      <RoyalS />
     </main>
   );
 }

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { FaChevronDown, FaBars, FaChevronRight } from "react-icons/fa";
 import menus from "@/data/menus.json";
 import AnimatedButton from "@/components/ui/annimation_button";
 import MobileMenu from "./mobileMenu";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(null);
@@ -13,29 +14,34 @@ export default function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Refs and height state for animation
+  const dropdownRef = useRef(null);
+  const [dropdownHeight, setDropdownHeight] = useState(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Measure dropdown height for animation
+  useEffect(() => {
+    if (dropdownRef.current) {
+      setDropdownHeight(dropdownRef.current.scrollHeight);
+    }
+  }, [openMenu, openSubMenu]);
 
   return (
     <>
       <header
-        className={`bg-[#181818] shadow-md sticky top-0 z-50 transition-all duration-300 ${
+        className={`bg-[#000] shadow-md sticky top-0 z-50 transition-all duration-300 ${
           scrolled ? "py-2" : "py-3 md:py-5"
         }`}
       >
         <div className="max-w-[1330px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16">
-          {/* Left: Logo */}
+          {/* Logo */}
           <div className="select-none transition-all duration-300">
             <Link href="/">
               <img
@@ -67,10 +73,22 @@ export default function Header() {
                   )}
                 </Link>
 
-                {/* Child Menu */}
-                {menu.children && openMenu === menu.id && (
-                  <div className="absolute left-0 top-full w-52 bg-white border border-gray-200 rounded shadow-md animate-fade-in">
-                    <ul className="py-2">
+                {/* Child Menu with height animation */}
+                <AnimatePresence>
+                  {menu.children && openMenu === menu.id && (
+                    <motion.ul
+                      ref={dropdownRef}
+                      initial={{ height: 0 }}
+                      animate={{
+                        height: dropdownHeight || "auto",
+                        transition: { duration: 0.2, ease: "easeOut" },
+                      }}
+                      exit={{
+                        height: 0,
+                        transition: { duration: 0.1, ease: "easeIn" },
+                      }}
+                      className="absolute left-0 top-full w-52 bg-black text-white border border-gray-700 rounded shadow-md overflow-hidden"
+                    >
                       {menu.children.map((child) => (
                         <li
                           key={child.id}
@@ -82,7 +100,7 @@ export default function Header() {
                             href={
                               child.path && child.path !== "" ? child.path : "#"
                             }
-                            className="flex justify-between text-black items-center w-full px-4 py-2 hover:bg-gray-100 transition"
+                            className="flex justify-between text-white items-center w-full px-4 py-2 hover:bg-[#181818] hover:text-amber-500 transition"
                           >
                             {child.menu_name}
                             {child.has_child === 1 && (
@@ -91,29 +109,45 @@ export default function Header() {
                           </Link>
 
                           {/* Second Level */}
-                          {child.children && openSubMenu === child.id && (
-                            <ul className="absolute left-full top-0 border border-gray-300 w-48 bg-white rounded shadow-md animate-fade-in">
-                              {child.children.map((sub) => (
-                                <li key={sub.id}>
-                                  <Link
-                                    href={
-                                      sub.path && sub.path !== ""
-                                        ? sub.path
-                                        : "#"
-                                    }
-                                    className="block px-4 py-2 hover:bg-gray-100 transition"
-                                  >
-                                    {sub.menu_name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                          <AnimatePresence>
+                            {child.children && openSubMenu === child.id && (
+                              <motion.ul
+                                initial={{ height: 0 }}
+                                animate={{
+                                  height: dropdownHeight || "auto",
+                                  transition: {
+                                    duration: 0.2,
+                                    ease: "easeOut",
+                                  },
+                                }}
+                                exit={{
+                                  height: 0,
+                                  transition: { duration: 0.2, ease: "easeIn" },
+                                }}
+                                className="absolute left-full top-0 border border-gray-300 w-48 bg-black rounded shadow-md overflow-hidden"
+                              >
+                                {child.children.map((sub) => (
+                                  <li key={sub.id}>
+                                    <Link
+                                      href={
+                                        sub.path && sub.path !== ""
+                                          ? sub.path
+                                          : "#"
+                                      }
+                                      className="block px-4 py-2 hover:bg-gray-100 text-white transition"
+                                    >
+                                      {sub.menu_name}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </motion.ul>
+                            )}
+                          </AnimatePresence>
                         </li>
                       ))}
-                    </ul>
-                  </div>
-                )}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </nav>

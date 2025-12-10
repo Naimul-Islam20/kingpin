@@ -2,10 +2,76 @@
   {
     "id": 1,
     "menu_name": "things to do ",
-    "path": "/",
+    "path": "",
     "parent_id": 0,
     "order_no": 1,
-    "has_child": 0
+    "has_child": 1,
+    "children": [
+      {
+        "id": 101,
+        "menu_name": "bowling",
+        "path": "/things-to-do/bowling",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      },
+      {
+        "id": 102,
+        "menu_name": "darts",
+        "path": "/things-to-do/darts",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      },
+      {
+        "id": 103,
+        "menu_name": "arcade",
+        "path": "/things-to-do/arcade",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      },
+      {
+        "id": 104,
+        "menu_name": "laser tag",
+        "path": "/things-to-do/laser-tag",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      },
+      {
+        "id": 105,
+        "menu_name": "karaoke",
+        "path": "/things-to-do/karaoke",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      },
+      {
+        "id": 106,
+        "menu_name": "escape rooms",
+        "path": "/things-to-do/laser-tag",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      },
+      {
+        "id": 107,
+        "menu_name": "pool",
+        "path": "/things-to-do/pool",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      },
+      {
+        "id": 108,
+        "menu_name": "table tennis",
+        "path": "/things-to-do/table-tennis",
+        "parent_id": 0,
+        "order_no": 3,
+        "has_child": 0
+      }
+    ]
   },
   {
     "id": 2,
@@ -44,7 +110,7 @@
   {
     "id": 5,
     "menu_name": "deals",
-    "path": "/blog",
+    "path": "/deals",
     "parent_id": 0,
     "order_no": 5,
     "has_child": 0
@@ -52,7 +118,7 @@
   {
     "id": 6,
     "menu_name": "member",
-    "path": "/contact",
+    "path": "/member",
     "parent_id": 0,
     "order_no": 6,
     "has_child": 0

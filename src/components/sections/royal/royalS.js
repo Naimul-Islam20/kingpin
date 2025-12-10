@@ -89,7 +89,7 @@ const renderGrid = () => (
 
   return (
     <main className="bg-white">
-      <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pb-6 pt-2 md:pt-4 md:pb-6 grid grid-cols-1 gap-2 md:gap-4">
+      <div className=" pb-6 pt-2 md:pt-4 md:pb-6 grid grid-cols-1 gap-2 md:gap-4">
         {/* Page Title */}
         <DynamicTitle
           blackText="royal  TREATMENT"

@@ -11,11 +11,11 @@ export default function CustomTwoPage() {
   };
 
   return (
-    <div className="max-w-[1330px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 pb-2 sm-pb-2 md:pb-3 pt-1 sm:pt-3  md:pt-4  grid grid-cols-1 gap-2 sm:gap-6">
+    <div className="pb-2 sm-pb-2 md:pb-3 pt-1 sm:pt-3  md:pt-4  grid grid-cols-1 gap-2 sm:gap-6">
       {/* Centered Title & Description */}
       <h1
         className="text-2xl sm:text-2xl md:text-4xl 
-        font-bold md:font-extrabold text-gray-900 uppercase text-center"
+        font-bold md:font-extrabold text-gray-900 pt-4 uppercase text-center"
       >
         Celebrate like royal!
       </h1>

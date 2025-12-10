@@ -390,7 +390,7 @@ export default function ChatWidget() {
             ? "translate-y-0 opacity-100 scale-100"
             : "translate-y-[200%] opacity-0 scale-95"
         }`}
-        style={{ height: "calc(100vh - 5rem)" }}
+        style={{ height: "calc(100vh - 10rem)" }}
       >
         {/* Enhanced Header - Mobile Responsive */}
         <div className="bg-gradient-to-r from-[#C27D2A] to-[#B8731A] text-white p-3 md:p-4 rounded-t-2xl flex justify-between items-center relative overflow-hidden">

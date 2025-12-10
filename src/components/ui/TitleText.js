@@ -4,9 +4,8 @@ export default function DynamicTitle({ blackText, redText, Icon, className }) {
       className={`
         col-span-full 
         text-2xl sm:text-2xl md:text-4xl 
-        font-bold md:font-extrabold
+        font-bold md:font-bold
         text-center 
-       
         flex items-center justify-center 
         gap-1 sm:gap-2 md:gap-3
         py-1 sm:py-3 md:py-4 
