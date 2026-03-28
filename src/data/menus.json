@@ -18,7 +18,7 @@
       {
         "id": 102,
         "menu_name": "darts",
-        "path": "/things-to-do/darts",
+        "path": "/things-to-do/arcade",
         "parent_id": 0,
         "order_no": 3,
         "has_child": 0
@@ -42,7 +42,7 @@
       {
         "id": 105,
         "menu_name": "karaoke",
-        "path": "/things-to-do/karaoke",
+        "path": "/things-to-do/arcade",
         "parent_id": 0,
         "order_no": 3,
         "has_child": 0
@@ -58,7 +58,7 @@
       {
         "id": 107,
         "menu_name": "pool",
-        "path": "/things-to-do/pool",
+        "path": "/things-to-do/arcade",
         "parent_id": 0,
         "order_no": 3,
         "has_child": 0
@@ -66,7 +66,7 @@
       {
         "id": 108,
         "menu_name": "table tennis",
-        "path": "/things-to-do/table-tennis",
+        "path": "/things-to-do/arcade",
         "parent_id": 0,
         "order_no": 3,
         "has_child": 0
@@ -76,7 +76,7 @@
   {
     "id": 2,
     "menu_name": "locations",
-    "path": "/about-us",
+    "path": "/things-to-do/arcade",
     "parent_id": 0,
     "order_no": 2,
     "has_child": 0,
@@ -84,7 +84,7 @@
       {
         "id": 33,
         "menu_name": "packeges",
-        "path": "/services",
+        "path": "/things-to-do/arcade",
         "parent_id": 0,
         "order_no": 3,
         "has_child": 0
@@ -94,7 +94,7 @@
   {
     "id": 3,
     "menu_name": "packeges",
-    "path": "/services",
+    "path": "/things-to-do/arcade",
     "parent_id": 0,
     "order_no": 3,
     "has_child": 0
