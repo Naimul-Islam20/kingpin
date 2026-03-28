@@ -1,17 +1,25 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { FaChevronDown, FaBars, FaChevronRight } from "react-icons/fa";
+import { usePathname } from "next/navigation";
+import { FaChevronDown, FaBars } from "react-icons/fa";
 import menus from "@/data/menus.json";
 import AnimatedButton from "@/components/ui/annimation_button";
 import MobileMenu from "./mobileMenu";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Header() {
+  const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const closeMobileMenu = useCallback(() => setIsMobileOpen(false), []);
+
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [pathname]);
 
   // Refs and height state for animation
   const dropdownRef = useRef(null);
@@ -30,7 +38,7 @@ export default function Header() {
         <div className="max-w-[1330px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16">
           {/* Logo */}
           <div className="select-none">
-            <Link href="/">
+            <Link href="/" onClick={closeMobileMenu}>
               <img
                 src="/logo.png"
                 alt="MyLogo"
@@ -85,12 +93,9 @@ export default function Header() {
                             href={
                               child.path && child.path !== "" ? child.path : "#"
                             }
-                            className="flex justify-between text-white items-center w-full px-4 py-2 hover:bg-[#181818] hover:text-amber-500 transition"
+                            className="block w-full px-4 py-2 text-white transition hover:bg-[#181818] hover:text-amber-500"
                           >
                             {child.menu_name}
-                            {child.has_child === 1 && (
-                              <FaChevronRight className="text-[10px]" />
-                            )}
                           </Link>
 
                           {/* Second Level */}
@@ -155,7 +160,7 @@ export default function Header() {
       {/* Mobile Sidebar Menu */}
       <MobileMenu
         isOpen={isMobileOpen}
-        onClose={() => setIsMobileOpen(false)}
+        onClose={closeMobileMenu}
         menus={menus}
       />
     </>

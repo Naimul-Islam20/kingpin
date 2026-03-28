@@ -3,31 +3,19 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { GoChevronUp, GoChevronDown } from "react-icons/go";
-import * as BiIcons from "react-icons/bi";
-import * as FaIcons from "react-icons/fa";
-
-function getIcon(iconName) {
-  if (!iconName) return BiIcons.BiCircle;
-  if (BiIcons[iconName]) return BiIcons[iconName];
-  if (FaIcons[iconName]) return FaIcons[iconName];
-  return BiIcons.BiCircle;
-}
 
 const MobileMenu = ({ isOpen, onClose, menus }) => {
   const [activeMenu, setActiveMenu] = useState(null);
-  const menuRef = useRef();
+  const menuRef = useRef(null);
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        onClose();
-      }
-    }
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen, onClose]);
+    if (!isOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen]);
 
   const toggleMenu = (id) => {
     setActiveMenu((prev) => (prev === id ? null : id));
@@ -36,30 +24,35 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
   return (
     <>
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/30 z-40"
+        <button
+          type="button"
+          className="fixed inset-0 z-40 cursor-default bg-black/30 border-0 p-0"
           onClick={onClose}
-          aria-hidden="true"
+          aria-label="Close menu"
         />
       )}
 
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-4/5 max-w-xs bg-white shadow-lg z-50 transform transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } flex flex-col min-h-screen`}
+        className={`fixed top-0 right-0 z-50 flex h-full min-h-screen w-4/5 max-w-xs flex-col bg-white shadow-lg transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
+        }`}
+        aria-hidden={!isOpen}
       >
-        {/* Header */}
-        <div className="p-4 border-b border-gray-300 flex justify-between items-center">
+        <div className="flex shrink-0 items-center justify-between border-b border-gray-300 p-4">
           <h2 className="text-xl font-semibold text-black">Menu</h2>
-          <button onClick={onClose} className="text-2xl text-black">
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-2xl text-black"
+            aria-label="Close"
+          >
             ✕
           </button>
         </div>
 
-        {/* Menu Items */}
-        <div className="p-4 space-y-2 overflow-y-auto">
-          <ul>
+        <div className="min-h-0 flex-1 overflow-y-auto p-4">
+          <ul className="space-y-0">
             {menus.map((menu) => {
               const hasChildren =
                 Array.isArray(menu.children) && menu.children.length > 0;
@@ -67,64 +60,51 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
               return (
                 <li
                   key={menu.id}
-                  className="border-b uppercase border-gray-300 py-2"
+                  className="border-b border-gray-300 py-2 uppercase"
                 >
                   {hasChildren ? (
                     <>
-                      {/* Parent Menu */}
-                      <div
-                        className="flex justify-between items-center uppercase cursor-pointer py-2"
+                      <button
+                        type="button"
+                        className="flex w-full cursor-pointer items-center justify-between py-2 text-left uppercase"
                         onClick={() => toggleMenu(menu.id)}
                       >
-                        <span className="text-sm font-medium uppercase text-black">
+                        <span className="text-sm font-medium text-black">
                           {menu.menu_name}
                         </span>
-
                         {activeMenu === menu.id ? (
-                          <GoChevronUp />
+                          <GoChevronUp className="shrink-0 text-black" />
                         ) : (
-                          <GoChevronDown />
+                          <GoChevronDown className="shrink-0 text-black" />
                         )}
-                      </div>
+                      </button>
 
-                      {/* Child Dropdown */}
                       {activeMenu === menu.id && (
-                        <ul className="pl-4 mt-2 space-y-2">
-                          {menu.children.map((child) => {
-                            const ChildIcon = getIcon(child.menu_icon);
-
-                            return (
-                              <li key={child.id}>
-                                <Link
-                                  href={`/${child.menu_uid}`}
-                                  onClick={onClose}
-                                  className="flex items-start space-x-3 py-2 hover:bg-gray-100 rounded"
-                                >
-                                  <ChildIcon
-                                    style={{
-                                      color: child.icon_color || "#6B7280",
-                                    }}
-                                    className="w-5 h-5 mt-1"
-                                  />
-                                  <div>
-                                    <span className="block text-sm font-medium text-black">
-                                      {child.menu_name}
-                                    </span>
-                                    <span className="block text-xs text-gray-500">
-                                      {child.description}
-                                    </span>
-                                  </div>
-                                </Link>
-                              </li>
-                            );
-                          })}
+                        <ul className="mt-2 space-y-1 pl-2">
+                          {menu.children.map((child) => (
+                            <li key={child.id}>
+                              <Link
+                                href={
+                                  child.path && child.path !== ""
+                                    ? child.path
+                                    : "#"
+                                }
+                                onClick={onClose}
+                                className="block rounded py-2 text-sm font-medium text-black hover:bg-gray-100"
+                              >
+                                {child.menu_name}
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       )}
                     </>
                   ) : (
                     <Link
-                      href={`/${menu.menu_uid}`}
-                      className="block text-sm text-gray-800 py-2"
+                      href={
+                        menu.path && menu.path !== "" ? menu.path : "#"
+                      }
+                      className="block py-2 text-sm text-gray-800"
                       onClick={onClose}
                     >
                       {menu.menu_name}
@@ -135,19 +115,18 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
             })}
           </ul>
 
-          {/* ====== Bottom Buttons (Side-by-Side) ====== */}
           <div className="mt-8 flex gap-3">
-            <Link
-              href="/login"
-              className="w-1/2 text-center uppercase py-2 bg-black text-white rounded font-semibold"
+            <button
+              type="button"
+              className="w-1/2 rounded bg-black py-2 text-center text-sm font-semibold uppercase text-white"
               onClick={onClose}
             >
               Login
-            </Link>
+            </button>
 
             <Link
-              href="/register"
-              className="w-1/2 text-center uppercase py-2 bg-yellow-500 text-black rounded font-semibold"
+              href="/deals"
+              className="flex w-1/2 items-center justify-center rounded bg-yellow-500 py-2 text-center text-sm font-semibold uppercase text-black"
               onClick={onClose}
             >
               book now
