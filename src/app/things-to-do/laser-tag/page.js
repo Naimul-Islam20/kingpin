@@ -1,7 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function Page() {
-  return (
-    <>
-      <h1>dard page</h1>
-    </>
-  );
+  redirect("/things-to-do/arcade");
 }

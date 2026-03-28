@@ -34,7 +34,7 @@
       {
         "id": 104,
         "menu_name": "laser tag",
-        "path": "/things-to-do/laser-tag",
+        "path": "/things-to-do/arcade",
         "parent_id": 0,
         "order_no": 3,
         "has_child": 0
@@ -50,7 +50,7 @@
       {
         "id": 106,
         "menu_name": "escape rooms",
-        "path": "/things-to-do/laser-tag",
+        "path": "/things-to-do/arcade",
         "parent_id": 0,
         "order_no": 3,
         "has_child": 0
@@ -118,7 +118,7 @@
   {
     "id": 6,
     "menu_name": "member",
-    "path": "/member",
+    "path": "/things-to-do/arcade",
     "parent_id": 0,
     "order_no": 6,
     "has_child": 0
