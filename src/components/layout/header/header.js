@@ -35,7 +35,7 @@ export default function Header() {
   return (
     <>
       <header className="bg-[#000] shadow-md sticky top-0 z-50 py-3 md:py-5">
-        <div className="max-w-[1330px] mx-auto flex justify-between items-center px-4 md:px-12 lg:px-16">
+        <div className="maaleen-container flex justify-between items-center">
           {/* Logo */}
           <div className="select-none">
             <Link href="/" onClick={closeMobileMenu}>

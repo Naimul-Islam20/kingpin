@@ -139,3 +139,27 @@ input[type="date"]::-moz-calendar-picker-indicator {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Custom Container */
+.maaleen-container {
+  width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-inline: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .maaleen-container {
+    max-width: 48rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .maaleen-container {
+    max-width: 86rem;
+    padding-inline: 2rem;
+  }
+}
+
