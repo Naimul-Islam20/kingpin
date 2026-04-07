@@ -6,34 +6,34 @@ import "swiper/css";
 
 const foodData = [
   {
-    title: "Signature Cocktails",
-    description: "Expertly mixed and handcrafted spirits for the ultimate experience.",
-    image: "https://images.unsplash.com/photo-1544145945-f904253db0ad?q=80&w=1974&auto=format&fit=crop"
+    title: "Monster Burgers",
+    description: "Double-stacked juicy beef patties with extra cheese and our signature sauce.",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2070&auto=format&fit=crop"
   },
   {
-    title: "Artisan Burger Selection",
-    description: "Flame-grilled to perfection with our secret house seasoning.",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop"
+    title: "Loaded Nachos",
+    description: "Crispy tortillas topped with melted cheese, jalapeños, and zesty salsa.",
+    image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?q=80&w=1935&auto=format&fit=crop"
   },
   {
-    title: "Crispy Appetizers",
-    description: "Perfectly seasoned and served hot for sharing with your group.",
-    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop"
+    title: "Cheesy Pizza",
+    description: "Hot, gooey mozzarella on a crispy crust with your favorite meat toppings.",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop"
   },
   {
-    title: "Premium Craft Brews",
-    description: "A curated selection of local and imported seasonal ales.",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop"
+    title: "Golden Fries",
+    description: "Seasoned to perfection, served with a variety of addictive dipping sauces.",
+    image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=1974&auto=format&fit=crop"
   },
   {
-    title: "Chef's Table Platters",
-    description: "Large variety of flavors perfect for celebrating big milestones.",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop"
+    title: "Gourmet Hot Dogs",
+    description: "Classic street-style dogs with a premium twist and loaded toppings.",
+    image: "https://images.unsplash.com/photo-1612392062631-94dd858cba88?q=80&w=2070&auto=format&fit=crop"
   },
   {
-    title: "Specialty Pizzas",
-    description: "Wood-fired crust topped with the freshest local ingredients.",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981&auto=format&fit=crop"
+    title: "Thick Milkshakes",
+    description: "Dreamy, creamy, and topped with whipped cream and fancy sprinkles.",
+    image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=2000&auto=format&fit=crop"
   }
 ];
 
@@ -41,12 +41,12 @@ const EatsDrinks = () => {
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <section className="py-10 sm:py-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)]">
+    <section className="pt-6 pb-0 md:py-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)]">
       <div className="maaleen-container">
         
         {/* Top Header */}
-        <div className="text-center mb-16 sm:mb-20 px-4">
-          <h2 className="text-[#C27D2A] text-xs font-bold uppercase tracking-[0.4em] mb-4">
+        <div className="text-center mb-6 md:mb-20 px-4">
+          <h2 className="text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
             Chef Inspired Menu
           </h2>
           <h3 className="text-4xl sm:text-6xl font-black uppercase text-black leading-tight">
@@ -76,11 +76,11 @@ const EatsDrinks = () => {
                 const slide = slides[i];
                 const progress = slide.progress;
                 const scale = 1.08 - Math.abs(progress) * 0.12;
-                const opacity = 1 - Math.abs(progress) * 0.4;
                 const container = slide.querySelector('.item-container');
                 if (container) {
                   container.style.transform = `scale(${Math.max(scale, 0.85)})`;
-                  container.style.opacity = `${Math.max(opacity, 0.4)}`;
+                  container.style.filter = "none";
+                  container.style.opacity = "1";
                 }
               }
             }}
@@ -89,7 +89,7 @@ const EatsDrinks = () => {
               for (let i = 0; i < slides.length; i++) {
                 const container = slides[i].querySelector('.item-container');
                 if (container) {
-                  container.style.transition = `${duration}ms ease-out`;
+                  container.style.transition = `${duration}ms cubic-bezier(0.19, 1, 0.22, 1)`;
                 }
               }
             }}
@@ -101,9 +101,9 @@ const EatsDrinks = () => {
                   <img 
                     src={item.image} 
                     alt={item.title} 
-                    className="w-full h-full object-cover transition-all duration-700 brightness-75 group-hover:brightness-100"
+                    className="w-full h-full object-cover transition-all duration-700 brightness-100 group-hover:brightness-100"
                   />
-                  <div className="absolute inset-0 bg-black/5 pointer-events-none" />
+                  <div className="absolute inset-0 bg-transparent pointer-events-none" />
                 </div>
               </SwiperSlide>
             ))}
@@ -111,7 +111,7 @@ const EatsDrinks = () => {
         </div>
 
         {/* Unified Dynamic Text Information */}
-        <div className="mt-12 sm:mt-20 text-center px-4 min-h-[160px] flex flex-col items-center overflow-hidden">
+        <div className="mt-8 sm:mt-20 text-center px-4 min-h-[120px] sm:min-h-[160px] flex flex-col items-center overflow-hidden">
           <div 
             className="animate-slideInUnified flex flex-col items-center" 
             key={`united-content-${activeIdx}`}
@@ -124,11 +124,6 @@ const EatsDrinks = () => {
               {foodData[activeIdx]?.description}
             </p>
           </div>
-          
-          <button className="mt-10 group relative overflow-hidden bg-black text-white font-bold px-12 py-5 rounded-none uppercase tracking-widest text-xs sm:text-sm border-2 border-black transition-all duration-500">
-            <span className="relative z-10 transition-colors group-hover:text-[#C27D2A]">View Menu Details</span>
-            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </button>
         </div>
       </div>
 

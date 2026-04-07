@@ -32,128 +32,94 @@ export default function Header() {
     }
   }, [openMenu, openSubMenu]);
 
+  // New Menu Items
+  const navMenus = [
+    { id: 1, menu_name: "Summer Season Pass", path: "/summer-pass" },
+    { id: 2, menu_name: "Parties & Events", path: "#" },
+    { id: 3, menu_name: "Specials", path: "#" },
+    { id: 4, menu_name: "Eat & Drink", path: "#" },
+    { id: 5, menu_name: "Leagues", path: "#" },
+    { id: 6, menu_name: "Find a Location", path: "#" },
+  ];
+
   return (
     <>
-      <header className="bg-[#000] shadow-md sticky top-0 z-50 py-3 md:py-5">
-        <div className="maaleen-container flex justify-between items-center">
-          {/* Logo */}
-          <div className="select-none">
-            <Link href="/" onClick={closeMobileMenu}>
-              <img
-                src="/logo.png"
-                alt="MyLogo"
-                className="w-auto h-9 md:h-11"
-              />
-            </Link>
-          </div>
+      <header className="bg-white shadow-md sticky top-0 z-50 py-1 md:py-2 text-black">
+        <div className="maaleen-container flex flex-col items-center gap-1">
+          {/* Top Row: Logo (Centered) and Action Buttons (Right) */}
+          <div className="w-full relative flex items-center justify-center">
+            {/* Logo - Centered Top */}
+            <div className="select-none">
+              <Link href="/" onClick={closeMobileMenu}>
+                {/* <img
+                  src="/logo.png"
+                  alt="MyLogo"
+                  className="w-auto h-6 md:h-10 transition-all duration-300 transform"
+                /> */}
+                <span className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-primary">
+                  kingpin
+                </span>
+              </Link>
+            </div>
 
-          {/* Desktop Menu */}
-          <nav className="flex-1 hidden lg:flex justify-center items-center space-x-2 lg:space-x-3 uppercase">
-            {menus.map((menu) => (
-              <div
-                key={menu.id}
-                className="relative"
-                onMouseEnter={() => setOpenMenu(menu.id)}
-                onMouseLeave={() => setOpenMenu(null)}
+            {/* Desktop Buttons - Absolute Right */}
+            <div className="hidden lg:flex absolute right-0 items-center gap-3">
+              <AnimatedButton className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[160px]">
+                BOOK AN EVENT
+              </AnimatedButton>
+
+              <AnimatedButton variant="secondary" className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[160px]">
+                RESERVE A LANE
+              </AnimatedButton>
+            </div>
+
+            {/* Mobile Menu Button - Absolute Right */}
+            <div className="lg:hidden absolute right-0">
+              <button
+                onClick={() => setIsMobileOpen(true)}
+                className="flex items-center justify-center p-2 text-black transition-all hover:opacity-70"
               >
-                <Link
-                  href={menu.path && menu.path !== "" ? menu.path : "#"}
-                  className="flex items-center gap-1 px-2 py-2 text-white hover:text-[#C27D2A] transition"
-                >
-                  {menu.menu_name}
-                  {menu.has_child === 1 && (
-                    <FaChevronDown className="text-[10px] mt-[2px]" />
-                  )}
-                </Link>
-
-                {/* Child Menu with height animation */}
-                <AnimatePresence>
-                  {menu.children && openMenu === menu.id && (
-                    <motion.ul
-                      ref={dropdownRef}
-                      initial={{ height: 0 }}
-                      animate={{
-                        height: dropdownHeight || "auto",
-                        transition: { duration: 0.2, ease: "easeOut" },
-                      }}
-                      exit={{
-                        height: 0,
-                        transition: { duration: 0.1, ease: "easeIn" },
-                      }}
-                      className="absolute left-0 top-full w-52 bg-black text-white border border-gray-700 rounded shadow-md overflow-hidden"
-                    >
-                      {menu.children.map((child) => (
-                        <li
-                          key={child.id}
-                          className="relative"
-                          onMouseEnter={() => setOpenSubMenu(child.id)}
-                          onMouseLeave={() => setOpenSubMenu(null)}
-                        >
-                          <Link
-                            href={
-                              child.path && child.path !== "" ? child.path : "#"
-                            }
-                            className="block w-full px-4 py-2 text-white transition hover:bg-[#181818] hover:text-amber-500"
-                          >
-                            {child.menu_name}
-                          </Link>
-
-                          {/* Second Level */}
-                          <AnimatePresence>
-                            {child.children && openSubMenu === child.id && (
-                              <motion.ul
-                                initial={{ height: 0 }}
-                                animate={{
-                                  height: dropdownHeight || "auto",
-                                  transition: {
-                                    duration: 0.2,
-                                    ease: "easeOut",
-                                  },
-                                }}
-                                exit={{
-                                  height: 0,
-                                  transition: { duration: 0.2, ease: "easeIn" },
-                                }}
-                                className="absolute left-full top-0 border border-gray-300 w-48 bg-black rounded shadow-md overflow-hidden"
-                              >
-                                {child.children.map((sub) => (
-                                  <li key={sub.id}>
-                                    <Link
-                                      href={
-                                        sub.path && sub.path !== ""
-                                          ? sub.path
-                                          : "#"
-                                      }
-                                      className="block px-4 py-2 hover:bg-gray-100 text-white transition"
-                                    >
-                                      {sub.menu_name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </motion.ul>
-                            )}
-                          </AnimatePresence>
-                        </li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </nav>
-
-          {/* Desktop Button */}
-          <div className="hidden lg:block">
-            <AnimatedButton path="#">BOOK NOW</AnimatedButton>
+                <FaBars size={23} />
+              </button>
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileOpen(true)}
-            className="lg:hidden flex items-center gap-2 px-2 py-2 bg-[#C27D2A] text-white rounded hover:bg-[#b66e16] transition"
-          >
-            <FaBars />
-          </button>
+          {/* Bottom Row: Desktop Menu (Centered) */}
+          <div className="w-full flex justify-center items-center">
+            <nav className="hidden lg:flex justify-center items-center space-x-2 lg:space-x-6 uppercase">
+              {/* 
+              {menus.map((menu) => (
+                <div
+                  key={menu.id}
+                  className="relative"
+                  onMouseEnter={() => setOpenMenu(menu.id)}
+                  onMouseLeave={() => setOpenMenu(null)}
+                >
+                  <Link
+                    href={menu.path && menu.path !== "" ? menu.path : "#"}
+                    className="flex items-center gap-1 px-2 py-2 text-white hover:text-[#C27D2A] transition"
+                  >
+                    {menu.menu_name}
+                    {menu.has_child === 1 && (
+                      <FaChevronDown className="text-[10px] mt-[2px]" />
+                    )}
+                  </Link>
+                  ...
+                </div>
+              ))}
+              */}
+
+              {navMenus.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.path}
+                  className="px-2 lg:px-4 py-2 text-[14px] xl:text-[16px] font-bold text-black hover:text-primary transition-all duration-300 tracking-wider hover:opacity-80 active:scale-95"
+                >
+                  {item.menu_name}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
       </header>
 
@@ -161,7 +127,7 @@ export default function Header() {
       <MobileMenu
         isOpen={isMobileOpen}
         onClose={closeMobileMenu}
-        menus={menus}
+        menus={navMenus}
       />
     </>
   );

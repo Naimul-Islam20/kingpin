@@ -5,16 +5,32 @@ const AnimatedButton = ({
   children,
   onClick,
   className = "",
+  variant = "primary", // "primary" (gold) or "secondary" (white/outline)
   type = "button",
 }) => {
+  const isPrimary = variant === "primary";
+
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`relative overflow-hidden cursor-pointer px-3 py-1 md:px-6 md:py-2 font-semibold md:font-extrabold text-lg md:text-xl uppercase text-white bg-[#C27D2A] rounded-none group transition ${className}`}
+      className={`group relative overflow-hidden font-black uppercase tracking-widest transition-all duration-300 border-2 rounded-none px-6 py-3 cursor-pointer flex items-center justify-center
+        ${isPrimary 
+          ? "bg-primary text-white border-primary hover:border-primary hover:shadow-[0_0_20px_rgba(14,165,233,0.4)]" 
+          : "bg-white text-black border-primary hover:border-white"
+        } 
+        ${className}`}
     >
-      <span className="absolute inset-0 -translate-x-full bg-[#ac640d] transition-transform duration-500 ease-out group-hover:translate-x-0"></span>
-      <span className="relative z-10">{children}</span>
+      {/* Slide-in Background Layer */}
+      <div className={`absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none
+        ${isPrimary ? "bg-white" : "bg-primary"}`} 
+      />
+      
+      {/* Label Text Layer */}
+      <span className={`relative z-10 transition-colors duration-300
+        ${isPrimary ? "group-hover:text-black" : "group-hover:text-white"}`}>
+        {children}
+      </span>
     </button>
   );
 };

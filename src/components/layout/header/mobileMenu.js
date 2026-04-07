@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { GoChevronUp, GoChevronDown } from "react-icons/go";
+import AnimatedButton from "@/components/ui/annimation_button";
 
 const MobileMenu = ({ isOpen, onClose, menus }) => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -115,21 +116,17 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
             })}
           </ul>
 
-          <div className="mt-8 flex gap-3">
-            <button
-              type="button"
-              className="w-1/2 rounded bg-black py-2 text-center text-sm font-semibold uppercase text-white"
-              onClick={onClose}
-            >
-              Login
-            </button>
+          <div className="mt-8 flex flex-row gap-2 px-0">
+            <Link href="#" onClick={onClose} className="flex-1">
+              <AnimatedButton className="w-full !px-2 !py-4 !text-[10px]">
+                BOOK EVENT
+              </AnimatedButton>
+            </Link>
 
-            <Link
-              href="/deals"
-              className="flex w-1/2 items-center justify-center rounded bg-yellow-500 py-2 text-center text-sm font-semibold uppercase text-black"
-              onClick={onClose}
-            >
-              book now
+            <Link href="#" onClick={onClose} className="flex-1">
+              <AnimatedButton variant="secondary" className="w-full !px-2 !py-4 !text-[10px]">
+                RESERVE LANE
+              </AnimatedButton>
             </Link>
           </div>
         </div>

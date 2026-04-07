@@ -6,6 +6,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import AnimatedButton from "@/components/ui/annimation_button";
 
 const HERO_VIDEO_ID = "3I1Lpm3AlI4";
 
@@ -113,7 +114,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="w-full h-[60vh] sm:h-[75vh] md:h-[90vh] lg:h-screen overflow-hidden relative bg-black font-[family-name:var(--font-montserrat)]">
+    <section className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden relative bg-black font-[family-name:var(--font-montserrat)]">
       {/* YouTube Background Video */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div
@@ -149,29 +150,27 @@ const HeroSection = () => {
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <div className="h-[2px] w-8 sm:w-12 bg-[#C27D2A]" />
-                    <span className="text-[#C27D2A] font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs md:text-sm">
+                    <div className="h-[2px] w-8 sm:w-12 bg-primary" />
+                    <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs md:text-sm">
                       {slide.subtitle}
                     </span>
                   </div>
                   
-                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black uppercase mb-6 sm:mb-8 leading-[1.1] text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase mb-4 sm:mb-8 leading-[1] text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
                     {slide.title}
                   </h1>
                   
-                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mb-8 sm:mb-12 leading-relaxed font-light">
+                  <p className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-2xl mb-8 sm:mb-12 leading-relaxed font-light">
                     {slide.description}
                   </p>
                   
-                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                    <button className="group relative overflow-hidden bg-[#C27D2A] text-white font-bold px-8 sm:px-12 py-3 sm:py-5 rounded-none uppercase tracking-widest text-xs sm:text-sm border-2 border-[#C27D2A] transition-all duration-300 hover:shadow-[0_0_30px_rgba(194,125,42,0.6)]">
-                      <span className="relative z-10">{slide.cta}</span>
-                      <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                      <span className="absolute inset-0 z-10 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300">{slide.cta}</span>
-                    </button>
-                    <button className="bg-transparent hover:bg-white text-white hover:text-black transition-all duration-500 font-bold px-8 sm:px-12 py-3 sm:py-5 rounded-none uppercase tracking-widest text-xs sm:text-sm border-2 border-white/30 hover:border-white">
+                  <div className="flex flex-row gap-2 sm:gap-6">
+                    <AnimatedButton className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm">
+                      {slide.cta}
+                    </AnimatedButton>
+                    <AnimatedButton variant="secondary" className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm">
                       Explore Venue
-                    </button>
+                    </AnimatedButton>
                   </div>
                 </div>
               </div>
@@ -180,11 +179,11 @@ const HeroSection = () => {
         ))}
 
         {/* Custom Navigation and Manual Carousel Dots inside Container */}
-        <div className="absolute bottom-10 w-full z-20 pointer-events-none">
+        <div className="absolute bottom-2 sm:bottom-10 w-full z-20 pointer-events-none">
           <div className="maaleen-container flex justify-between items-end pointer-events-auto">
             {/* Custom Carousel Dots */}
             <div
-              className="flex gap-2 mb-2 sm:mb-4 lg:mb-6"
+              className="flex gap-2 mb-1 sm:mb-4 lg:mb-6"
               role="tablist"
               aria-label="Hero slides"
             >
@@ -196,22 +195,22 @@ const HeroSection = () => {
                   aria-selected={i === activeIndex}
                   aria-label={`Go to slide ${i + 1}`}
                   onClick={() => goTo(i)}
-                  className={`h-2 lg:h-2.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                  className={`h-1.5 lg:h-2.5 rounded-none transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                     i === activeIndex
-                      ? "w-8 bg-[#C27D2A]"
-                      : "w-2 lg:w-2.5 bg-white/40 hover:bg-white/60"
+                      ? "w-6 bg-primary"
+                      : "w-1.5 lg:w-2.5 bg-white/40 hover:bg-white/60"
                   }`}
                 />
               ))}
             </div>
 
             {/* Custom Navigation Buttons */}
-            <div className="flex gap-2 sm:gap-4">
-              <button className="hero-prev group flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 border border-white/20 hover:border-[#C27D2A] bg-black/40 hover:bg-[#C27D2A] text-white transition-all duration-300 backdrop-blur-sm cursor-pointer">
-                <FiChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+            <div className="flex gap-1.5 sm:gap-4">
+              <button className="hero-prev group flex items-center justify-center w-8 h-8 sm:w-14 sm:h-14 border border-white/20 hover:border-primary bg-black/40 hover:bg-primary text-white transition-all duration-300 backdrop-blur-sm cursor-pointer">
+                <FiChevronLeft className="group-hover:-translate-x-1 transition-transform w-4 h-4 sm:w-6 sm:h-6" />
               </button>
-              <button className="hero-next group flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 border border-white/20 hover:border-[#C27D2A] bg-black/40 hover:bg-[#C27D2A] text-white transition-all duration-300 backdrop-blur-sm cursor-pointer">
-                <FiChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+              <button className="hero-next group flex items-center justify-center w-8 h-8 sm:w-14 sm:h-14 border border-white/20 hover:border-primary bg-black/40 hover:bg-primary text-white transition-all duration-300 backdrop-blur-sm cursor-pointer">
+                <FiChevronRight className="group-hover:translate-x-1 transition-transform w-4 h-4 sm:w-6 sm:h-6" />
               </button>
             </div>
           </div>

@@ -20,18 +20,18 @@ export default function ReserveLane() {
   ];
 
   return (
-    <section className="bg-white py-12 border-t border-gray-100">
+    <section className="py-6 md:py-16 bg-white border-t border-gray-100">
       <div className="maaleen-container">
         {/* Tabs */}
-        <div className="flex justify-center mb-0">
+        <div className="flex flex-row justify-center relative z-10 -mb-[1px]">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-8 md:px-12 py-4 md:py-6 text-xs md:text-sm font-black uppercase tracking-widest transition-all border-b-4 ${
+              className={`w-1/2 sm:w-[280px] py-4 sm:py-6 text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all border-b-2 border-x border-t border-gray-100 ${
                 activeTab === tab.id 
-                ? "border-[#C27D2A] text-[#1a1a1a] bg-gray-50" 
-                : "border-transparent text-gray-400 hover:text-gray-600"
+                ? "border-b-primary text-black bg-gray-50 border-x-gray-200 border-t-gray-200" 
+                : "border-b-gray-200 text-gray-400 hover:text-gray-600 bg-white border-x-transparent border-t-transparent"
               }`}
             >
               {tab.label}
@@ -39,13 +39,13 @@ export default function ReserveLane() {
           ))}
         </div>
 
-        <div className="bg-gray-50 rounded-none p-6 md:p-10 border border-gray-200">
+        <div className="bg-gray-50 rounded-none p-4 md:p-10 border border-gray-200 border-t-0">
           {activeTab === "lane" ? (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-start">
               {/* Location Input */}
               <div className="flex flex-col space-y-4 lg:col-span-5">
                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                  <FiSearch size={14} className="text-[#C27D2A]" />
+                  <FiSearch size={14} className="text-primary" />
                   Where do you want to bowl?
                 </label>
                 <div className="relative group">
@@ -67,7 +67,7 @@ export default function ReserveLane() {
               {/* Guests Input - Wider */}
               <div className="flex flex-col space-y-4 lg:col-span-3">
                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                  <FiUsers size={14} className="text-[#C27D2A]" />
+                  <FiUsers size={14} className="text-primary" />
                   How many guests?
                 </label>
                 <div className="relative group">
@@ -101,7 +101,7 @@ export default function ReserveLane() {
                       className="w-full text-xs md:text-sm font-bold text-[#1a1a1a] outline-none bg-transparent appearance-none cursor-pointer"
                       onChange={(e) => setDate(e.target.value)}
                     />
-                    <FiCalendar size={16} className="text-[#C27D2A] ml-2" />
+                    <FiCalendar size={16} className="text-primary ml-2" />
                   </div>
                   <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-gray-400 pl-2">
                     Reserve up to 8 days in advance
@@ -124,7 +124,7 @@ export default function ReserveLane() {
               {/* Location Input */}
               <div className="flex flex-col space-y-4 lg:col-span-5">
                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                  <FiSearch size={14} className="text-[#C27D2A]" />
+                  <FiSearch size={14} className="text-primary" />
                   Where do you want to book an event?
                 </label>
                 <div className="relative group">
@@ -183,7 +183,7 @@ export default function ReserveLane() {
                       className="w-full text-xs md:text-sm font-bold text-[#1a1a1a] outline-none bg-transparent appearance-none cursor-pointer"
                       onChange={(e) => setDate(e.target.value)}
                     />
-                    <FiCalendar size={16} className="text-[#C27D2A] ml-2" />
+                    <FiCalendar size={16} className="text-primary ml-2" />
                   </div>
                   <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-gray-400 pl-2">
                     Book up to 6 months in advance
@@ -202,20 +202,21 @@ export default function ReserveLane() {
               </div>
             </div>
           )}
+          {/* Footer Link relocated inside */}
+          <div className="mt-8 pt-6 border-t border-gray-200 text-center">
+            <p className="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest flex flex-col md:flex-row items-center justify-center gap-2">
+              Need help planning an event?
+              <Link 
+                href="#" 
+                className="text-primary border-b border-primary pb-0.5 hover:text-primary-hover hover:border-primary-hover transition-colors"
+              >
+                Contact an Event Planner
+              </Link>
+            </p>
+          </div>
         </div>
 
-        {/* Footer Link */}
-        <div className="mt-12 text-center">
-          <p className="text-[#1a1a1a] font-bold uppercase tracking-widest flex flex-col md:flex-row items-center justify-center gap-4">
-            Need help planning an event?
-            <Link 
-              href="#" 
-              className="text-[#C27D2A] border-b-2 border-[#C27D2A] pb-1 hover:text-[#ac640d] hover:border-[#ac640d] transition-colors"
-            >
-              Contact an Event Planner
-            </Link>
-          </p>
-        </div>
+
       </div>
     </section>
   );

@@ -9,67 +9,110 @@ import Link from "next/link";
 
 export default function SummerPass() {
   return (
-    <section className="bg-[#f8f8f8] py-10 border-t border-gray-100">
+    <section className="bg-[#fef9f1] py-6 md:py-16 border-t border-gray-100 overflow-hidden">
       <div className="maaleen-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch bg-primary overflow-hidden">
+          <div className="relative h-[250px] lg:h-auto min-h-[250px] bg-gray-200 overflow-hidden rounded-none group order-1 lg:order-2">
+            <Image
+              src="https://images.unsplash.com/photo-1515162305285-0293e4767cc2?q=80&w=2070&auto=format&fit=crop"
+              alt="Summer Season Pass Lifestyle"
+              fill
+              unoptimized
+              className="object-cover transition-transform duration-700"
+            />
+          </div>
+
           {/* Left Content */}
-          <div className="flex flex-col space-y-8">
+          <div className="flex flex-col space-y-4 p-4 md:p-8 lg:p-10 order-2 lg:order-1">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             >
-              <h2 className="text-4xl md:text-7xl font-black italic text-[#1a1a1a] uppercase leading-[0.95] tracking-tighter mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-6xl font-black italic text-[#1a1a1a] uppercase leading-[0.95] tracking-tighter mb-4">
                 Summer Season <br /> Pass Is Back!
               </h2>
               
-              <div className="h-1 w-20 bg-[#C27D2A] mb-8"></div>
+              <div className="h-1 w-16 bg-white mb-6"></div>
               
-              <p className="text-xl md:text-2xl font-black text-[#C27D2A] uppercase italic tracking-tight mb-6">
+              <p className="text-lg sm:text-xl md:text-2xl font-black text-white uppercase italic tracking-tight mb-6">
                 Buy your Summer Season Pass now and <br className="hidden md:block" /> get 10% off.
               </p>
 
-              <p className="text-gray-600 text-base md:text-lg font-bold leading-relaxed max-w-xl mb-10">
+              <p className="text-white text-base md:text-lg font-bold leading-relaxed max-w-xl mb-10 opacity-90">
                 Make the most of summer with the Summer Season Pass, your all-access pass to fun with 2 free games of bowling daily, free shoe rental and more exciting perks!
               </p>
 
               <div className="flex flex-col space-y-6">
-                <AnimatedButton className="!h-[60px] !w-[260px] !rounded-none !px-8">
+                <AnimatedButton variant="secondary" className="!h-[54px] md:!h-[60px] !w-full sm:!w-[260px] !rounded-none !px-8 !hover:border-white">
                   <div className="flex items-center justify-between w-full font-black tracking-widest text-xs">
                     <span>Buy Your Pass</span>
                     <FiArrowRight size={20} />
                   </div>
                 </AnimatedButton>
 
-                <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest leading-loose">
+                <p className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest leading-loose opacity-80">
                   Discount offer valid through 5/17. <br className="md:hidden" />
-                  <Link href="#" className="underline decoration-gray-300 hover:text-[#C27D2A] transition-colors decoration-2 underline-offset-4 ml-1">
+                  <Link href="#" className="underline decoration-white hover:text-white transition-colors decoration-2 underline-offset-4 ml-1">
                     Terms & conditions apply.
                   </Link>
                 </p>
               </div>
             </motion.div>
           </div>
-
-          {/* Right Content: High-Impact Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative h-[400px] md:h-[550px] bg-gray-200 overflow-hidden rounded-none group"
-          >
+        </div>
+        {/* Secondary Card: Spring Break Unlimited (Reversed) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch bg-primary overflow-hidden mt-4 md:mt-16">
+          <div className="relative h-[250px] lg:h-auto min-h-[250px] bg-gray-100 overflow-hidden rounded-none group order-1 lg:order-1">
             <Image
-              src="https://images.unsplash.com/photo-1515162305285-0293e4767cc2?q=80&w=2070&auto=format&fit=crop"
-              alt="Summer Season Pass Lifestyle"
+              src="https://images.unsplash.com/photo-1544144433-d50aff500b91?q=80&w=2000&auto=format&fit=crop"
+              alt="Spring Break Unlimited Lifestyle"
               fill
               unoptimized
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700"
             />
-            {/* Design accents */}
-            <div className="absolute inset-0 border-[20px] border-white/10 pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#C27D2A] flex items-center justify-center -mr-8 -mt-8 rotate-45"></div>
-          </motion.div>
+          </div>
+
+          {/* Right Content */}
+          <div className="flex flex-col space-y-4 p-4 md:p-8 lg:p-10 order-2 lg:order-2">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black italic text-[#1a1a1a] uppercase leading-[0.95] tracking-tighter mb-4">
+                Spring Break <br /> Unlimited Bowling
+              </h2>
+              
+              <div className="h-1 w-16 bg-white mb-6"></div>
+              
+              <p className="text-lg sm:text-xl md:text-2xl font-black text-white uppercase italic tracking-tight mb-6">
+                Unlimited Bowling. Unlimited Fun.
+              </p>
+
+              <p className="text-white text-sm md:text-base font-bold leading-relaxed max-w-xl mb-10 opacity-90">
+                Enjoy unlimited bowling (shoe rental included!) for a set price with our limited-time Spring Break Unlimited offer!
+              </p>
+
+              <div className="flex flex-col space-y-6">
+                <AnimatedButton variant="secondary" className="!h-[54px] md:!h-[60px] !w-full sm:!w-[340px] !rounded-none !px-8 !hover:border-white">
+                  <div className="flex items-center justify-between w-full font-black tracking-widest text-[10px] md:text-xs">
+                    <span>Spring Break Unlimited Details</span>
+                    <FiArrowRight size={20} />
+                  </div>
+                </AnimatedButton>
+
+                <p className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest leading-loose opacity-80">
+                  Subject to lane availability. Pricing and participation vary by location. <br className="md:hidden" />
+                  <Link href="#" className="underline decoration-white hover:text-white transition-colors decoration-2 underline-offset-4 ml-1">
+                    Terms & conditions apply.
+                  </Link>
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
