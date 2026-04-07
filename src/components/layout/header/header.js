@@ -48,14 +48,24 @@ export default function Header() {
         <div className="maaleen-container flex flex-col items-center gap-1">
           {/* Top Row: Logo (Centered) and Action Buttons (Right) */}
           <div className="w-full relative flex items-center justify-center">
+            {/* Left Brands - Absolute Left */}
+            <div className="hidden lg:flex absolute left-0 items-center gap-4">
+              <Link href="#" className="group flex items-center gap-1">
+                <span className="text-[10px] xl:text-xs font-black uppercase tracking-widest text-[#1a1a1a] opacity-40 group-hover:opacity-100 transition-opacity">
+                  Bowlero
+                </span>
+              </Link>
+              <div className="w-[1px] h-3 bg-gray-200" />
+              <Link href="#" className="group flex items-center gap-1">
+                <span className="text-[10px] xl:text-xs font-black uppercase tracking-widest text-[#1a1a1a] opacity-40 group-hover:opacity-100 transition-opacity">
+                  AMF
+                </span>
+              </Link>
+            </div>
+
             {/* Logo - Centered Top */}
             <div className="select-none">
               <Link href="/" onClick={closeMobileMenu}>
-                {/* <img
-                  src="/logo.png"
-                  alt="MyLogo"
-                  className="w-auto h-6 md:h-10 transition-all duration-300 transform"
-                /> */}
                 <span className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-primary">
                   kingpin
                 </span>
