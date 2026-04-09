@@ -7,7 +7,7 @@ import { FiShoppingBag, FiArrowRight } from "react-icons/fi";
 const products = [
   {
     id: 1,
-    title: "Kingpin Signature Hoodie",
+    title: "Kinpin Signature Hoodie",
     category: "Apparel",
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=2070&auto=format&fit=crop",
     price: "$55.00",
@@ -44,7 +44,7 @@ const ExperienceShop = () => {
   const smoothEase = [0.22, 1, 0.36, 1];
 
   return (
-    <section className="pt-20 pb-10 md:pt-32 md:pb-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)] text-[#1a1a1a]">
+    <section className="pt-10 pb-10 md:pt-16 md:pb-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)] text-[#1a1a1a]">
       <div className="maaleen-container">
         {/* Header Area */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-8 px-4">
@@ -55,7 +55,7 @@ const ExperienceShop = () => {
             transition={{ duration: 1.5, ease: smoothEase }}
           >
             <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">The Lifestyle</h2>
-            <h3 className="text-4xl md:text-6xl font-black uppercase italic leading-none tracking-tighter">
+            <h3 className="text-4xl md:text-6xl font-black uppercase leading-none tracking-tighter">
               Experience <span className="text-primary">Shop</span>
             </h3>
           </motion.div>
@@ -89,7 +89,7 @@ const ExperienceShop = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-1000" />
             <div className="absolute bottom-10 left-10 text-white z-10">
               <span className="text-[10px] uppercase font-black tracking-widest bg-primary px-3 py-1 mb-4 inline-block">{products[0].category}</span>
-              <h4 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter leading-none mb-3 translate-x-0 group-hover:translate-x-2 transition-transform duration-1000 ease-out">{products[0].title}</h4>
+              <h4 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-3 translate-x-0 group-hover:translate-x-2 transition-transform duration-1000 ease-out">{products[0].title}</h4>
               <p className="text-lg font-bold opacity-80 mb-6">{products[0].price}</p>
               <button className="flex items-center gap-2 text-xs font-black uppercase tracking-widest group/btn">
                 Shop Now <FiArrowRight className="group-hover/btn:translate-x-2 transition-transform duration-700" />
@@ -109,7 +109,7 @@ const ExperienceShop = () => {
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-1000" />
             <div className="absolute inset-x-8 bottom-8 flex justify-between items-end text-white z-10">
               <div className="translate-y-0 group-hover:-translate-y-1 transition-transform duration-700">
-                <h4 className="text-xl md:text-2xl font-black uppercase italic mb-1">{products[1].title}</h4>
+                <h4 className="text-xl md:text-2xl font-black uppercase mb-1">{products[1].title}</h4>
                 <p className="text-sm font-bold opacity-70">{products[1].price}</p>
               </div>
               <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:bg-white group-hover:text-black transition-all duration-700">
@@ -129,7 +129,7 @@ const ExperienceShop = () => {
             <Image src={products[2].image} alt={products[2].title} fill className="object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent opacity-100 group-hover:opacity-80 transition-opacity duration-1000" />
             <div className="absolute top-6 left-6 text-white z-10">
-              <h4 className="text-[13px] font-black uppercase italic leading-tight mb-1 group-hover:text-primary transition-colors duration-500">{products[2].title}</h4>
+              <h4 className="text-[13px] font-black uppercase leading-tight mb-1 group-hover:text-primary transition-colors duration-500">{products[2].title}</h4>
               <p className="text-[11px] font-bold opacity-90">{products[2].price}</p>
             </div>
           </motion.div>

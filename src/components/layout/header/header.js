@@ -78,7 +78,7 @@ export default function Header() {
             <div className="select-none">
               <Link href="/" onClick={closeMobileMenu}>
                 <span className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-primary">
-                  kingpin
+                  kinpin
                 </span>
               </Link>
             </div>

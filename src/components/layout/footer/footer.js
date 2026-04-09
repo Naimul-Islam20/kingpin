@@ -29,10 +29,10 @@ export default function Footer() {
       )}
       <div className="flex gap-6">
         {[
-          { Icon: FaFacebookF, href: "https://www.facebook.com/Kingpin", color: "hover:text-[#1877F2]" },
-          { Icon: FaInstagram, href: "https://www.instagram.com/kingpin_play/", color: "hover:text-[#E4405F]" },
-          { Icon: FaTiktok, href: "https://www.tiktok.com/@kingpin_play", color: "hover:text-[#000000]" },
-          { Icon: FaYoutube, href: "https://www.youtube.com/user/KingpinBowlingAus", color: "hover:text-[#FF0000]" }
+          { Icon: FaFacebookF, href: "https://www.facebook.com/Kinpin", color: "hover:text-[#1877F2]" },
+          { Icon: FaInstagram, href: "https://www.instagram.com/kinpin_play/", color: "hover:text-[#E4405F]" },
+          { Icon: FaTiktok, href: "https://www.tiktok.com/@kinpin_play", color: "hover:text-[#000000]" },
+          { Icon: FaYoutube, href: "https://www.youtube.com/user/KinpinBowlingAus", color: "hover:text-[#FF0000]" }
         ].map(({ Icon, href, color }, i) => (
           <Link
             key={i}
@@ -179,7 +179,7 @@ export default function Footer() {
 
               {/* Copyright Info - Centered */}
               <div className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.1em] text-gray-600">
-                © 2026 <span className="text-gray-800 text-primary">Kingpin</span> All Rights Reserved
+                © 2026 <span className="text-gray-800 text-primary">Kinpin</span> All Rights Reserved
               </div>
             </div>
           </div>

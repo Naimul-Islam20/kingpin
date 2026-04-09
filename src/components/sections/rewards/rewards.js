@@ -5,6 +5,19 @@ import { FiCheck, FiAward } from "react-icons/fi";
 
 const rewardCards = [
   {
+    type: "Family",
+    title: "Family Card",
+    gradient: "from-[#ff6b6b] via-[#f06292] to-[#c2185b]",
+    textColor: "text-white",
+    features: [
+      "Group Discounts (Up to 6 people)",
+      "Pizza & Drinks Combo Deals",
+      "Shared Points Pool",
+      "Dedicated Family Events"
+    ],
+    highlight: "Group Savings"
+  },
+  {
     type: "Silver",
     title: "Silver Card",
     gradient: "from-gray-400 via-gray-200 to-gray-500",
@@ -42,25 +55,12 @@ const rewardCards = [
       "Personal Host for Events"
     ],
     highlight: "Ultra Premium"
-  },
-  {
-    type: "Family",
-    title: "Family Card",
-    gradient: "from-[#ff6b6b] via-[#f06292] to-[#c2185b]",
-    textColor: "text-white",
-    features: [
-      "Group Discounts (Up to 6 people)",
-      "Pizza & Drinks Combo Deals",
-      "Shared Points Pool",
-      "Dedicated Family Events"
-    ],
-    highlight: "Group Savings"
   }
 ];
 
 const Rewards = () => {
   return (
-    <section className="pt-10 pb-20 md:pt-16 md:pb-32 bg-gray-50 overflow-hidden font-[family-name:var(--font-montserrat)] text-[#1a1a1a]">
+    <section className="pt-10 pb-20 md:pt-16 md:pb-20 bg-gray-50 overflow-hidden font-[family-name:var(--font-montserrat)] text-[#1a1a1a]">
       <div className="maaleen-container">
         {/* Header */}
         <div className="text-center mb-16 md:mb-24 px-4">
@@ -71,7 +71,7 @@ const Rewards = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">
-              KINGPIN REWARD CARD
+              KINPIN REWARD CARD
             </h2>
             <h3 className="text-4xl md:text-6xl font-black uppercase leading-tight">
               Rewards & Loyalty 
@@ -108,7 +108,7 @@ const Rewards = () => {
                     <span className="text-[10px] font-black uppercase tracking-widest">{card.highlight}</span>
                   </div>
                   <div className={`text-xl font-black italic uppercase tracking-tighter ${card.textColor}`}>
-                    Kingpin
+                    Kinpin
                   </div>
                 </div>
 

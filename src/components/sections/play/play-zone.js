@@ -52,7 +52,7 @@ const ChildrenPlayZone = () => {
               
               {/* Floating Badge */}
               <div className="absolute bottom-10 left-10 bg-white/90 backdrop-blur-md p-6 rounded-3xl shadow-xl z-20 hidden md:block border border-white/50">
-                <p className="text-primary font-black text-2xl mb-1 italic tracking-tighter">Safe & Fun</p>
+                <p className="text-primary font-black text-2xl mb-1 tracking-tighter">Safe & Fun</p>
                 <p className="text-gray-600 text-xs font-bold uppercase tracking-widest">Premium Outdoor Experience</p>
               </div>
             </motion.div>
@@ -73,7 +73,7 @@ const ChildrenPlayZone = () => {
               
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.1] mb-8 tracking-tighter">
                 Children’s Outdoor <br /> 
-                <span className="text-primary italic">Play Zone</span>
+                <span className="text-primary">Play Zone</span>
               </h2>
               
               <p className="text-gray-500 text-base md:text-lg mb-12 font-medium leading-relaxed max-w-xl">

@@ -29,11 +29,11 @@ export default function KaraokeSection() {
         {/* LEFT CONTENT */}
         <div className="md:col-span-8 space-y-5 md:space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-black">
-            Karaoke at Kingpin Play
+            Karaoke at Kinpin Play
           </h2>
 
           <p className="text-lg font-medium text-black leading-relaxed">
-            Take the stage and unleash your inner superstar! Kingpin’s private
+            Take the stage and unleash your inner superstar! Kinpin’s private
             karaoke rooms are the ultimate spot to belt out your favorite hits
             with friends. Perfect for parties, celebrations, and unforgettable
             nights out.

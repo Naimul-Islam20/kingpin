@@ -30,7 +30,7 @@ export default function SummerPass() {
               viewport={{ once: true }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black italic text-[#1a1a1a] uppercase leading-[0.95] tracking-tighter mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#1a1a1a] uppercase leading-[0.95] tracking-tighter mb-4">
                 Children’s Outdoor <br /> Play Zone
               </h2>
               
@@ -48,7 +48,7 @@ export default function SummerPass() {
                     <FiShield size={20} />
                   </div>
                   <div>
-                    <h4 className="text-[#1a1a1a] font-black uppercase italic tracking-tight text-lg mb-1 leading-none">Safe Environment</h4>
+                    <h4 className="text-[#1a1a1a] font-black uppercase tracking-tight text-lg mb-1 leading-none">Safe Environment</h4>
                     <p className="text-white text-xs font-medium opacity-90">100% certified safety standard equipment.</p>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ export default function SummerPass() {
                     <FiActivity size={20} />
                   </div>
                   <div>
-                    <h4 className="text-[#1a1a1a] font-black uppercase italic tracking-tight text-lg mb-1 leading-none">Interactive Play</h4>
+                    <h4 className="text-[#1a1a1a] font-black uppercase tracking-tight text-lg mb-1 leading-none">Interactive Play</h4>
                     <p className="text-white text-xs font-medium opacity-90">Designed to thrill every little explorer.</p>
                   </div>
                 </div>
@@ -66,7 +66,7 @@ export default function SummerPass() {
                     <FiHeart size={20} />
                   </div>
                   <div>
-                    <h4 className="text-[#1a1a1a] font-black uppercase italic tracking-tight text-lg mb-1 leading-none">Parent's Lounge</h4>
+                    <h4 className="text-[#1a1a1a] font-black uppercase tracking-tight text-lg mb-1 leading-none">Parent's Lounge</h4>
                     <p className="text-white text-xs font-medium opacity-90">Relax while watching your kids play safely.</p>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ export default function SummerPass() {
                     <FiStar size={20} />
                   </div>
                   <div>
-                    <h4 className="text-[#1a1a1a] font-black uppercase italic tracking-tight text-lg mb-1 leading-none">Exclusive Zones</h4>
+                    <h4 className="text-[#1a1a1a] font-black uppercase tracking-tight text-lg mb-1 leading-none">Exclusive Zones</h4>
                     <p className="text-white text-xs font-medium opacity-90">Separated play areas for all age groups.</p>
                   </div>
                 </div>

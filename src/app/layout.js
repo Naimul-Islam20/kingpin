@@ -13,8 +13,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "kingpin",
-  description: "kingpin Group of Companies",
+  title: "kinpin",
+  description: "kinpin Group of Companies",
 };
 
 export default function RootLayout({ children }) {

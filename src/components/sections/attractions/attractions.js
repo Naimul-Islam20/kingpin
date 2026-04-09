@@ -50,15 +50,19 @@ export default function Attractions() {
     <section className="bg-[#f9f9f9] py-6 md:py-16 overflow-hidden">
       <div className="maaleen-container">
         <div className="mb-6 md:mb-12 text-center">
-          <motion.h2 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-6xl font-black italic tracking-tighter text-[#1a1a1a] uppercase leading-none"
           >
-            Digital Gaming Arcade
-          </motion.h2>
+            <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">
+              Level Up Your Fun
+            </h2>
+            <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-[#1a1a1a] uppercase leading-none">
+              Digital Gaming Arcade
+            </h3>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-8">
