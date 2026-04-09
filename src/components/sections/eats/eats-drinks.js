@@ -1,144 +1,164 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-const foodData = [
+const brandData = [
   {
-    title: "Monster Burgers",
-    description: "Double-stacked juicy beef patties with extra cheese and our signature sauce.",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=2070&auto=format&fit=crop"
+    title: "Burger King",
+    description: "Savor the authentic Flame-Grilled Whopper and original Burger King favorites, served fresh directly to your table.",
+    image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop",
+    cta: "View Original Menu"
   },
   {
-    title: "Loaded Nachos",
-    description: "Crispy tortillas topped with melted cheese, jalapeños, and zesty salsa.",
-    image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?q=80&w=1935&auto=format&fit=crop"
+    title: "KFC Special",
+    description: "The world's most famous Finger Lickin' Good fried chicken, served with the original 11 herbs and spices you love.",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop",
+    cta: "Explore KFC Menu"
   },
   {
-    title: "Cheesy Pizza",
-    description: "Hot, gooey mozzarella on a crispy crust with your favorite meat toppings.",
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop"
+    title: "Pizza Hut",
+    description: "Enjoy the iconic Pan Pizza and signature crusts from Pizza Hut, served fresh for an authentic dining experience.",
+    image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=2070&auto=format&fit=crop",
+    cta: "View Original Menu"
   },
   {
-    title: "Golden Fries",
-    description: "Seasoned to perfection, served with a variety of addictive dipping sauces.",
-    image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=1974&auto=format&fit=crop"
+    title: "Nando's Peri-Peri",
+    description: "Experience the original flame-grilled PERi-PERi chicken from Nando's, prepared exactly how it's meant to be.",
+    image: "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=2070&auto=format&fit=crop",
+    cta: "Explore Nando's Menu"
   },
   {
-    title: "Gourmet Hot Dogs",
-    description: "Classic street-style dogs with a premium twist and loaded toppings.",
-    image: "https://images.unsplash.com/photo-1612392062631-94dd858cba88?q=80&w=2070&auto=format&fit=crop"
+    title: "Taco Bell",
+    description: "Authentic Taco Bell tacos, burritos, and more. Satisfy your Tex-Mex cravings with the original flavors.",
+    image: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=2071&auto=format&fit=crop",
+    cta: "View Original Menu"
   },
   {
-    title: "Thick Milkshakes",
-    description: "Dreamy, creamy, and topped with whipped cream and fancy sprinkles.",
-    image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=2000&auto=format&fit=crop"
+    title: "Starbucks Treats",
+    description: "Your favorite Starbucks beverages and pastries, expertly served for an authentic coffee-house experience.",
+    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop",
+    cta: "Original Menu"
   }
 ];
 
 const EatsDrinks = () => {
-  const [activeIdx, setActiveIdx] = useState(0);
-
   return (
-    <section className="pt-6 pb-0 md:py-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)]">
-      <div className="maaleen-container">
-        
-        {/* Top Header */}
-        <div className="text-center mb-6 md:mb-20 px-4">
+    <section className="py-6 md:py-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)]">
+      <div className="maaleen-container relative px-10 sm:px-4">
+        {/* Section Heading */}
+        <div className="text-center mb-6 md:mb-16">
           <h2 className="text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
-            Chef Inspired Menu
+            Authentic Service
           </h2>
-          <h3 className="text-4xl sm:text-6xl font-black uppercase text-black leading-tight">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black leading-tight">
             Eats & Drinks
           </h3>
+          <div className="mt-6 h-[3px] w-20 bg-primary mx-auto" />
         </div>
 
-        {/* Dynamic Image Slider */}
-        <div className="relative w-full h-[400px] sm:h-[550px]">
+        {/* Slider Wrapper */}
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-2 sm:px-6 lg:px-2 z-20 pointer-events-none">
+            <button className="eats-prev pointer-events-auto group flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 bg-white/90 border border-gray-100 hover:border-primary text-black hover:text-white hover:bg-primary transition-all duration-300 shadow-md">
+              <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-0.5 transition-transform" />
+            </button>
+            <button className="eats-next pointer-events-auto group flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 bg-white/90 border border-gray-100 hover:border-primary text-black hover:text-white hover:bg-primary transition-all duration-300 shadow-md">
+              <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+          </div>
+
+          {/* Swiper Slider */}
           <Swiper
-            modules={[Navigation, Autoplay]}
-            centeredSlides={true}
-            slidesPerView={1.25}
-            spaceBetween={15}
-            speed={800}
-            watchSlidesProgress={true}
+            modules={[Navigation, Autoplay, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true, el: ".eats-pagination" }}
+            navigation={{ prevEl: ".eats-prev", nextEl: ".eats-next" }}
             breakpoints={{
-              640: { slidesPerView: 1.8, spaceBetween: 25 },
-              1024: { slidesPerView: 2.5, spaceBetween: 40 }
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
             }}
-            autoplay={{ delay: 3500, disableOnInteraction: false }}
-            onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
-            loop={true}
-            onProgress={(swiper) => {
-              const { slides } = swiper;
-              for (let i = 0; i < slides.length; i++) {
-                const slide = slides[i];
-                const progress = slide.progress;
-                const scale = 1.08 - Math.abs(progress) * 0.12;
-                const container = slide.querySelector('.item-container');
-                if (container) {
-                  container.style.transform = `scale(${Math.max(scale, 0.85)})`;
-                  container.style.filter = "none";
-                  container.style.opacity = "1";
-                }
-              }
-            }}
-            onSetTransition={(swiper, duration) => {
-              const { slides } = swiper;
-              for (let i = 0; i < slides.length; i++) {
-                const container = slides[i].querySelector('.item-container');
-                if (container) {
-                  container.style.transition = `${duration}ms cubic-bezier(0.19, 1, 0.22, 1)`;
-                }
-              }
-            }}
-            className="w-full h-full eats-drinks-swiper overflow-visible"
+            className="pb-12"
           >
-            {foodData.map((item, index) => (
-              <SwiperSlide key={index} className="flex items-center justify-center">
-                <div className="w-full h-full item-container relative overflow-hidden group border border-gray-100">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover transition-all duration-700 brightness-100 group-hover:brightness-100"
-                  />
-                  <div className="absolute inset-0 bg-transparent pointer-events-none" />
+            {brandData.map((brand, index) => (
+              <SwiperSlide key={index}>
+                <div className="group h-full flex flex-col bg-gray-50 border border-gray-100 hover:border-primary/30 transition-all duration-500">
+                  {/* Image Container */}
+                  <div className="relative h-64 overflow-hidden mb-8">
+                    <img
+                      src={brand.image}
+                      alt={brand.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="px-8 pb-10 flex flex-col flex-grow">
+                    <h4 className="text-2xl font-black uppercase text-black mb-4 group-hover:text-primary transition-colors line-clamp-1 overflow-hidden h-[32px]">
+                      {brand.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-8 flex-grow font-light line-clamp-3 overflow-hidden min-h-[72px]">
+                      {brand.description}
+                    </p>
+                    <button className="relative w-max text-xs sm:text-sm font-bold uppercase tracking-widest text-black group/btn mt-auto">
+                      <span className="relative z-10 transition-colors group-hover/btn:text-primary">
+                        {brand.cta}
+                      </span>
+                      <div className="mt-2 h-[2px] w-12 bg-primary group-hover/btn:w-full transition-all duration-300" />
+                    </button>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
 
-        {/* Unified Dynamic Text Information */}
-        <div className="mt-8 sm:mt-20 text-center px-4 min-h-[120px] sm:min-h-[160px] flex flex-col items-center overflow-hidden">
-          <div 
-            className="animate-slideInUnified flex flex-col items-center" 
-            key={`united-content-${activeIdx}`}
-          >
-            <h4 className="text-2xl sm:text-4xl font-black uppercase text-black mb-4">
-              {foodData[activeIdx]?.title}
-            </h4>
-            
-            <p className="text-gray-600 text-sm sm:text-lg max-w-2xl font-light leading-relaxed">
-              {foodData[activeIdx]?.description}
-            </p>
-          </div>
+        {/* Pagination */}
+        <div className="flex justify-center mt-4 w-full">
+          <div className="eats-pagination flex justify-center items-center gap-2 w-full" />
         </div>
       </div>
 
       <style>{`
-        @keyframes slideInUnified {
-          from { opacity: 0; transform: translateY(60px); }
-          to { opacity: 1; transform: translateY(0); }
+        .eats-pagination .swiper-pagination-bullet { 
+          width: 6px; 
+          height: 6px; 
+          opacity: 0.2; 
+          background: #000; 
+          border-radius: 0; 
+          transition: all 0.3s ease-in-out; 
+          margin: 0 4px !important; 
+        }
+        @media (min-width: 1024px) { 
+          .eats-pagination .swiper-pagination-bullet { 
+            width: 10px; 
+            height: 10px; 
+          } 
+        }
+        .eats-pagination .swiper-pagination-bullet-active { 
+          width: 24px; 
+          opacity: 1; 
+          background: #C4A484; 
+        }
+        @media (min-width: 1024px) { 
+          .eats-pagination .swiper-pagination-bullet-active { 
+            width: 32px; 
+          } 
         }
         
-        .animate-slideInUnified {
-          animation: slideInUnified 1.5s cubic-bezier(0.19, 1, 0.22, 1) both;
-        }
-
-        .eats-drinks-swiper .swiper-wrapper {
-          align-items: center;
+        .eats-prev.swiper-button-disabled,
+        .eats-next.swiper-button-disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+          pointer-events: none;
         }
       `}</style>
     </section>

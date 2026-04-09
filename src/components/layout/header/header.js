@@ -35,7 +35,18 @@ export default function Header() {
   // New Menu Items
   const navMenus = [
     { id: 1, menu_name: "Summer Season Pass", path: "/summer-pass" },
-    { id: 2, menu_name: "Parties & Events", path: "#" },
+    { 
+      id: 2, 
+      menu_name: "Parties & Events", 
+      path: "#",
+      has_child: 1,
+      child: [
+        { name: "Birthday Parties", path: "/birthday-parties" },
+        { name: "Class Party", path: "/class-party" },
+        { name: "Work Gatherings", path: "/work-gatherings" },
+        { name: "Meetings", path: "/meetings" },
+      ]
+    },
     { id: 3, menu_name: "Specials", path: "#" },
     { id: 4, menu_name: "Eat & Drink", path: "#" },
     { id: 5, menu_name: "Leagues", path: "#" },
@@ -120,13 +131,49 @@ export default function Header() {
               */}
 
               {navMenus.map((item) => (
-                <Link
+                <div
                   key={item.id}
-                  href={item.path}
-                  className="px-2 lg:px-4 py-2 text-[14px] xl:text-[16px] font-bold text-black hover:text-primary transition-all duration-300 tracking-wider hover:opacity-80 active:scale-95"
+                  className="relative group h-full flex items-center"
+                  onMouseEnter={() => item.has_child && setOpenMenu(item.id)}
+                  onMouseLeave={() => item.has_child && setOpenMenu(null)}
                 >
-                  {item.menu_name}
-                </Link>
+                  <Link
+                    href={item.path}
+                    className="px-2 lg:px-4 py-2 text-[14px] xl:text-[16px] font-bold text-black hover:text-primary transition-all duration-300 tracking-wider hover:opacity-80 active:scale-95 flex items-center gap-1"
+                  >
+                    {item.menu_name}
+                    {item.has_child === 1 && (
+                      <FaChevronDown className={`text-[10px] mt-[2px] transition-transform duration-300 ${openMenu === item.id ? 'rotate-180' : ''}`} />
+                    )}
+                  </Link>
+
+                  {/* Dropdown Menu */}
+                  {item.has_child === 1 && (
+                    <AnimatePresence>
+                      {openMenu === item.id && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 w-64 bg-white shadow-2xl border-t-2 border-primary py-4 z-[100]"
+                        >
+                          <div className="flex flex-col">
+                            {item.child.map((subItem, idx) => (
+                              <Link
+                                key={idx}
+                                href={subItem.path}
+                                className="px-6 py-3 text-sm font-bold text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors uppercase tracking-widest border-l-4 border-transparent hover:border-primary"
+                              >
+                                {subItem.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
               ))}
             </nav>
           </div>

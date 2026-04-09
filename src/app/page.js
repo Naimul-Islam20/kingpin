@@ -11,6 +11,9 @@ import ReserveLane from "@/components/sections/reserve-lane/reserve-lane";
 import SummerPass from "@/components/sections/summer-pass/summer-pass";
 import DiningTeaser from "@/components/sections/dining/dining-teaser";
 import RoyalPage from "@/components/sections/royal/royal";
+import Rewards from "@/components/sections/rewards/rewards";
+import ExperienceShop from "@/components/sections/shop/experience-shop";
+import Newsletter from "@/components/sections/newsletter/newsletter";
 
 
 export default function Home() {
@@ -22,6 +25,9 @@ export default function Home() {
       <EatsDrinks />
       <Attractions />
       <SummerPass />
+      <ExperienceShop />
+      <Rewards />
+      <Newsletter />
       {/* <DiningTeaser /> */}
 
       {/* 

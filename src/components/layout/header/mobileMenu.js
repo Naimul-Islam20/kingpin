@@ -55,8 +55,7 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
           <ul className="space-y-0">
             {menus.map((menu) => {
-              const hasChildren =
-                Array.isArray(menu.children) && menu.children.length > 0;
+              const hasChildren = menu.has_child === 1 && Array.isArray(menu.child);
 
               return (
                 <li
@@ -82,8 +81,8 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
 
                       {activeMenu === menu.id && (
                         <ul className="mt-2 space-y-1 pl-2">
-                          {menu.children.map((child) => (
-                            <li key={child.id}>
+                          {menu.child.map((child, idx) => (
+                            <li key={idx}>
                               <Link
                                 href={
                                   child.path && child.path !== ""
@@ -93,7 +92,7 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
                                 onClick={onClose}
                                 className="block rounded py-2 text-sm font-medium text-black hover:bg-gray-100"
                               >
-                                {child.menu_name}
+                                {child.name}
                               </Link>
                             </li>
                           ))}

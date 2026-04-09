@@ -166,3 +166,22 @@ input[type="date"]::-moz-calendar-picker-indicator {
   }
 }
 
+/* Kingpin Ticker Animation */
+@keyframes kinpin-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.kinpin-ticker-track {
+  animation: kinpin-ticker 40s linear infinite;
+  will-change: transform;
+}
+
+.kinpin-ticker:hover .kinpin-ticker-track {
+  animation-play-state: paused;
+}
+

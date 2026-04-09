@@ -55,9 +55,9 @@ export default function Attractions() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-8xl font-black italic tracking-tighter text-[#1a1a1a] uppercase leading-none"
+            className="text-4xl md:text-6xl font-black italic tracking-tighter text-[#1a1a1a] uppercase leading-none"
           >
-            Attractions
+            Digital Gaming Arcade
           </motion.h2>
         </div>
 
