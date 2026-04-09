@@ -1,113 +1,41 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import Image from "next/image";
 import AnimatedButton from "@/components/ui/annimation_button";
-
-const HERO_VIDEO_ID = "3I1Lpm3AlI4";
-
-function loadYouTubeIframeAPI() {
-  return new Promise((resolve) => {
-    if (typeof window === "undefined") return;
-    if (window.YT?.Player) {
-      resolve();
-      return;
-    }
-    const prev = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      prev?.();
-      resolve();
-    };
-    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      tag.async = true;
-      document.head.appendChild(tag);
-    }
-  });
-}
 
 const slideData = [
   {
     title: "The King of All Lanes",
     subtitle: "Premium Boutique Bowling",
     description: "Experience the ultimate strike in our luxury lanes with world-class service.",
-    cta: "Book a Lane"
+    cta: "Book a Lane",
+    image: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "Elevated Spirits & Bites",
     subtitle: "Handcrafted Cocktails",
     description: "Savor chef-inspired dishes and signature cocktails in our stylish lounge.",
-    cta: "View Menu"
+    cta: "View Menu",
+    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop"
   },
   {
     title: "Iconic Events Start Here",
     subtitle: "Private Parties & Corporate Events",
     description: "Host an unforgettable celebration in our exclusive VIP suites.",
-    cta: "Enquire Now"
+    cta: "Enquire Now",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2070&auto=format&fit=crop"
   }
 ];
 
 const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(null);
-  const hostRef = useRef(null);
-  const playerRef = useRef(null);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    loadYouTubeIframeAPI().then(() => {
-      if (cancelled || !hostRef.current || !window.YT?.Player) return;
-
-      const origin =
-        typeof window !== "undefined" ? window.location.origin : "";
-      playerRef.current = new window.YT.Player(hostRef.current, {
-        videoId: HERO_VIDEO_ID,
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          controls: 0,
-          modestbranding: 1,
-          playsinline: 1,
-          rel: 0,
-          disablekb: 1,
-          fs: 0,
-          iv_load_policy: 3,
-          enablejsapi: 1,
-          loop: 1,
-          playlist: HERO_VIDEO_ID, // Required for loop in YT API
-          ...(origin ? { origin } : {}),
-        },
-        events: {
-          onReady: (e) => {
-            e.target.mute();
-            e.target.playVideo();
-          },
-          onStateChange: (e) => {
-            if (e.data === window.YT.PlayerState.ENDED) {
-              e.target.seekTo(0, true);
-              e.target.playVideo();
-            }
-          },
-        },
-      });
-    });
-
-    return () => {
-      cancelled = true;
-      try {
-        playerRef.current?.destroy?.();
-      } catch {
-        /* noop */
-      }
-      playerRef.current = null;
-    };
-  }, []);
 
   const goTo = (i) => {
     swiperInstance?.slideToLoop(i);
@@ -115,17 +43,6 @@ const HeroSection = () => {
 
   return (
     <section className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden relative bg-black font-[family-name:var(--font-montserrat)]">
-      {/* YouTube Background Video */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div
-          ref={hostRef}
-          className="absolute top-1/2 left-1/2 w-screen h-[56.25vw] min-h-full min-w-[177.78vh] -translate-x-1/2 -translate-y-1/2 [&_iframe]:size-full opacity-100"
-        />
-        {/* Subtle Overlays for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-black/10" />
-      </div>
-
       <Swiper
         modules={[Navigation, Autoplay, EffectFade]}
         effect="fade"
@@ -142,8 +59,22 @@ const HeroSection = () => {
         {slideData.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="relative h-full w-full flex items-center">
+              {/* Background Image for each slide */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={slide.image}
+                  alt={slide.title}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+                {/* Subtle Overlays for Text Readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-black/20" />
+              </div>
+
               {/* Content Panel */}
-              <div className="relative h-full w-full maaleen-container flex flex-col justify-center">
+              <div className="relative h-full w-full maaleen-container flex flex-col justify-center z-10">
                 <div 
                   className={`max-w-4xl transition-opacity duration-500 ${
                     activeIndex === index ? "animate-slideInLeft opacity-100" : "opacity-0 pointer-events-none"
@@ -168,7 +99,7 @@ const HeroSection = () => {
                     <AnimatedButton className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm">
                       {slide.cta}
                     </AnimatedButton>
-                    <AnimatedButton variant="secondary" className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm">
+                    <AnimatedButton variant="secondary" className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm !text-primary !shadow-none hover:!shadow-none">
                       Explore Venue
                     </AnimatedButton>
                   </div>

@@ -4,7 +4,7 @@ import CustomPage from "@/components/sections/custom/custom";
 
 
 import HeroSection from "@/components/sections/hero/hero";
-import PartySlider from "@/components/sections/party/party-slider";
+
 import EatsDrinks from "@/components/sections/eats/eats-drinks";
 import Attractions from "@/components/sections/attractions/attractions";
 import ReserveLane from "@/components/sections/reserve-lane/reserve-lane";
@@ -21,7 +21,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <ReserveLane />
-      <PartySlider />
+
       <EatsDrinks />
       <Attractions />
       <SummerPass />

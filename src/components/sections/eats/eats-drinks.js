@@ -43,15 +43,39 @@ const brandData = [
     description: "Your favorite Starbucks beverages and pastries, expertly served for an authentic coffee-house experience.",
     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop",
     cta: "Original Menu"
+  },
+  {
+    title: "Subway Fresh",
+    description: "Custom-made sandwiches and salads prepared fresh right in front of you with your choice of toppings.",
+    image: "https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?q=80&w=2070&auto=format&fit=crop",
+    cta: "Original Menu"
+  },
+  {
+    title: "Domino's Pizza",
+    description: "Hot and fresh pizzas delivered straight from the oven to your table. Enjoy the classic flavors you love.",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop",
+    cta: "View Original Menu"
+  },
+  {
+    title: "Dunkin' Donuts",
+    description: "America's favorite coffee and donuts. Treat yourself to a variety of sweet treats and premium coffee.",
+    image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=2070&auto=format&fit=crop",
+    cta: "Original Menu"
+  },
+  {
+    title: "Hardee's Burgers",
+    description: "Famous for thickburgers and made-from-scratch biscuits. Experience the authentic taste of Hardee's.",
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=2070&auto=format&fit=crop",
+    cta: "Explore Menu"
   }
 ];
 
 const EatsDrinks = () => {
   return (
-    <section className="py-6 md:py-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)]">
+    <section className="py-4 md:py-12 bg-white overflow-hidden font-[family-name:var(--font-montserrat)]">
       <div className="maaleen-container relative px-10 sm:px-4">
         {/* Section Heading */}
-        <div className="text-center mb-6 md:mb-16">
+        <div className="text-center mb-4 md:mb-10">
           <h2 className="text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
             Authentic Service
           </h2>
@@ -83,7 +107,7 @@ const EatsDrinks = () => {
             navigation={{ prevEl: ".eats-prev", nextEl: ".eats-next" }}
             breakpoints={{
               640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 }
+              1024: { slidesPerView: 4 }
             }}
             className="pb-12"
           >

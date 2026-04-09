@@ -39,7 +39,7 @@ export default function ReserveLane() {
   }, []);
 
   const tabs = [
-    { id: "lane", label: "Private Dining & Lounge" },
+    { id: "lane", label: "Private Dining" },
     { id: "event", label: "Book an Event" }
   ];
 
@@ -189,30 +189,39 @@ export default function ReserveLane() {
 
               {/* Date Input */}
               <div className="flex flex-col space-y-4 lg:col-span-2">
-                <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2 text-center justify-center">
-                  When?
+                <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2">
+                  Date
                 </label>
-                <div className="relative group">
-                  <div 
-                    className="h-[50px] md:h-[60px] flex items-center justify-center bg-white border-2 border-gray-200 rounded-none px-4 cursor-pointer"
-                    onClick={() => dateInputRef.current?.showPicker()}
-                  >
+                <div className="relative">
+                  <label className="h-[50px] md:h-[60px] flex items-center bg-white border-2 border-gray-200 rounded-none px-4 relative group hover:border-primary transition-colors cursor-pointer">
+                    <FiCalendar size={18} className="text-primary mr-3 flex-shrink-0" />
+                    <div className="flex-grow">
+                      {date ? (
+                        <span className="text-xs md:text-sm font-bold text-[#1a1a1a]">{date}</span>
+                      ) : (
+                        <span className="text-xs md:text-sm font-bold text-gray-300 uppercase tracking-widest">Select Date</span>
+                      )}
+                    </div>
                     <input
                       type="date"
-                      ref={dateInputRef}
-                      className="w-full text-xs font-bold text-[#1a1a1a] outline-none bg-transparent appearance-none cursor-pointer hidden"
+                      className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                       onChange={(e) => setDate(e.target.value)}
+                      value={date}
+                      onClick={(e) => {
+                        try {
+                          e.target.showPicker();
+                        } catch (err) {}
+                      }}
                     />
-                    <FiCalendar size={20} className="text-primary" />
-                  </div>
+                  </label>
                 </div>
               </div>
 
               {/* Submit Button - Relatively smaller */}
               <div className="flex flex-col pt-8 lg:col-span-2">
-                <AnimatedButton className="!h-[52px] md:!h-[58px] !rounded-none !w-full !px-3 md:!px-4">
+                <AnimatedButton className="!h-[52px] md:!h-[58px] !rounded-none !w-full !px-3 md:!px-4 !shadow-none hover:!shadow-none">
                     <div className="flex items-center justify-between w-full text-[10px] md:text-[11px] tracking-widest font-black uppercase">
-                      <span className="whitespace-nowrap">Reserve a Lane</span>
+                      <span className="whitespace-nowrap">Private Dining</span>
                       <FiArrowRight size={18} />
                     </div>
                 </AnimatedButton>
@@ -221,17 +230,17 @@ export default function ReserveLane() {
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-start">
               {/* Phone Number Input */}
-              <div className="flex flex-col space-y-4 lg:col-span-4">
+              <div className="flex flex-col space-y-4 lg:col-span-3">
                 <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2">
                   <FiPhone size={14} className="text-primary" />
                   Phone Number
                 </label>
                 <div className="relative group">
-                  <div className="h-[50px] md:h-[60px] flex items-center bg-white border-2 border-gray-200 rounded-none px-5 md:px-6">
+                  <div className="h-[50px] md:h-[60px] flex items-center bg-white border-2 border-gray-200 rounded-none px-5 md:px-6 relative">
                     <input
                       type="tel"
                       placeholder="Enter Your Phone Number"
-                      className="w-full text-sm md:text-base font-bold text-[#1a1a1a] outline-none placeholder:text-gray-300"
+                      className="w-full text-sm md:text-base font-bold text-[#1a1a1a] outline-none placeholder:text-gray-300 bg-transparent"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
@@ -336,31 +345,40 @@ export default function ReserveLane() {
               </div>
 
               {/* Date Input */}
-              <div className="flex flex-col space-y-4 lg:col-span-1">
-                <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2 text-center justify-center">
-                  When?
+              <div className="flex flex-col space-y-4 lg:col-span-2">
+                <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 flex items-center gap-2">
+                  Date
                 </label>
-                <div className="relative group">
-                  <div 
-                    className="h-[50px] md:h-[60px] flex items-center justify-center bg-white border-2 border-gray-200 rounded-none px-4 cursor-pointer"
-                    onClick={() => dateInputRef.current?.showPicker()}
-                  >
+                <div className="relative">
+                  <label className="h-[50px] md:h-[60px] flex items-center bg-white border-2 border-gray-200 rounded-none px-4 relative group hover:border-primary transition-colors cursor-pointer">
+                    <FiCalendar size={18} className="text-primary mr-3 flex-shrink-0" />
+                    <div className="flex-grow">
+                      {date ? (
+                        <span className="text-xs md:text-sm font-bold text-[#1a1a1a]">{date}</span>
+                      ) : (
+                        <span className="text-xs md:text-sm font-bold text-gray-300 uppercase tracking-widest">Select Date</span>
+                      )}
+                    </div>
                     <input
                       type="date"
-                      ref={dateInputRef}
-                      className="w-full text-xs font-bold text-[#1a1a1a] outline-none bg-transparent appearance-none cursor-pointer hidden"
+                      className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                       onChange={(e) => setDate(e.target.value)}
+                      value={date}
+                      onClick={(e) => {
+                        try {
+                          e.target.showPicker();
+                        } catch (err) {}
+                      }}
                     />
-                    <FiCalendar size={20} className="text-primary" />
-                  </div>
+                  </label>
                 </div>
               </div>
 
               {/* Submit Button */}
               <div className="flex flex-col pt-8 lg:col-span-2">
-                <AnimatedButton className="!h-[52px] md:!h-[58px] !rounded-none !w-full !px-3 md:!px-4">
+                <AnimatedButton className="!h-[52px] md:!h-[58px] !rounded-none !w-full !px-3 md:!px-4 !shadow-none hover:!shadow-none">
                     <div className="flex items-center justify-center w-full text-[10px] md:text-[11px] tracking-widest font-black uppercase">
-                      <span className="whitespace-nowrap">Plan Event</span>
+                      <span className="whitespace-nowrap">Book an Event</span>
                     </div>
                 </AnimatedButton>
               </div>

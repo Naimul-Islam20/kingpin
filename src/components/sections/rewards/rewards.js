@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiCheck, FiAward } from "react-icons/fi";
+import AnimatedButton from "@/components/ui/annimation_button";
 
 const rewardCards = [
   {
@@ -107,13 +108,13 @@ const Rewards = () => {
                     <FiAward className="w-5 h-5" />
                     <span className="text-[10px] font-black uppercase tracking-widest">{card.highlight}</span>
                   </div>
-                  <div className={`text-xl font-black italic uppercase tracking-tighter ${card.textColor}`}>
+                  <div className={`text-xl font-black uppercase tracking-tighter ${card.textColor}`}>
                     Kinpin
                   </div>
                 </div>
 
                 <div className="relative z-10">
-                  <h4 className={`text-2xl font-black uppercase italic ${card.textColor}`}>
+                  <h4 className={`text-2xl font-black uppercase ${card.textColor}`}>
                     {card.title}
                   </h4>
                   <div className={`mt-2 text-[8px] font-bold tracking-[3px] uppercase ${card.textColor} opacity-50`}>
@@ -134,9 +135,9 @@ const Rewards = () => {
                   ))}
                 </ul>
                 
-                <button className="mt-auto w-full py-4 bg-[#1a1a1a] text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all duration-300 rounded-none">
+                <AnimatedButton className="mt-auto w-full !bg-[#1a1a1a] !text-white !border-[#1a1a1a] hover:!border-[#1a1a1a] !shadow-none hover:!shadow-none transition-colors">
                   Become a Member
-                </button>
+                </AnimatedButton>
               </div>
             </div>
           ))}

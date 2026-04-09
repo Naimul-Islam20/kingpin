@@ -117,14 +117,14 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
 
           <div className="mt-8 flex flex-row gap-2 px-0">
             <Link href="#" onClick={onClose} className="flex-1">
-              <AnimatedButton className="w-full !px-2 !py-4 !text-[10px]">
-                BOOK EVENT
+              <AnimatedButton className="w-full !px-1 !py-4 !text-[9px]">
+                PRIVATE DINING
               </AnimatedButton>
             </Link>
 
             <Link href="#" onClick={onClose} className="flex-1">
-              <AnimatedButton variant="secondary" className="w-full !px-2 !py-4 !text-[10px]">
-                RESERVE LANE
+              <AnimatedButton variant="secondary" className="w-full !px-2 !py-4 !text-[9px]">
+                BOOK AN EVENT
               </AnimatedButton>
             </Link>
           </div>

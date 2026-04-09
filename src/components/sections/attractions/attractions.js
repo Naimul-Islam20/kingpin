@@ -47,78 +47,79 @@ export default function Attractions() {
   }, []);
 
   return (
-    <section className="bg-[#f9f9f9] py-6 md:py-16 overflow-hidden">
+    <section className="bg-[#f9f9f9] py-4 md:py-12 overflow-hidden">
       <div className="maaleen-container">
-        <div className="mb-6 md:mb-12 text-center">
+        <div className="mb-4 md:mb-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">
+            <h2 className="text-primary text-xs font-bold uppercase tracking-[0.4em] mb-4">
               Level Up Your Fun
             </h2>
-            <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-[#1a1a1a] uppercase leading-none">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-black leading-tight">
               Digital Gaming Arcade
             </h3>
+            <div className="mt-6 h-[3px] w-20 bg-primary mx-auto" />
           </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-8">
-          {attractions.map((item, index) => (
-            <Link 
+            {attractions.map((item, index) => (
+                <Link 
               key={index} 
-              href={item.link}
-              className="block outline-none"
-            >
-              <motion.div
-                key={isMobile ? "mob" : "desk"}
-                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 60, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "0px" }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: isMobile ? 0 : (index % 3) * 0.12,
-                  ease: [0.19, 1, 0.22, 1] 
-                }}
-                className="group relative h-[300px] sm:h-[400px] md:h-[550px] overflow-hidden rounded-none cursor-pointer"
-              >
-                {/* Background Image */}
-                <div className="absolute inset-0 transition-transform duration-1000 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-110">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 group-hover:via-black/30 transition-all duration-700"></div>
-
-                {/* Content */}
-                <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end items-start z-10">
+                  href={item.link}
+                  className="block outline-none"
+                >
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    key={isMobile ? "mob" : "desk"}
+                    initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 60, scale: 0.98 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "0px" }}
+                    transition={{ 
+                      duration: 1.2, 
+                  delay: isMobile ? 0 : (index % 3) * 0.12,
+                      ease: [0.19, 1, 0.22, 1] 
+                    }}
+                className="group relative h-[300px] sm:h-[400px] md:h-[550px] overflow-hidden rounded-none cursor-pointer"
                   >
-                    <h3 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter mb-6 leading-none">
-                      {item.title}
-                    </h3>
+                    {/* Background Image */}
+                    <div className="absolute inset-0 transition-transform duration-1000 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-110">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 group-hover:via-black/30 transition-all duration-700"></div>
+
+                    {/* Content */}
+                    <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end items-start z-10">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                      >
+                    <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-6 leading-none">
+                          {item.title}
+                        </h3>
+                      </motion.div>
+                      
+                      <div className="md:opacity-0 md:translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
+                    <AnimatedButton className="!px-10 !py-4 text-sm font-bold uppercase tracking-widest pointer-events-none">
+                          Explore More
+                        </AnimatedButton>
+                      </div>
+                    </div>
                   </motion.div>
-                  
-                  <div className="md:opacity-0 md:translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
-                    <AnimatedButton className="!px-10 !py-4 text-base font-bold uppercase tracking-widest pointer-events-none">
-                      Explore More
-                    </AnimatedButton>
-                  </div>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+                </Link>
+            ))}
         </div>
       </div>
     </section>
