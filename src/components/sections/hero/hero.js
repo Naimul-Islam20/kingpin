@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -75,35 +76,61 @@ const HeroSection = () => {
 
               {/* Content Panel */}
               <div className="relative h-full w-full maaleen-container flex flex-col justify-center z-10">
-                <div 
-                  className={`max-w-4xl transition-opacity duration-500 ${
-                    activeIndex === index ? "animate-slideInLeft opacity-100" : "opacity-0 pointer-events-none"
-                  }`}
-                >
-                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <div className="h-[2px] w-8 sm:w-12 bg-primary" />
-                    <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs md:text-sm">
-                      {slide.subtitle}
-                    </span>
-                  </div>
-                  
-                  <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase mb-4 sm:mb-8 leading-[1] text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
-                    {slide.title}
-                  </h1>
-                  
-                  <p className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-2xl mb-8 sm:mb-12 leading-relaxed font-light">
-                    {slide.description}
-                  </p>
-                  
-                  <div className="flex flex-row gap-2 sm:gap-6">
-                    <AnimatedButton className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm">
-                      {slide.cta}
-                    </AnimatedButton>
-                    <AnimatedButton variant="secondary" className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm !text-primary !shadow-none hover:!shadow-none">
-                      Explore Venue
-                    </AnimatedButton>
-                  </div>
-                </div>
+                <AnimatePresence mode="wait">
+                  {activeIndex === index && (
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="max-w-4xl"
+                    >
+                      <motion.div 
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex items-center gap-3 mb-4 sm:mb-6"
+                      >
+                        <div className="h-[2px] w-8 sm:w-12 bg-primary" />
+                        <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs md:text-sm">
+                          {slide.subtitle}
+                        </span>
+                      </motion.div>
+                      
+                      <motion.h1 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase mb-4 sm:mb-8 leading-[1] text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]"
+                      >
+                        {slide.title}
+                      </motion.h1>
+                      
+                      <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-2xl mb-8 sm:mb-12 leading-relaxed font-light"
+                      >
+                        {slide.description}
+                      </motion.p>
+                      
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-row gap-2 sm:gap-6"
+                      >
+                        <AnimatedButton className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm">
+                          {slide.cta}
+                        </AnimatedButton>
+                        <AnimatedButton variant="secondary" className="flex-1 sm:flex-none !px-4 sm:!px-12 !py-3 sm:!py-5 !text-[9px] sm:!text-sm !text-primary !shadow-none hover:!shadow-none">
+                          Explore Venue
+                        </AnimatedButton>
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </SwiperSlide>
@@ -149,14 +176,6 @@ const HeroSection = () => {
       </Swiper>
 
       <style>{`
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-30px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-        
         .swiper-button-disabled {
           opacity: 0.3;
           cursor: not-allowed !important;

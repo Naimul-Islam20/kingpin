@@ -100,7 +100,7 @@ const EatsDrinks = () => {
           {/* Swiper Slider */}
           <Swiper
             modules={[Navigation, Autoplay, Pagination]}
-            spaceBetween={30}
+            spaceBetween={20}
             slidesPerView={1}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             pagination={{ clickable: true, el: ".eats-pagination" }}
@@ -125,7 +125,7 @@ const EatsDrinks = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="px-8 pb-10 flex flex-col flex-grow">
+                  <div className="px-5 pb-10 flex flex-col flex-grow">
                     <h4 className="text-2xl font-black uppercase text-black mb-4 group-hover:text-primary transition-colors line-clamp-1 overflow-hidden h-[32px]">
                       {brand.title}
                     </h4>

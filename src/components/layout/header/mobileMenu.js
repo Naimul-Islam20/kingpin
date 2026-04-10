@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { GoChevronUp, GoChevronDown } from "react-icons/go";
 import AnimatedButton from "@/components/ui/annimation_button";
 
@@ -24,22 +25,28 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
 
   return (
     <>
-      {isOpen && (
-        <button
-          type="button"
-          className="fixed inset-0 z-40 cursor-default bg-black/30 border-0 p-0"
-          onClick={onClose}
-          aria-label="Close menu"
-        />
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.button
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40 cursor-default bg-black/60 backdrop-blur-sm border-0 p-0"
+              onClick={onClose}
+              aria-label="Close menu"
+            />
 
-      <div
-        ref={menuRef}
-        className={`fixed top-0 right-0 z-50 flex h-full min-h-screen w-4/5 max-w-xs flex-col bg-white shadow-lg transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
-        }`}
-        aria-hidden={!isOpen}
-      >
+            <motion.div
+              ref={menuRef}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 z-50 flex h-full min-h-screen w-[280px] flex-col bg-white shadow-2xl"
+              aria-hidden={!isOpen}
+            >
         <div className="flex shrink-0 items-center justify-between border-b border-gray-300 p-4">
           <h2 className="text-xl font-semibold text-black">Menu</h2>
           <button
@@ -79,25 +86,33 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
                         )}
                       </button>
 
-                      {activeMenu === menu.id && (
-                        <ul className="mt-2 space-y-1 pl-2">
-                          {menu.child.map((child, idx) => (
-                            <li key={idx}>
-                              <Link
-                                href={
-                                  child.path && child.path !== ""
-                                    ? child.path
-                                    : "#"
-                                }
-                                onClick={onClose}
-                                className="block rounded py-2 text-sm font-medium text-black hover:bg-gray-100"
-                              >
-                                {child.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                      <AnimatePresence>
+                        {activeMenu === menu.id && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="mt-1 space-y-0 pl-4 overflow-hidden"
+                          >
+                            {menu.child.map((child, idx) => (
+                              <li key={idx}>
+                                <Link
+                                  href={
+                                    child.path && child.path !== ""
+                                      ? child.path
+                                      : "#"
+                                  }
+                                  onClick={onClose}
+                                  className="block py-2 text-xs font-semibold text-gray-600 hover:text-primary transition-colors"
+                                >
+                                  {child.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
                     </>
                   ) : (
                     <Link
@@ -128,8 +143,11 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
               </AnimatedButton>
             </Link>
           </div>
-        </div>
-      </div>
+          </div>
+        </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -64,7 +64,7 @@ const Rewards = () => {
     <section className="pt-10 pb-20 md:pt-16 md:pb-20 bg-gray-50 overflow-hidden font-[family-name:var(--font-montserrat)] text-[#1a1a1a]">
       <div className="maaleen-container">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-24 px-4">
+        <div className="text-center mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -74,22 +74,22 @@ const Rewards = () => {
             <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">
               KINPIN REWARD CARD
             </h2>
-            <h3 className="text-4xl md:text-6xl font-black uppercase leading-tight">
+            <h3 className="text-3xl md:text-6xl font-black uppercase leading-tight">
               Rewards & Loyalty 
             </h3>
-            <div className="mt-8 h-[3px] w-20 bg-primary mx-auto" />
+            <div className="mt-6 md:mt-8 h-[3px] w-16 md:w-20 bg-primary mx-auto" />
           </motion.div>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 sm:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-4 lg:gap-4">
           {rewardCards.map((card, index) => (
             <div
               key={index}
               className="flex flex-col group cursor-pointer overflow-hidden rounded-none bg-white shadow transition-all duration-500 border border-gray-100"
             >
               {/* Top Card Part */}
-              <div className={`relative h-56 bg-gradient-to-tr ${card.gradient} p-8 flex flex-col justify-between overflow-hidden`}>
+              <div className={`relative h-48 md:h-56 bg-gradient-to-tr ${card.gradient} p-6 md:p-8 flex flex-col justify-between overflow-hidden`}>
                 {/* Sequential Shiny Effect (Automatic) */}
                 <motion.div 
                   animate={{ left: ["-100%", "100%"] }}
@@ -124,13 +124,13 @@ const Rewards = () => {
               </div>
 
               {/* Bottom Details Part (Joined) */}
-              <div className="p-8 flex flex-col flex-grow">
-                <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-6 text-primary">Membership Benefits</h5>
-                <ul className="space-y-4 mb-10">
+              <div className="p-6 md:p-8 flex flex-col flex-grow">
+                <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 md:mb-6 text-primary">Membership Benefits</h5>
+                <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10">
                   {card.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start gap-3">
-                      <FiCheck className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-gray-600 text-[13px] font-semibold leading-tight">{feature}</span>
+                    <li key={fIndex} className="flex items-start gap-2 md:gap-3">
+                      <FiCheck className="w-3.5 h-3.5 text-green-500 mt-0.5 shrink-0" />
+                      <span className="text-gray-600 text-[12px] md:text-[13px] font-semibold leading-tight">{feature}</span>
                     </li>
                   ))}
                 </ul>

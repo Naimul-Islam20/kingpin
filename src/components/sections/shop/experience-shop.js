@@ -47,7 +47,7 @@ const ExperienceShop = () => {
     <section className="pt-10 pb-10 md:pt-16 md:pb-16 bg-white overflow-hidden font-[family-name:var(--font-montserrat)] text-[#1a1a1a]">
       <div className="maaleen-container">
         {/* Header Area */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-8 px-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-20 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const ExperienceShop = () => {
             transition={{ duration: 1.5, ease: smoothEase }}
           >
             <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">The Lifestyle</h2>
-            <h3 className="text-4xl md:text-6xl font-black uppercase leading-none tracking-tighter">
+            <h3 className="text-3xl md:text-6xl font-black uppercase leading-none tracking-tighter">
               Experience <span className="text-primary">Shop</span>
             </h3>
           </motion.div>
@@ -65,7 +65,7 @@ const ExperienceShop = () => {
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 1.2, delay: 0.3, ease: smoothEase }}
-             className="flex items-center gap-4 group cursor-pointer"
+             className="hidden md:flex items-center gap-4 group cursor-pointer"
           >
             <span className="text-xs font-black uppercase tracking-widest border-b-2 border-[#1a1a1a] pb-1">Visit Full Shop</span>
             <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-[#1a1a1a] group-hover:text-white transition-all duration-700">
@@ -75,7 +75,7 @@ const ExperienceShop = () => {
         </div>
 
         {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[700px] px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[700px]">
           
           {/* Item 1: Large Hoodie */}
           <motion.div 
@@ -83,15 +83,15 @@ const ExperienceShop = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.8, ease: smoothEase }}
-            className="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-gray-100 cursor-pointer"
+            className="col-span-2 md:col-span-2 md:row-span-2 relative group overflow-hidden bg-gray-100 cursor-pointer h-[400px] md:h-auto"
           >
             <Image src={products[0].image} alt={products[0].title} fill className="object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-1000" />
-            <div className="absolute bottom-10 left-10 text-white z-10">
+            <div className="absolute inset-x-6 bottom-6 md:bottom-10 md:left-10 text-white z-10">
               <span className="text-[10px] uppercase font-black tracking-widest bg-primary px-3 py-1 mb-4 inline-block">{products[0].category}</span>
-              <h4 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-3 translate-x-0 group-hover:translate-x-2 transition-transform duration-1000 ease-out">{products[0].title}</h4>
-              <p className="text-lg font-bold opacity-80 mb-6">{products[0].price}</p>
-              <button className="flex items-center gap-2 text-xs font-black uppercase tracking-widest group/btn">
+              <h4 className="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-3 translate-x-0 group-hover:translate-x-2 transition-transform duration-1000 ease-out">{products[0].title}</h4>
+              <p className="text-base md:text-lg font-bold opacity-80 mb-6">{products[0].price}</p>
+              <button className="flex items-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest group/btn">
                 Shop Now <FiArrowRight className="group-hover/btn:translate-x-2 transition-transform duration-700" />
               </button>
             </div>
@@ -103,17 +103,17 @@ const ExperienceShop = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.8, delay: 0.2, ease: smoothEase }}
-            className="md:col-span-2 md:row-span-1 relative group overflow-hidden bg-gray-200 cursor-pointer"
+            className="col-span-2 md:col-span-2 md:row-span-1 relative group overflow-hidden bg-gray-200 cursor-pointer h-[220px] md:h-auto"
           >
             <Image src={products[1].image} alt={products[1].title} fill className="object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-1000" />
-            <div className="absolute inset-x-8 bottom-8 flex justify-between items-end text-white z-10">
+            <div className="absolute inset-x-4 bottom-4 md:inset-x-8 md:bottom-8 flex justify-between items-end text-white z-10">
               <div className="translate-y-0 group-hover:-translate-y-1 transition-transform duration-700">
-                <h4 className="text-xl md:text-2xl font-black uppercase mb-1">{products[1].title}</h4>
-                <p className="text-sm font-bold opacity-70">{products[1].price}</p>
+                <h4 className="text-base md:text-2xl font-black uppercase mb-1">{products[1].title}</h4>
+                <p className="text-[10px] md:text-sm font-bold opacity-70">{products[1].price}</p>
               </div>
-              <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:bg-white group-hover:text-black transition-all duration-700">
-                <FiShoppingBag className="w-5 h-5" />
+              <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:bg-white group-hover:text-black transition-all duration-700">
+                <FiShoppingBag className="w-3 h-3 md:w-5 md:h-5" />
               </div>
             </div>
           </motion.div>
@@ -124,13 +124,13 @@ const ExperienceShop = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.8, delay: 0.4, ease: smoothEase }}
-            className="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-gray-100 cursor-pointer"
+            className="col-span-1 md:col-span-1 md:row-span-1 relative group overflow-hidden bg-gray-100 cursor-pointer h-[180px] md:h-auto"
           >
             <Image src={products[2].image} alt={products[2].title} fill className="object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent opacity-100 group-hover:opacity-80 transition-opacity duration-1000" />
-            <div className="absolute top-6 left-6 text-white z-10">
-              <h4 className="text-[13px] font-black uppercase leading-tight mb-1 group-hover:text-primary transition-colors duration-500">{products[2].title}</h4>
-              <p className="text-[11px] font-bold opacity-90">{products[2].price}</p>
+            <div className="absolute top-4 left-4 md:top-6 md:left-6 text-white z-10">
+              <h4 className="text-[11px] md:text-[13px] font-black uppercase leading-tight mb-1 group-hover:text-primary transition-colors duration-500">{products[2].title}</h4>
+              <p className="text-[9px] md:text-[11px] font-bold opacity-90">{products[2].price}</p>
             </div>
           </motion.div>
 
@@ -140,18 +140,32 @@ const ExperienceShop = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.8, delay: 0.6, ease: smoothEase }}
-            className="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-[#1a1a1a] cursor-pointer"
+            className="col-span-1 md:col-span-1 md:row-span-1 relative group overflow-hidden bg-[#1a1a1a] cursor-pointer h-[180px] md:h-auto"
           >
             <Image src={products[3].image} alt={products[3].title} fill className="object-cover opacity-50 transition-transform duration-[2000ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 group-hover:opacity-70" />
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-4 z-10">
-              <h4 className="text-white text-lg font-black uppercase tracking-tight mb-2 leading-none group-hover:scale-105 transition-transform duration-700">{products[3].title}</h4>
-              <span className="text-primary text-[10px] font-black uppercase tracking-widest border border-primary px-4 py-2 mt-4 inline-block opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover:translate-y-0">
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-2 md:p-4 z-10">
+              <h4 className="text-white text-sm md:text-lg font-black uppercase tracking-tight mb-2 leading-none group-hover:scale-105 transition-transform duration-700">{products[3].title}</h4>
+              <span className="text-primary text-[8px] md:text-[10px] font-black uppercase tracking-widest border border-primary px-3 md:px-4 py-1.5 md:py-2 mt-2 md:mt-4 inline-block opacity-0 group-hover:opacity-100 transition-all duration-1000 transform translate-y-4 group-hover:translate-y-0">
                 View Details
               </span>
             </div>
           </motion.div>
 
         </div>
+
+        {/* Mobile View Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: smoothEase }}
+          className="flex md:hidden items-center justify-center gap-4 mt-10 group cursor-pointer"
+        >
+          <span className="text-xs font-black uppercase tracking-widest border-b-2 border-[#1a1a1a] pb-1">Visit Full Shop</span>
+          <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-[#1a1a1a] group-hover:text-white transition-all duration-700">
+            <FiArrowRight />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

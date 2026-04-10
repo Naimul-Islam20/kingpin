@@ -17,7 +17,7 @@ const Newsletter = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:max-w-xl text-center lg:text-left"
           >
-            <h2 className="text-2xl md:text-3xl font-black uppercase italic leading-tight tracking-tighter mb-1">
+            <h2 className="text-2xl md:text-3xl font-black uppercase leading-tight tracking-tighter mb-1">
               Be the first <span className="text-primary">to know</span>
             </h2>
             <p className="text-gray-400 text-[10px] md:text-[12px] font-semibold uppercase tracking-[0.2em] opacity-80 leading-relaxed">
@@ -33,16 +33,16 @@ const Newsletter = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="w-full lg:max-w-xl" 
           >
-            <form className="flex flex-col sm:flex-row gap-0 group">
+            <form className="flex flex-row gap-0 group">
               <input 
                 type="email" 
                 placeholder="YOUR EMAIL ADDRESS" 
-                className="flex-grow bg-[#2a2a2a] border-none text-white px-6 py-4 focus:bg-[#333333] outline-none text-[10px] font-bold tracking-widest transition-all placeholder:text-gray-500 rounded-none w-full"
+                className="flex-grow bg-[#2a2a2a] border-none text-white px-4 md:px-6 py-4 focus:bg-[#333333] outline-none text-[10px] font-bold tracking-widest transition-all placeholder:text-gray-500 rounded-none w-full"
                 required
               />
               <button 
                 type="submit" 
-                className="bg-primary text-white px-10 py-4 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-[#1a1a1a] transition-all duration-300 flex items-center justify-center gap-2 shrink-0 rounded-none w-full sm:w-auto"
+                className="bg-primary text-white px-6 md:px-10 py-4 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-[#1a1a1a] transition-all duration-300 flex items-center justify-center gap-2 shrink-0 rounded-none w-auto"
               >
                 Join <FiSend className="w-4 h-4" />
               </button>
