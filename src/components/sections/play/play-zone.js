@@ -43,9 +43,10 @@ const ChildrenPlayZone = () => {
               className="relative w-full h-[450px] md:h-[600px] lg:h-full min-h-[500px] rounded-[40px] overflow-hidden shadow-2xl group"
             >
               <Image 
-                src="/Play.jpg" 
+                src="https://images.unsplash.com/photo-1566411520896-01e7ca4726af?q=80&w=2070&auto=format&fit=crop" 
                 alt="Outdoor Play" 
                 fill
+                unoptimized={true}
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
