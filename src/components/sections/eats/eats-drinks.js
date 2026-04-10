@@ -12,61 +12,61 @@ const brandData = [
     title: "Burger King",
     description: "Savor the authentic Flame-Grilled Whopper and original Burger King favorites, served fresh directly to your table.",
     image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop",
-    cta: "View Original Menu"
+    cta: "Order Menu"
   },
   {
     title: "KFC Special",
     description: "The world's most famous Finger Lickin' Good fried chicken, served with the original 11 herbs and spices you love.",
     image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop",
-    cta: "Explore KFC Menu"
+    cta: "Order Menu"
   },
   {
     title: "Pizza Hut",
     description: "Enjoy the iconic Pan Pizza and signature crusts from Pizza Hut, served fresh for an authentic dining experience.",
     image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=2070&auto=format&fit=crop",
-    cta: "View Original Menu"
+    cta: "Order Menu"
   },
   {
     title: "Nando's Peri-Peri",
     description: "Experience the original flame-grilled PERi-PERi chicken from Nando's, prepared exactly how it's meant to be.",
     image: "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=2070&auto=format&fit=crop",
-    cta: "Explore Nando's Menu"
+    cta: "Order Menu"
   },
   {
     title: "Taco Bell",
     description: "Authentic Taco Bell tacos, burritos, and more. Satisfy your Tex-Mex cravings with the original flavors.",
     image: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=2071&auto=format&fit=crop",
-    cta: "View Original Menu"
+    cta: "Order Menu"
   },
   {
     title: "Starbucks Treats",
     description: "Your favorite Starbucks beverages and pastries, expertly served for an authentic coffee-house experience.",
     image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop",
-    cta: "Original Menu"
+    cta: "Order Menu"
   },
   {
     title: "Subway Fresh",
     description: "Custom-made sandwiches and salads prepared fresh right in front of you with your choice of toppings.",
     image: "https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?q=80&w=2070&auto=format&fit=crop",
-    cta: "Original Menu"
+    cta: "Order Menu"
   },
   {
     title: "Domino's Pizza",
     description: "Hot and fresh pizzas delivered straight from the oven to your table. Enjoy the classic flavors you love.",
     image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop",
-    cta: "View Original Menu"
+    cta: "Order Menu"
   },
   {
     title: "Dunkin' Donuts",
     description: "America's favorite coffee and donuts. Treat yourself to a variety of sweet treats and premium coffee.",
     image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=2070&auto=format&fit=crop",
-    cta: "Original Menu"
+    cta: "Order Menu"
   },
   {
     title: "Hardee's Burgers",
     description: "Famous for thickburgers and made-from-scratch biscuits. Experience the authentic taste of Hardee's.",
     image: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=2070&auto=format&fit=crop",
-    cta: "Explore Menu"
+    cta: "Order Menu"
   }
 ];
 
@@ -129,9 +129,7 @@ const EatsDrinks = () => {
                     <h4 className="text-2xl font-black uppercase text-black mb-4 group-hover:text-primary transition-colors line-clamp-1 overflow-hidden h-[32px]">
                       {brand.title}
                     </h4>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-8 flex-grow font-light line-clamp-3 overflow-hidden min-h-[72px]">
-                      {brand.description}
-                    </p>
+
                     <button className="relative w-max text-xs sm:text-sm font-bold uppercase tracking-widest text-black group/btn mt-auto">
                       <span className="relative z-10 transition-colors group-hover/btn:text-primary">
                         {brand.cta}
