@@ -22,7 +22,7 @@ export default function CustomPage() {
 
       {/* Full width Description */}
       <p className="text-sm sm:text-base md:text-lg md:text-center text-justify text-gray-700 w-full">
-        At Kinpin, great food and drinks are just as important as the fun. Our
+        At Kingpin, great food and drinks are just as important as the fun. Our
         menu is packed with delicious options that’ll fuel you up after an
         intense game or keep the party going. From chef-crafted dishes to
         signature cocktails, we've got something for everyone. So sit back, grab

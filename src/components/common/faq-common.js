@@ -18,7 +18,7 @@ export default function FaqPage() {
       a: "A maximum of 6 people are allowed per bowling lane. If you have more people playing and are keen to have lanes that are next to each other, make an online booking above.",
     },
     {
-      q: "How much does bowling cost at Kinpin?",
+      q: "How much does bowling cost at Kingpin?",
       a: "To find rates for your preferred time and location, check out the pricing menu at the top right of this page. Alternatively, visit the pricing page for activity bundle prices. t forget, whatever our standard package prices are, ",
     },
   ];
@@ -33,7 +33,7 @@ export default function FaqPage() {
         {/* Left column */}
         <section className="md:col-span-4">
           <h1 className="text-3xl uppercase md:text-4xl font-extrabold text-slate-900">
-            FREQUENTLY ASKED QUESTIONS ABOUT BOWLING AT KINPIN
+            FREQUENTLY ASKED QUESTIONS ABOUT BOWLING AT KINGPIN
           </h1>
         </section>
 

@@ -14,6 +14,7 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Mocked login state
 
   const closeMobileMenu = useCallback(() => setIsMobileOpen(false), []);
 
@@ -34,7 +35,6 @@ export default function Header() {
 
   // New Menu Items
   const navMenus = [
-    { id: 1, menu_name: "Summer Season Pass", path: "/summer-pass" },
     { 
       id: 2, 
       menu_name: "Parties & Events", 
@@ -47,10 +47,8 @@ export default function Header() {
         { name: "Meetings", path: "/meetings" },
       ]
     },
-    { id: 3, menu_name: "Specials", path: "#" },
+    { id: 3, menu_name: "kingpin fastivals", path: "#" },
     { id: 4, menu_name: "Eat & Drink", path: "#" },
-    { id: 5, menu_name: "Leagues", path: "#" },
-    { id: 6, menu_name: "Find a Location", path: "#" },
   ];
 
   return (
@@ -61,37 +59,32 @@ export default function Header() {
           <div className="w-full relative flex items-center justify-center">
             {/* Left Brands - Absolute Left */}
             <div className="hidden lg:flex absolute left-0 items-center gap-4">
-              <Link href="#" className="group flex items-center gap-1">
-                <span className="text-[10px] xl:text-xs font-black uppercase tracking-widest text-[#1a1a1a] opacity-40 group-hover:opacity-100 transition-opacity">
-                  Bowlero
-                </span>
-              </Link>
-              <div className="w-[1px] h-3 bg-gray-200" />
-              <Link href="#" className="group flex items-center gap-1">
-                <span className="text-[10px] xl:text-xs font-black uppercase tracking-widest text-[#1a1a1a] opacity-40 group-hover:opacity-100 transition-opacity">
-                  AMF
-                </span>
-              </Link>
             </div>
 
             {/* Logo - Centered Top */}
             <div className="select-none">
               <Link href="/" onClick={closeMobileMenu}>
                 <span className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-primary">
-                  kinpin
+                  kingpin
                 </span>
               </Link>
             </div>
 
             {/* Desktop Buttons - Absolute Right */}
             <div className="hidden lg:flex absolute right-0 items-center gap-3">
-              <AnimatedButton className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[160px] !shadow-none hover:!shadow-none">
-                PRIVATE DINING
-              </AnimatedButton>
-
-              <AnimatedButton variant="secondary" className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[160px] !shadow-none hover:!shadow-none hover:!border-primary !text-primary transition-colors">
-                BOOK AN EVENT
-              </AnimatedButton>
+              {isLoggedIn ? (
+                <Link href="/account">
+                  <AnimatedButton className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[120px] !shadow-none hover:!shadow-none uppercase">
+                    Account
+                  </AnimatedButton>
+                </Link>
+              ) : (
+                <Link href="/signup">
+                  <AnimatedButton className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[120px] !shadow-none hover:!shadow-none uppercase">
+                    Sign Up
+                  </AnimatedButton>
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button - Absolute Right */}

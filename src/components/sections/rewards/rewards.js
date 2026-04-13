@@ -72,7 +72,7 @@ const Rewards = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">
-              KINPIN REWARD CARD
+              KINGPIN REWARD CARD
             </h2>
             <h3 className="text-3xl md:text-6xl font-black uppercase leading-tight">
               Rewards & Loyalty 
@@ -109,7 +109,7 @@ const Rewards = () => {
                     <span className="text-[10px] font-black uppercase tracking-widest">{card.highlight}</span>
                   </div>
                   <div className={`text-xl font-black uppercase tracking-tighter ${card.textColor}`}>
-                    Kinpin
+                    Kingpin
                   </div>
                 </div>
 

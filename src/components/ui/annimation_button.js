@@ -27,7 +27,7 @@ const AnimatedButton = ({
       />
       
       {/* Label Text Layer */}
-      <span className={`relative z-10 transition-colors duration-300
+      <span className={`relative z-10 transition-colors duration-300 flex items-center justify-center gap-2
         ${isPrimary ? "group-hover:text-black" : "group-hover:text-white"}`}>
         {children}
       </span>

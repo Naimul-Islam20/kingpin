@@ -23,7 +23,7 @@ export default function CustomTwoPage() {
       {/* Full width Description */}
       <p className="text-sm sm:text-base md:text-lg md:text-center text-justify text-gray-700 w-full">
         Looking for the perfect place to host your next celebration or event?
-        Kinpin has you covered! From birthdays and parties to corporate events
+        Kingpin has you covered! From birthdays and parties to corporate events
         and team-building, we offer custom packages, great food, and
         state-of-the-art entertainment. Let us handle the details so you can
         focus on the fun.

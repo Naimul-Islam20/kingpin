@@ -7,7 +7,7 @@ import { FiShoppingBag, FiArrowRight } from "react-icons/fi";
 const products = [
   {
     id: 1,
-    title: "Kinpin Signature Hoodie",
+    title: "Kingpin Signature Hoodie",
     category: "Apparel",
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=2070&auto=format&fit=crop",
     price: "$55.00",
