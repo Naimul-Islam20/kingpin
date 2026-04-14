@@ -75,6 +75,18 @@ export const REWARD_CARD_TIERS = [
       "Monthly premium pass perks",
     ],
   },
+  {
+    id: "family",
+    title: "Family Card",
+    annualFeeBDT: 3200,
+    earnMultiplier: 2,
+    highlight: "Family Value",
+    benefits: [
+      "Shared points wallet for up to 4 members",
+      "Family weekend bundle offers",
+      "Priority lanes on birthdays and school breaks",
+    ],
+  },
 ];
 
 export function getRewardTierById(tierId) {

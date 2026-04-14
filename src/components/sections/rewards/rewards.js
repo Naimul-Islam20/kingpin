@@ -10,6 +10,7 @@ const cardStyles = {
   silver: "from-zinc-500 via-zinc-300 to-zinc-500 text-zinc-900",
   gold: "from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-[#5d4037]",
   platinum: "from-[#111111] via-[#3f3f46] to-[#0a0a0a] text-white",
+  family: "from-[#155e75] via-[#67e8f9] to-[#0f766e] text-white",
 };
 
 const Rewards = () => {
@@ -35,7 +36,7 @@ const Rewards = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {REWARD_CARD_TIERS.map((card, index) => (
             <div
               key={card.id}
@@ -70,6 +71,9 @@ const Rewards = () => {
                   <h4 className={`text-2xl font-black uppercase ${card.textColor}`}>
                     {card.title}
                   </h4>
+                  <p className={`mt-1 text-xs font-black uppercase tracking-wider ${card.textColor} opacity-90`}>
+                    {formatBDT(card.annualFeeBDT)} / year
+                  </p>
                   <div className={`mt-2 text-[8px] font-bold tracking-[3px] uppercase ${card.textColor} opacity-50`}>
                     1234 5678 9012 3456
                   </div>
@@ -88,13 +92,8 @@ const Rewards = () => {
                   ))}
                 </ul>
 
-                <div className="mb-4 rounded bg-gray-100 p-3 text-xs text-gray-700">
-                  <p className="font-semibold">Annual Fee</p>
-                  <p>{formatBDT(card.annualFeeBDT)}</p>
-                </div>
-
                 <Link href={`/membership?tier=${card.id}`} className="mt-auto block">
-                  <AnimatedButton className="w-full !bg-[#1a1a1a] !text-white !border-[#1a1a1a] hover:!border-[#1a1a1a] !shadow-none hover:!shadow-none transition-colors">
+                  <AnimatedButton className="w-full !py-2 !text-[10px] !tracking-[0.12em] !bg-[#1a1a1a] !text-white !border-[#1a1a1a] hover:!border-[#1a1a1a] !shadow-none hover:!shadow-none transition-colors">
                     Apply {card.title}
                   </AnimatedButton>
                 </Link>
