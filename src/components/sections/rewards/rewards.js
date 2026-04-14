@@ -1,63 +1,16 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiCheck, FiAward } from "react-icons/fi";
 import AnimatedButton from "@/components/ui/annimation_button";
+import { REWARD_CARD_TIERS, formatBDT } from "@/components/booking/bookingData";
 
-const rewardCards = [
-  {
-    type: "Family",
-    title: "Family Card",
-    gradient: "from-[#ff6b6b] via-[#f06292] to-[#c2185b]",
-    textColor: "text-white",
-    features: [
-      "Group Discounts (Up to 6 people)",
-      "Pizza & Drinks Combo Deals",
-      "Shared Points Pool",
-      "Dedicated Family Events"
-    ],
-    highlight: "Group Savings"
-  },
-  {
-    type: "Silver",
-    title: "Silver Card",
-    gradient: "from-gray-400 via-gray-200 to-gray-500",
-    textColor: "text-gray-800",
-    features: [
-      "5% Discount on all Games",
-      "Free Shoe Rental on Weekdays",
-      "Exclusive Birthday Invitations",
-      "Collect 1 point per $10 spent"
-    ],
-    highlight: "Essential Entry"
-  },
-  {
-    type: "Gold",
-    title: "Gold Card",
-    gradient: "from-[#BF953F] via-[#FCF6BA] to-[#B38728]",
-    textColor: "text-[#5d4037]",
-    features: [
-      "10% Discount on Games & Snacks",
-      "Priority Lane Booking",
-      "1 Free Game per Month",
-      "Collect 2 points per $10 spent"
-    ],
-    highlight: "Most Popular"
-  },
-  {
-    type: "Platinum",
-    title: "Platinum Card",
-    gradient: "from-[#1a1a1a] via-[#4a4a4a] to-[#000000]",
-    textColor: "text-white",
-    features: [
-      "15% Flat Discount Storewide",
-      "VIP Lounge Access",
-      "Unlimited Free Shoe Rentals",
-      "Personal Host for Events"
-    ],
-    highlight: "Ultra Premium"
-  }
-];
+const cardStyles = {
+  silver: "from-zinc-500 via-zinc-300 to-zinc-500 text-zinc-900",
+  gold: "from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-[#5d4037]",
+  platinum: "from-[#111111] via-[#3f3f46] to-[#0a0a0a] text-white",
+};
 
 const Rewards = () => {
   return (
@@ -82,14 +35,14 @@ const Rewards = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-4 lg:gap-4">
-          {rewardCards.map((card, index) => (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {REWARD_CARD_TIERS.map((card, index) => (
             <div
-              key={index}
+              key={card.id}
               className="flex flex-col group cursor-pointer overflow-hidden rounded-none bg-white shadow transition-all duration-500 border border-gray-100"
             >
               {/* Top Card Part */}
-              <div className={`relative h-48 md:h-56 bg-gradient-to-tr ${card.gradient} p-6 md:p-8 flex flex-col justify-between overflow-hidden`}>
+              <div className={`relative h-48 md:h-56 bg-gradient-to-tr ${cardStyles[card.id]} p-6 md:p-8 flex flex-col justify-between overflow-hidden`}>
                 {/* Sequential Shiny Effect (Automatic) */}
                 <motion.div 
                   animate={{ left: ["-100%", "100%"] }}
@@ -100,7 +53,7 @@ const Rewards = () => {
                     delay: index * 1.5,
                     ease: "easeInOut"
                   }}
-                  className="absolute top-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[30deg] z-0" 
+                  className="absolute top-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[30deg] z-0"
                 />
                 
                 <div className="flex justify-between items-start relative z-10">
@@ -125,19 +78,26 @@ const Rewards = () => {
 
               {/* Bottom Details Part (Joined) */}
               <div className="p-6 md:p-8 flex flex-col flex-grow">
-                <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 md:mb-6 text-primary">Membership Benefits</h5>
+                <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 md:mb-3 text-primary">Membership Benefits</h5>
                 <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10">
-                  {card.features.map((feature, fIndex) => (
+                  {card.benefits.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-2 md:gap-3">
                       <FiCheck className="w-3.5 h-3.5 text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600 text-[12px] md:text-[13px] font-semibold leading-tight">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                
-                <AnimatedButton className="mt-auto w-full !bg-[#1a1a1a] !text-white !border-[#1a1a1a] hover:!border-[#1a1a1a] !shadow-none hover:!shadow-none transition-colors">
-                  Become a Member
-                </AnimatedButton>
+
+                <div className="mb-4 rounded bg-gray-100 p-3 text-xs text-gray-700">
+                  <p className="font-semibold">Annual Fee</p>
+                  <p>{formatBDT(card.annualFeeBDT)}</p>
+                </div>
+
+                <Link href={`/membership?tier=${card.id}`} className="mt-auto block">
+                  <AnimatedButton className="w-full !bg-[#1a1a1a] !text-white !border-[#1a1a1a] hover:!border-[#1a1a1a] !shadow-none hover:!shadow-none transition-colors">
+                    Apply {card.title}
+                  </AnimatedButton>
+                </Link>
               </div>
             </div>
           ))}

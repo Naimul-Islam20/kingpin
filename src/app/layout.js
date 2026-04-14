@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
 import ChatWidget from "@/components/layout/chat/chat";
+import AppProviders from "@/components/providers/AppProviders";
 
 // Montserrat import
 const montserrat = Montserrat({
@@ -21,10 +22,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.variable}>
       <body className="antialiased">
-        <Header />
-        {children}
-        <ChatWidget />
-        <Footer />
+        <AppProviders>
+          <Header />
+          {children}
+          <ChatWidget />
+          <Footer />
+        </AppProviders>
       </body>
     </html>
   );

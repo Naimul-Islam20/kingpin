@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import AnimatedButton from "@/components/ui/annimation_button";
 import { motion } from "framer-motion";
 import { FiMail, FiLock, FiUser, FiPhone, FiCalendar, FiArrowRight } from "react-icons/fi";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useDemoCustomer } from "@/context/DemoCustomerContext";
 
-export default function SignupPage() {
+function SignupPageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const fromMembership = searchParams.get("fromMembership") === "1";
+  const { pendingApplication, applyPendingAfterAuth } = useDemoCustomer();
   const [formData, setFormData] = useState({ 
     firstName: "", 
     lastName: "",
@@ -19,11 +23,26 @@ export default function SignupPage() {
     confirmPassword: ""
   });
 
+  useEffect(() => {
+    if (!fromMembership || !pendingApplication) return;
+    const parts = (pendingApplication.fullName || "").trim().split(" ");
+    setFormData((prev) => ({
+      ...prev,
+      firstName: parts[0] || prev.firstName,
+      lastName: parts.slice(1).join(" ") || prev.lastName,
+      phone: pendingApplication.phone || prev.phone,
+      dob: pendingApplication.dob || prev.dob,
+    }));
+  }, [fromMembership, pendingApplication]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Signup submitted:", formData);
-    // Dummy signup redirect
-    router.push("/account");
+    if (fromMembership) {
+      const linked = applyPendingAfterAuth();
+      router.push(linked ? "/account?tab=Membership&card=activated" : "/account?tab=Membership");
+      return;
+    }
+    router.push("/account?fromRegistration=1");
   };
 
   const inputClass = "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm font-semibold";
@@ -41,6 +60,11 @@ export default function SignupPage() {
           <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">The Kingpin Club</h2>
           <h1 className="text-4xl font-black uppercase tracking-tighter text-gray-900 mb-2">Create Account</h1>
           <div className="h-1 w-12 bg-primary mx-auto mb-6" />
+          {fromMembership && (
+            <p className="text-xs font-semibold text-amber-700">
+              Membership details pre-filled. Complete account to submit membership.
+            </p>
+          )}
         </motion.div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -102,7 +126,7 @@ export default function SignupPage() {
                   type="tel"
                   required
                   className={inputClass}
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+8801XXXXXXXXX"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 />
@@ -188,5 +212,19 @@ export default function SignupPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center bg-gray-50 font-[family-name:var(--font-montserrat)] text-sm text-gray-500">
+          Loading…
+        </main>
+      }
+    >
+      <SignupPageContent />
+    </Suspense>
   );
 }

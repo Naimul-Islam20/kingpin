@@ -1,20 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Link from "next/link";
 import AnimatedButton from "@/components/ui/annimation_button";
 import { motion } from "framer-motion";
 import { FiMail, FiLock, FiArrowRight } from "react-icons/fi";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useDemoCustomer } from "@/context/DemoCustomerContext";
 
-export default function LoginPage() {
+function LoginPageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const fromMembership = searchParams.get("fromMembership") === "1";
+  const { applyPendingAfterAuth } = useDemoCustomer();
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login submitted:", formData);
-    // Dummy login redirect
+    if (fromMembership) {
+      const linked = applyPendingAfterAuth();
+      router.push(linked ? "/account?tab=Membership&card=activated" : "/account?tab=Membership");
+      return;
+    }
     router.push("/account");
   };
 
@@ -30,6 +37,9 @@ export default function LoginPage() {
           <h2 className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4">Welcome Back</h2>
           <h1 className="text-4xl font-black uppercase tracking-tighter text-gray-900 mb-2">Member Login</h1>
           <div className="h-1 w-12 bg-primary mx-auto mb-6" />
+          {fromMembership && (
+            <p className="text-xs font-semibold text-amber-700">Login to continue your membership request.</p>
+          )}
         </motion.div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -108,5 +118,19 @@ export default function LoginPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center bg-gray-50 font-[family-name:var(--font-montserrat)] text-sm text-gray-500">
+          Loading…
+        </main>
+      }
+    >
+      <LoginPageContent />
+    </Suspense>
   );
 }

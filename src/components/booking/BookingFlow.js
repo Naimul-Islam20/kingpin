@@ -3,8 +3,16 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { FiCheckCircle } from "react-icons/fi";
+import { useDemoCustomer } from "@/context/DemoCustomerContext";
 import AnimatedButton from "@/components/ui/annimation_button";
-import { SERVICE_CONFIG, TIME_SLOTS, VENUES } from "./bookingData";
+import {
+  SERVICE_CONFIG,
+  TIME_SLOTS,
+  VENUES,
+  MEMBERSHIP_STATUS,
+  calculateEarnablePoints,
+  formatBDT,
+} from "./bookingData";
 
 const BASE_LABEL_CLASS = "mb-2 block text-[11px] font-semibold uppercase tracking-wide text-gray-500";
 const BASE_INPUT_CLASS =
@@ -12,7 +20,9 @@ const BASE_INPUT_CLASS =
 
 const STEPS = ["Date & Time", "Guests", "Contact", "Review"];
 
-export default function BookingFlow({ serviceType }) {
+export default function BookingFlow({ serviceType, membershipStatus: membershipStatusProp }) {
+  const { member } = useDemoCustomer();
+  const effectiveMembershipStatus = membershipStatusProp ?? member.membershipStatus;
   const config = SERVICE_CONFIG[serviceType];
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
@@ -43,6 +53,11 @@ export default function BookingFlow({ serviceType }) {
 
   const canContinue =
     (step === 1 && isStepOneReady) || (step === 2 && isStepTwoReady) || (step === 3 && isStepThreeReady);
+  const estimatedAmount = config.estimateAmount ?? 0;
+  const estimatedPoints =
+    effectiveMembershipStatus === MEMBERSHIP_STATUS.active
+      ? calculateEarnablePoints(serviceType, estimatedAmount)
+      : 0;
 
   if (submitted) {
     return (
@@ -77,6 +92,19 @@ export default function BookingFlow({ serviceType }) {
         </Link>
         <h1 className="mt-3 text-3xl font-bold text-black">{config.label}</h1>
         <p className="mt-1 text-sm text-gray-600">{config.description}</p>
+        <div className="mt-4 rounded-md border border-gray-200 bg-white p-3 text-sm">
+          <p className="font-medium text-gray-800">Estimated Spend: {formatBDT(estimatedAmount)}</p>
+          {effectiveMembershipStatus === MEMBERSHIP_STATUS.active ? (
+            <p className="mt-1 text-[#C27D2A]">Eligible reward points: {estimatedPoints}</p>
+          ) : (
+            <p className="mt-1 text-gray-600">
+              Points accrue only on an active Kingpin reward card.{" "}
+              <Link href="/membership" className="font-medium text-[#C27D2A] underline">
+                Apply for a card
+              </Link>
+            </p>
+          )}
+        </div>
 
         <div className="mt-6 grid grid-cols-4 gap-2">
           {STEPS.map((item, index) => (

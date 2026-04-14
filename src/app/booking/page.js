@@ -11,6 +11,9 @@ export default function BookingPage() {
         <p className="mt-2 max-w-2xl text-sm text-gray-600">
           A simple and consistent booking experience. Select your service to continue.
         </p>
+        <div className="mt-4 rounded-md border border-[#C27D2A] bg-amber-50 p-3 text-sm text-amber-900">
+          Looking for event booking or reservation? Use <strong>Book an Event</strong> below.
+        </div>
 
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           {services.map((service) => (
