@@ -9,12 +9,14 @@ import AnimatedButton from "@/components/ui/annimation_button";
 import MobileMenu from "./mobileMenu";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { useDemoCustomer } from "@/context/DemoCustomerContext";
+
 export default function Header() {
+  const { isAuthenticated } = useDemoCustomer();
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Mocked login state
 
   const closeMobileMenu = useCallback(() => setIsMobileOpen(false), []);
 
@@ -72,7 +74,7 @@ export default function Header() {
 
             {/* Desktop Buttons - Absolute Right */}
             <div className="hidden lg:flex absolute right-0 items-center gap-3">
-              {isLoggedIn ? (
+              {isAuthenticated ? (
                 <Link href="/dashboard">
                   <AnimatedButton className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[120px] !shadow-none hover:!shadow-none uppercase">
                     Dashboard

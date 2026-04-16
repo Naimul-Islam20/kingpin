@@ -6,7 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GoChevronUp, GoChevronDown } from "react-icons/go";
 import AnimatedButton from "@/components/ui/annimation_button";
 
+import { useDemoCustomer } from "@/context/DemoCustomerContext";
+
 const MobileMenu = ({ isOpen, onClose, menus }) => {
+  const { isAuthenticated } = useDemoCustomer();
   const [activeMenu, setActiveMenu] = useState(null);
   const menuRef = useRef(null);
 
@@ -59,8 +62,8 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
           </button>
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto p-4">
-          <ul className="space-y-0">
+        <div className="min-h-0 flex-1 overflow-y-auto p-4 flex flex-col">
+          <ul className="space-y-0 flex-grow">
             {menus.map((menu) => {
               const hasChildren = menu.has_child === 1 && Array.isArray(menu.child);
 
@@ -130,18 +133,36 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
             })}
           </ul>
 
-          <div className="mt-8 flex flex-row gap-2 px-0">
-            <Link href="#" onClick={onClose} className="flex-1">
-              <AnimatedButton className="w-full !px-1 !py-4 !text-[9px]">
-                PRIVATE DINING
-              </AnimatedButton>
-            </Link>
+          <div className="mt-auto space-y-4 pt-8">
+            <div className="flex flex-row gap-2">
+              <Link href="#" onClick={onClose} className="flex-1">
+                <AnimatedButton className="w-full !px-1 !py-4 !text-[9px]">
+                  PRIVATE DINING
+                </AnimatedButton>
+              </Link>
 
-            <Link href="#" onClick={onClose} className="flex-1">
-              <AnimatedButton variant="secondary" className="w-full !px-2 !py-4 !text-[9px]">
-                BOOK AN EVENT
-              </AnimatedButton>
-            </Link>
+              <Link href="#" onClick={onClose} className="flex-1">
+                <AnimatedButton variant="secondary" className="w-full !px-2 !py-4 !text-[9px]">
+                  BOOK AN EVENT
+                </AnimatedButton>
+              </Link>
+            </div>
+
+            <div className="pt-2">
+              {isAuthenticated ? (
+                <Link href="/dashboard" onClick={onClose}>
+                  <AnimatedButton className="w-full !py-4 !text-[10px] uppercase">
+                    Dashboard
+                  </AnimatedButton>
+                </Link>
+              ) : (
+                <Link href="/signup" onClick={onClose}>
+                  <AnimatedButton className="w-full !py-4 !text-[10px] uppercase">
+                    Sign Up
+                  </AnimatedButton>
+                </Link>
+              )}
+            </div>
           </div>
           </div>
         </motion.div>
@@ -151,5 +172,6 @@ const MobileMenu = ({ isOpen, onClose, menus }) => {
     </>
   );
 };
+
 
 export default MobileMenu;

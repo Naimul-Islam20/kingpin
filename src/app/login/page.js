@@ -28,12 +28,17 @@ function LoginPageContent() {
       phone: "",
       city: "",
     });
+    const tier = searchParams.get("tier");
+    if (tier) {
+      router.push(`/membership/payment?plan=${tier}`);
+      return;
+    }
     if (fromMembership) {
       const linked = applyPendingAfterAuth();
       router.push(linked ? "/dashboard/membership?card=activated" : "/dashboard/membership");
       return;
     }
-    router.push("/dashboard");
+    router.push("/dashboard?fromRegistration=1");
   };
 
   return (

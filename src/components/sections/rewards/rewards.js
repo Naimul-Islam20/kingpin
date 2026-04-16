@@ -1,10 +1,14 @@
 "use client";
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { FiCheck, FiAward } from "react-icons/fi";
 import AnimatedButton from "@/components/ui/annimation_button";
-import { REWARD_CARD_TIERS, formatBDT } from "@/components/booking/bookingData";
+import { REWARD_CARD_TIERS, formatBDT, getRewardTierById } from "@/components/booking/bookingData";
+import MembershipFlowModal from "@/components/membership/membership-flow-modal";
+import { useDemoCustomer } from "@/context/DemoCustomerContext";
 
 const cardStyles = {
   silver: "from-zinc-500 via-zinc-300 to-zinc-500 text-zinc-900",
@@ -14,6 +18,21 @@ const cardStyles = {
 };
 
 const Rewards = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { isAuthenticated } = useDemoCustomer();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const handleApply = (card) => {
+    if (isAuthenticated) {
+      router.push(`/membership/payment?plan=${card.id}`);
+    } else {
+      setSelectedPlan(card);
+      setModalOpen(true);
+    }
+  };
+
   return (
     <section className="pt-10 pb-20 md:pt-16 md:pb-20 bg-gray-50 overflow-hidden font-[family-name:var(--font-montserrat)] text-[#1a1a1a]">
       <div className="maaleen-container">
@@ -81,11 +100,14 @@ const Rewards = () => {
                   ))}
                 </ul>
 
-                <Link href={`/membership?tier=${card.id}`} className="mt-auto block">
-                  <AnimatedButton className="w-full !py-2 !text-[10px] !tracking-[0.12em] !bg-[#1a1a1a] !text-white !border-[#1a1a1a] hover:!border-[#1a1a1a] !shadow-none hover:!shadow-none transition-colors">
+                <div className="mt-auto block">
+                  <AnimatedButton 
+                    onClick={() => handleApply(card)}
+                    className="w-full !py-2 !text-[10px] !tracking-[0.12em] !bg-[#1a1a1a] !text-white !border-[#1a1a1a] hover:!border-[#1a1a1a] !shadow-none hover:!shadow-none transition-colors"
+                  >
                     Apply {card.title}
                   </AnimatedButton>
-                </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -99,8 +121,15 @@ const Rewards = () => {
           </a>
         </div>
       </div>
+
+      <MembershipFlowModal 
+        isOpen={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        plan={selectedPlan} 
+      />
     </section>
   );
 };
+
 
 export default Rewards;

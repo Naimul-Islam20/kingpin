@@ -1,4 +1,4 @@
-
+import { Suspense } from "react";
 import BookPage from "@/components/sections/book/booking";
 import CustomPage from "@/components/sections/custom/custom";
 
@@ -26,7 +26,9 @@ export default function Home() {
       <Attractions />
       <SummerPass />
       <ExperienceShop />
-      <Rewards />
+      <Suspense fallback={null}>
+        <Rewards />
+      </Suspense>
       <Newsletter />
       {/* <DiningTeaser /> */}
 

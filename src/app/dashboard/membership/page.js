@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import DashboardHeader from "@/components/layout/header/dashboard-header";
 import { HiOutlineTrophy } from "react-icons/hi2";
 import { FiCheck, FiAward } from "react-icons/fi";
 import { useDemoCustomer } from "@/context/DemoCustomerContext";
 import { MOCK_LEDGER, LEDGER_EVENT, REWARD_CARD_TIERS, formatBDT } from "@/components/booking/bookingData";
+import MembershipFlowModal from "@/components/membership/membership-flow-modal";
 
 const cardStyles = {
   silver: "from-zinc-500 via-zinc-300 to-zinc-500 text-zinc-900",
@@ -14,10 +17,18 @@ const cardStyles = {
 };
 
 export default function MembershipPage() {
-  const { member } = useDemoCustomer();
+  const { member, isAuthenticated } = useDemoCustomer();
+  const router = useRouter();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
   // Check if member has an active tier (not just 'Starter' or 'Guest' status)
   const hasActivePlan = member?.tier && member?.tier !== 'Starter' && member?.membershipStatus !== 'Guest';
+
+  const handleApply = (card) => {
+    setSelectedPlan(card);
+    setModalOpen(true);
+  };
 
   return (
     <>
@@ -122,6 +133,7 @@ export default function MembershipPage() {
                     </ul>
 
                     <button 
+                      onClick={() => handleApply(card)}
                       disabled={activeMatch}
                       className={`mt-auto w-full py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all
                         ${activeMatch 
@@ -138,6 +150,13 @@ export default function MembershipPage() {
           </div>
         </div>
       </div>
+
+      <MembershipFlowModal 
+        isOpen={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        plan={selectedPlan} 
+      />
     </>
   );
 }
+
