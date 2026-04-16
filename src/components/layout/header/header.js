@@ -73,9 +73,9 @@ export default function Header() {
             {/* Desktop Buttons - Absolute Right */}
             <div className="hidden lg:flex absolute right-0 items-center gap-3">
               {isLoggedIn ? (
-                <Link href="/account">
+                <Link href="/dashboard">
                   <AnimatedButton className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[120px] !shadow-none hover:!shadow-none uppercase">
-                    Account
+                    Dashboard
                   </AnimatedButton>
                 </Link>
               ) : (

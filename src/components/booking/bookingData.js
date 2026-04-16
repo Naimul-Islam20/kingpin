@@ -45,6 +45,9 @@ export const REWARD_CARD_TIERS = [
     annualFeeBDT: 1200,
     earnMultiplier: 1,
     highlight: "Starter",
+    discountLabel: "5% Game Discount",
+    bonusLabel: "Birthday Bonus Points",
+    facilityLabel: "Weekday Priority Queue",
     benefits: [
       "5% discount on selected games",
       "Weekday queue priority",
@@ -57,6 +60,9 @@ export const REWARD_CARD_TIERS = [
     annualFeeBDT: 2400,
     earnMultiplier: 2,
     highlight: "Most Popular",
+    discountLabel: "10% Game + Snack Discount",
+    bonusLabel: "Monthly Bonus Multiplier",
+    facilityLabel: "Priority Lane + Free Shoe Rental",
     benefits: [
       "10% discount on games and snacks",
       "Priority lane booking",
@@ -69,6 +75,9 @@ export const REWARD_CARD_TIERS = [
     annualFeeBDT: 4000,
     earnMultiplier: 3,
     highlight: "Premium",
+    discountLabel: "15% Flat Discount",
+    bonusLabel: "Premium Monthly Bonus",
+    facilityLabel: "VIP Counter Support",
     benefits: [
       "15% flat discount",
       "VIP counter support",
@@ -81,6 +90,9 @@ export const REWARD_CARD_TIERS = [
     annualFeeBDT: 3200,
     earnMultiplier: 2,
     highlight: "Family Value",
+    discountLabel: "12% Family Discount",
+    bonusLabel: "Family Weekend Bonus",
+    facilityLabel: "Shared Family Wallet (Up to 4)",
     benefits: [
       "Shared points wallet for up to 4 members",
       "Family weekend bundle offers",

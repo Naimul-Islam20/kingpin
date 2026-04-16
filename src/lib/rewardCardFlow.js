@@ -10,8 +10,6 @@ import {
   getRewardTierById,
 } from "@/components/booking/bookingData";
 
-const DEMO_OTP = "123456";
-
 function pad2(n) {
   return String(n).padStart(2, "0");
 }
@@ -55,34 +53,23 @@ export function isPhonePlausible(phone) {
   return digits.length >= 10 && digits.length <= 15;
 }
 
-export function validateRewardCardStep(step, form) {
-  const errors = [];
-  if (step === 1) {
-    if (!String(form.fullName || "").trim()) errors.push("Full name is required.");
-    if (!String(form.city || "").trim()) errors.push("City is required.");
-    if (!isPhonePlausible(form.phone)) errors.push("Enter a valid mobile number (10–15 digits).");
+export function validatePaymentInput({ method }) {
+  if (!method) return { ok: false, error: "Select a payment method." };
+  if (method !== "bkash" && method !== "nagad") {
+    return { ok: false, error: "Only bKash or Nagad is allowed in demo mode." };
   }
-  if (step === 2) {
-    if (String(form.otp || "").trim() !== DEMO_OTP) errors.push(`Enter the verification code sent to your phone. Sandbox code: ${DEMO_OTP}`);
-  }
-  if (step === 3) {
-    if (!String(form.dob || "").trim()) errors.push("Date of birth is required.");
-    if (!form.marketingConsent) errors.push("You must accept the reward card terms to continue.");
-  }
-  return { ok: errors.length === 0, errors };
+  return { ok: true, error: null };
 }
 
-export function buildPaidApplicationPayload(form, tierMeta) {
+export function buildPaidApplicationPayload(member, tierMeta, paymentMethod) {
   return {
-    fullName: String(form.fullName || "").trim(),
-    phone: String(form.phone || "").trim(),
-    city: String(form.city || "").trim(),
-    dob: form.dob,
-    otpVerified: true,
-    marketingConsent: Boolean(form.marketingConsent),
-    paymentMethod: form.paymentMethod,
+    fullName: String(member.fullName || "").trim(),
+    phone: String(member.phone || "").trim(),
+    city: String(member.city || "").trim(),
+    paymentMethod,
     paymentStatus: "paid",
-    paymentTransactionRef: String(form.paymentTransactionRef || "").trim(),
+    // NOTE: Demo mode auto-confirms payment. Real gateway/webhook will later provide transaction IDs.
+    paymentTransactionRef: "",
     selectedTierId: tierMeta.id,
     selectedTierTitle: tierMeta.title,
     membershipPlan: MEMBERSHIP_PLAN.type,

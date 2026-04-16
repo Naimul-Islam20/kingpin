@@ -12,17 +12,28 @@ function LoginPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const fromMembership = searchParams.get("fromMembership") === "1";
-  const { applyPendingAfterAuth } = useDemoCustomer();
+  const { applyPendingAfterAuth, completeProfileAfterAuth } = useDemoCustomer();
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const fullName = formData.email ? formData.email.split("@")[0].replace(/[._-]/g, " ") : "Kingpin Member";
+    completeProfileAfterAuth({
+      fullName: fullName
+        .split(" ")
+        .map((p) => (p ? p[0].toUpperCase() + p.slice(1) : ""))
+        .join(" ")
+        .trim(),
+      email: formData.email,
+      phone: "",
+      city: "",
+    });
     if (fromMembership) {
       const linked = applyPendingAfterAuth();
-      router.push(linked ? "/account?tab=Membership&card=activated" : "/account?tab=Membership");
+      router.push(linked ? "/dashboard/membership?card=activated" : "/dashboard/membership");
       return;
     }
-    router.push("/account");
+    router.push("/dashboard");
   };
 
   return (

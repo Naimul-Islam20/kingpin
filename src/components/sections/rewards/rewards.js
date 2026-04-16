@@ -37,26 +37,13 @@ const Rewards = () => {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {REWARD_CARD_TIERS.map((card, index) => (
+          {REWARD_CARD_TIERS.map((card) => (
             <div
               key={card.id}
               className="flex flex-col group cursor-pointer overflow-hidden rounded-none bg-white shadow transition-all duration-500 border border-gray-100"
             >
               {/* Top Card Part */}
               <div className={`relative h-48 md:h-56 bg-gradient-to-tr ${cardStyles[card.id]} p-6 md:p-8 flex flex-col justify-between overflow-hidden`}>
-                {/* Sequential Shiny Effect (Automatic) */}
-                <motion.div 
-                  animate={{ left: ["-100%", "100%"] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatDelay: 4.5,
-                    delay: index * 1.5,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute top-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[30deg] z-0"
-                />
-                
                 <div className="flex justify-between items-start relative z-10">
                   <div className={`flex items-center gap-2 ${card.textColor} opacity-90`}>
                     <FiAward className="w-5 h-5" />
@@ -84,7 +71,9 @@ const Rewards = () => {
               <div className="p-6 md:p-8 flex flex-col flex-grow">
                 <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 md:mb-3 text-primary">Membership Benefits</h5>
                 <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10">
-                  {card.benefits.map((feature, fIndex) => (
+                  {[card.discountLabel, card.bonusLabel, card.facilityLabel]
+                    .filter(Boolean)
+                    .map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-2 md:gap-3">
                       <FiCheck className="w-3.5 h-3.5 text-green-500 mt-0.5 shrink-0" />
                       <span className="text-gray-600 text-[12px] md:text-[13px] font-semibold leading-tight">{feature}</span>

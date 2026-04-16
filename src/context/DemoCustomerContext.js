@@ -59,19 +59,22 @@ const initialState = () => {
     return {
       member: migrateLegacyPendingMember(merged),
       pendingApplication: saved.pendingApplication ?? null,
+      isAuthenticated: Boolean(saved.isAuthenticated),
     };
   }
-  return { member: baseMember(), pendingApplication: null };
+  return { member: baseMember(), pendingApplication: null, isAuthenticated: false };
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "reset":
-      return { member: baseMember(), pendingApplication: null };
+      return { member: baseMember(), pendingApplication: null, isAuthenticated: false };
     case "hydrate":
       return action.payload;
     case "set_pending_application":
       return { ...state, pendingApplication: action.payload };
+    case "set_auth":
+      return { ...state, isAuthenticated: Boolean(action.payload) };
     case "patch_member":
       return { ...state, member: { ...state.member, ...action.payload } };
     case "complete_reward_card_onboarding": {
@@ -99,6 +102,28 @@ export function DemoCustomerProvider({ children }) {
 
   const patchMember = useCallback((payload) => {
     dispatch({ type: "patch_member", payload });
+  }, []);
+
+  const markAuthenticated = useCallback(() => {
+    dispatch({ type: "set_auth", payload: true });
+  }, []);
+
+  const markSignedOut = useCallback(() => {
+    dispatch({ type: "set_auth", payload: false });
+  }, []);
+
+  const completeProfileAfterAuth = useCallback((profile) => {
+    dispatch({
+      type: "patch_member",
+      payload: {
+        fullName: profile.fullName,
+        email: profile.email,
+        phone: profile.phone,
+        city: profile.city || "",
+        verification: { phoneVerified: false, emailVerified: true },
+      },
+    });
+    dispatch({ type: "set_auth", payload: true });
   }, []);
 
   const recordPaidRewardApplication = useCallback((application) => {
@@ -132,18 +157,26 @@ export function DemoCustomerProvider({ children }) {
     () => ({
       member: state.member,
       pendingApplication: state.pendingApplication,
+      isAuthenticated: state.isAuthenticated,
       recordPaidRewardApplication,
       applyPendingAfterAuth,
       renewAnnualMembership,
+      markAuthenticated,
+      markSignedOut,
+      completeProfileAfterAuth,
       patchMember,
       resetDemoSession: () => dispatch({ type: "reset" }),
     }),
     [
       state.member,
       state.pendingApplication,
+      state.isAuthenticated,
       recordPaidRewardApplication,
       applyPendingAfterAuth,
       renewAnnualMembership,
+      markAuthenticated,
+      markSignedOut,
+      completeProfileAfterAuth,
       patchMember,
     ]
   );

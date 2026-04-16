@@ -12,7 +12,7 @@ function SignupPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const fromMembership = searchParams.get("fromMembership") === "1";
-  const { pendingApplication, applyPendingAfterAuth } = useDemoCustomer();
+  const { pendingApplication, applyPendingAfterAuth, completeProfileAfterAuth } = useDemoCustomer();
   const [formData, setFormData] = useState({ 
     firstName: "", 
     lastName: "",
@@ -37,12 +37,18 @@ function SignupPageContent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    completeProfileAfterAuth({
+      fullName: `${formData.firstName} ${formData.lastName}`.trim(),
+      email: formData.email,
+      phone: formData.phone,
+      city: "",
+    });
     if (fromMembership) {
       const linked = applyPendingAfterAuth();
-      router.push(linked ? "/account?tab=Membership&card=activated" : "/account?tab=Membership");
+      router.push(linked ? "/dashboard/membership?card=activated" : "/dashboard/membership");
       return;
     }
-    router.push("/account?fromRegistration=1");
+    router.push("/dashboard?fromRegistration=1");
   };
 
   const inputClass = "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm font-semibold";
