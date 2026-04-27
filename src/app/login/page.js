@@ -121,6 +121,12 @@ function LoginPageContent() {
             <AnimatedButton type="submit" className="w-full !py-4 text-sm">
               Sign In <FiArrowRight className="ml-2" />
             </AnimatedButton>
+            <Link
+              href="/signup"
+              className="mt-3 inline-flex w-full items-center justify-center border-2 border-gray-300 bg-white py-3 text-[11px] font-black uppercase tracking-widest text-gray-800 transition hover:border-primary hover:text-primary"
+            >
+              Sign Up
+            </Link>
           </div>
         </form>
 

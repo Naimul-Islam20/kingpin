@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useReducer } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from "react";
 import { MEMBERSHIP_STATUS, MOCK_MEMBER } from "@/components/booking/bookingData";
 import { buildMemberAfterCardActivation, computeRenewalExpiry, migrateLegacyPendingMember } from "@/lib/rewardCardFlow";
 
@@ -52,17 +59,10 @@ function persist(state) {
   }
 }
 
-const initialState = () => {
-  const saved = loadPersisted();
-  if (saved?.member) {
-    const merged = { ...baseMember(), ...saved.member };
-    return {
-      member: migrateLegacyPendingMember(merged),
-      pendingApplication: saved.pendingApplication ?? null,
-      isAuthenticated: Boolean(saved.isAuthenticated),
-    };
-  }
-  return { member: baseMember(), pendingApplication: null, isAuthenticated: false };
+const DEFAULT_STATE = {
+  member: baseMember(),
+  pendingApplication: null,
+  isAuthenticated: false,
 };
 
 function reducer(state, action) {
@@ -98,7 +98,21 @@ function persistedReducer(state, action) {
 }
 
 export function DemoCustomerProvider({ children }) {
-  const [state, dispatch] = useReducer(persistedReducer, undefined, initialState);
+  const [state, dispatch] = useReducer(persistedReducer, DEFAULT_STATE);
+
+  useEffect(() => {
+    const saved = loadPersisted();
+    if (!saved?.member) return;
+    const merged = { ...baseMember(), ...saved.member };
+    dispatch({
+      type: "hydrate",
+      payload: {
+        member: migrateLegacyPendingMember(merged),
+        pendingApplication: saved.pendingApplication ?? null,
+        isAuthenticated: Boolean(saved.isAuthenticated),
+      },
+    });
+  }, []);
 
   const patchMember = useCallback((payload) => {
     dispatch({ type: "patch_member", payload });

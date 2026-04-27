@@ -27,15 +27,15 @@ export default function DashboardOverview() {
         subtitle={`Welcome back, ${member?.fullName?.split(' ')[0] || 'Member'}.`} 
       />
 
-      <div className="p-6 md:p-8 space-y-8 max-w-7xl mx-auto">
+      <div className="p-4 sm:p-5 md:p-8 space-y-6 md:space-y-8 max-w-7xl mx-auto">
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
           {stats.map((stat) => (
-            <div key={stat.name} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
+            <div key={stat.name} className="bg-white p-4 sm:p-5 md:p-6 rounded-xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-sm font-medium text-slate-500">{stat.name}</p>
-                  <p className="text-2xl font-bold text-slate-900 mt-1">{stat.value}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1 break-words">{stat.value}</p>
                 </div>
                 <div className={`${stat.bg} ${stat.color} p-2.5 rounded-lg`}>
                   <stat.icon size={20} />
@@ -45,7 +45,7 @@ export default function DashboardOverview() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 md:gap-8">
           {/* Recent Bookings List */}
           <div className="xl:col-span-2 space-y-4">
             <div className="flex items-center justify-between">
@@ -56,8 +56,8 @@ export default function DashboardOverview() {
             </div>
 
             <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-left border-collapse min-w-[560px]">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200">
                       <th className="px-6 py-4 text-xs font-semibold text-slate-600 uppercase tracking-wider">Type</th>
@@ -82,6 +82,25 @@ export default function DashboardOverview() {
                   </tbody>
                 </table>
               </div>
+              <div className="md:hidden divide-y divide-slate-100">
+                {MOCK_BOOKINGS.slice(0, 5).map((booking) => (
+                  <div key={booking.reference} className="p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-sm font-semibold text-slate-900">
+                          {SERVICE_CONFIG[booking.type].label}
+                        </p>
+                        <p className="mt-1 text-xs text-slate-600">{booking.dateTime}</p>
+                      </div>
+                      <span
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium ${STATUS_STYLES[booking.status]}`}
+                      >
+                        {booking.status}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -99,27 +118,27 @@ export default function DashboardOverview() {
               const cardClass = styles[currentTier.id];
 
               return (
-                <div className={`bg-gradient-to-tr ${cardClass} rounded-2xl p-6 shadow-xl relative overflow-hidden group min-h-[180px] flex flex-col justify-between`}>
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <HiOutlineCreditCard size={120} />
+                <div className={`bg-gradient-to-tr ${cardClass} rounded-2xl p-4 sm:p-5 md:p-6 shadow-xl relative overflow-hidden group min-h-[170px] sm:min-h-[180px] flex flex-col justify-between`}>
+                  <div className="absolute top-0 right-0 p-3 sm:p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <HiOutlineCreditCard size={96} className="sm:w-[120px] sm:h-[120px]" />
                   </div>
                   
                   <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-8">
+                    <div className="flex justify-between items-start mb-6 sm:mb-8">
                       <div className="w-8 h-8 opacity-40 border-2 border-current rounded-md flex items-center justify-center font-bold text-xs">K</div>
                       <p className="text-[10px] font-black uppercase tracking-widest opacity-80">{currentTier.highlight}</p>
                     </div>
                     
                     <div>
-                      <h3 className="text-lg font-black uppercase tracking-tight">{currentTier.title}</h3>
-                      <p className="text-sm font-bold opacity-80">{member?.fullName || "Valued Member"}</p>
+                      <h3 className="text-base sm:text-lg font-black uppercase tracking-tight">{currentTier.title}</h3>
+                      <p className="text-xs sm:text-sm font-bold opacity-80 break-words">{member?.fullName || "Valued Member"}</p>
                     </div>
                   </div>
 
-                  <div className="relative z-10 mt-6 flex justify-between items-end">
+                  <div className="relative z-10 mt-5 sm:mt-6 flex justify-between items-end gap-2">
                     <div>
                       <p className="text-[8px] font-bold uppercase tracking-widest opacity-60">Member ID</p>
-                      <p className="text-xs font-mono">{member?.id || "KP-102938"}</p>
+                      <p className="text-[11px] sm:text-xs font-mono break-all">{member?.id || "KP-102938"}</p>
                     </div>
                     <div className="text-right">
                       <p className="text-[10px] font-black uppercase tracking-tighter">Kingpin</p>
@@ -132,7 +151,7 @@ export default function DashboardOverview() {
             <div className="bg-blue-50 border border-blue-100 rounded-xl p-4">
               <h3 className="text-sm font-bold text-blue-900 mb-1">Upgrade your plan</h3>
               <p className="text-xs text-blue-700 mb-3">Get exclusive access to VIP lounges and priority bookings.</p>
-              <Link href="/dashboard/membership" className="inline-block bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+              <Link href="/dashboard/membership" className="inline-flex w-full sm:w-auto justify-center bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                 Upgrade Now
               </Link>
             </div>

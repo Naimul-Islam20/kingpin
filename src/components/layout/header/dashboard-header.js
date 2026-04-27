@@ -7,7 +7,7 @@ export default function DashboardHeader({ title, subtitle }) {
   const { member } = useDemoCustomer();
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 md:px-8 sticky top-0 z-20">
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between pl-16 pr-4 sm:pl-[4.5rem] sm:pr-5 md:px-8 sticky top-0 z-20">
       <div>
         <h1 className="text-lg font-bold text-slate-900 tracking-tight">{title}</h1>
         {subtitle && <p className="text-xs text-slate-500">{subtitle}</p>}

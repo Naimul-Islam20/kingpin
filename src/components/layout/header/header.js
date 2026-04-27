@@ -81,9 +81,9 @@ export default function Header() {
                   </AnimatedButton>
                 </Link>
               ) : (
-                <Link href="/signup">
+                <Link href="/login">
                   <AnimatedButton className="!px-6 !py-[10px] md:!py-[14px] !text-[11px] xl:!text-xs min-w-[120px] !shadow-none hover:!shadow-none uppercase">
-                    Sign Up
+                    Sign In
                   </AnimatedButton>
                 </Link>
               )}
